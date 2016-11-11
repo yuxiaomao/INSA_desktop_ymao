@@ -1,0 +1,31 @@
+ymao@insa-06762:~/Bureau/Algo/Algo3A2S/MICTCP$ ./tsock_texte -p
+[MIC-TCP] Appel de la fonction: mic_tcp_socket
+[TSOCK] Creation du socket MICTCP: OK
+[MIC-TCP] Appel de la fonction: mic_tcp_bind
+[TSOCK] Bind du socket MICTCP: OK
+[MIC-TCP] Appel de la fonction: mic_tcp_accept
+[TSOCK] Accept sur le socket MICTCP: OK
+[TSOCK] Appuyez sur CTRL+C pour quitter ...
+[TSOCK] Attente d'une donnee, appel de mic_recv ...
+[MICTCP-CORE] Demarrage du thread de reception reseau...
+[MIC-TCP] Appel de la fonction: mic_tcp_recv
+[MIC-TCP] Appel de la fonction: process_received_PDU
+[TSOCK] Reception d'un message de taille : 5
+[TSOCK] Message Recu : abc
+[TSOCK] Attente d'une donnee, appel de mic_recv ...
+[MIC-TCP] Appel de la fonction: mic_tcp_recv
+
+
+
+
+ymao@insa-06762:~/Bureau/Algo/Algo3A2S/MICTCP$ ./tsock_texte -s
+[MIC-TCP] Appel de la fonction: mic_tcp_socket
+[TSOCK] Creation du socket MICTCP: OK
+[MIC-TCP] Appel de la fonction: mic_tcp_connect
+[TSOCK] Connexion du socket MICTCP: OK
+[TSOCK] Entrez vos message a envoyer, CTRL+D pour quitter
+abc
+[MIC-TCP] Appel de la fonction: mic_tcp_send
+[TSOCK] Appel de mic_send avec un message de taille : 5
+[TSOCK] Appel de mic_send valeur de retour : 20
+
