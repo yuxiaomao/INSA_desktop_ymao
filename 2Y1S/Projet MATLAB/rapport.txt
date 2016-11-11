@@ -1,0 +1,185 @@
+------------------
+Partie 1: Introduction du méthode de Monte-carlo
+On commence par se familiariser avec le logiciel Mathlab et la méthode Monte-carlo.
+En gros, c'est une méthode de la probabilité. Elle nous aide à obtenir des résultats en simulant, donc sans faire des calculs précis. 
+[Théorème de Grands Nombres]
+------------------
+modèle 1: calcul du Pi
+Nous commence par la calcul du Pi.
+Il y a beaucoup de méthodes pour calculer la valeur de Pi, mais les méthodes ne sont pas évidentes et il faut souvent des décompositions du cycle. 
+La fonction "rand" nous permet de obtenir un valeur aléatoire (pseudo aléatoire) entre 0 et 1. 
+On s'intéresse donc à savoir si un point quelconque dans le carré [0,1]*[0,1] appartient à un cercle unité.
+
+-----------------
+modèle 2: Jeux Yams
+Yams est un jeux de dé. La stratégie complète est compliquée, on s'intéresse à taux d'obtenir un Yams dans un coup( y compris 3 lancer).
+-on a fait lancer, occumax, hand, yams 4 fonctions.
+
+---------------------
+Partie 2.1: calcul du variance
+Après avoir obtenir une fonction qui nous permet de savoir quelle est la probabilité d'obtenir un yams. On voudrais savoir son intervalle de confiance.
+[Theorème de central limite]
+
+------------------
+amélioration: Jeux Yams2
+Nous enregistons donc nos résultats dans un matrice pour calcul la valeur moyen, variance, et intervalle
+[ici, formule..]
+
+-------------------
+Partie 2.2: Amélioration du variance
+3méthodes pour faire diminuer la taille de l'intervalle
+
+-------------------
+Méthode1:  
+Modèle 3: Match de Rugby
+[présentation du modèle]
+[présentation de l'idée de cette méthode]
+[Réalisation et explication]
+
+-------------------
+Méthode2 conditionnel: amélioration du yams
+[idée] on sait et on peut calcul pour le dernier lancer, facilement.
+on ne fais pas de aléatoir pour le dernier lance.
+[Réalisation]
+
+------------------
+Méthode3 Echantillonage: amélioration du yams
+[idée] pipé
+[certain calcul pour savoir combien faut-il multilier]
+Lancer: pipé;compter nombre de six
+OccuMax: quand il y a 2 chiffre apparait 2 fois, on prends aléatoirement
+Hand: compter le nombre de six et nonsix total. Finalemant pour calculer la probabilité, multiplié par...
+
+---------------------
+
+-J'ai fait des images(imprime d'écran) sur les formules que j'ai trouvé sur poly ou sur PDF. On peut discuter après quelles sont les formules utilisés. J'espère qu'on arrive à les trouvés directement sur internet.
+
+-3.B Pour l'explication de la variance, je ne souviens plus.... mais j'ai trouvé sur PDF du prof, P34, une théorème qui me semble l'expliquer. En gros, c'est de dire var(B-B')est plus petit qu'on les calcules séparément. (Dans le poly, les 2 événements ont un cov négatif mais calcul f+g, je pense que dans notre cas le cov est positive) Si nécessaire, on peut demander au prof( en espérant qu'il répond ).
+
+-MatchDouble: +Si B est meilleur(B a gagné mais non B'), il prend la valeur 1; si B est pire(B a perdu mais B' non) , il prend la valeur -1. Si les 2 équipes ont le même résultat, il prend 0. Donc plus la valeur final( expérience) est positive et grand, plus la stratégie de B est mieux que B'.
+
+-patie4 ; on le fait si on a le temps(vu qu'il y a encore 1 séance libre, je préfère le faire. Mais on verra notre temps libre/le nombre de page du rapport :) ). Théorie cf TD5 proba exo4
+
+
+--------------répond aux remarques rouges------------
+
+-2.2.b cond [Expliquer intervalle de confiance]: Comme on a déjà introduire la notion d'intervalle de confiance dans la partie 2.1, je pense qu'on ne le redit pas ici. 
+
+-2.2.b cond: après l'insertion des résultats, on peut ajouter: La taille de l'intervalle de confiance calculé à l'aide de cette méthode a nettement  diminuer. Cette méthode, le conditionnement, nous permet en fait de faire un mélange de calcul direct(difficile) et calcul aléas(simple, mais plus floue).
+
+-2.2.b écha: je pense que tu m'as dit le taux de réussi un Yams est 4.6% (mais pas ce que sur le rapport, 8%)
+
+-2.2.b écha: "Pour combler à cela, on peut faire de “l’échantillonage préférentiel”." Je pense que ici manque une petite explication. Par exemple: L'idée, est de augmenter la probabilité de réussi jusqu'à celle-ci est facile à déterminer. Après avoir obtenu un résultat par simulation, on va retrouver la probabilité réelle à l'aide des outils mathématiques. Plus précisément, dans notre cas de Yams...
+
+--------------quelques mots sur la partie 3-------------
+
+-3.1 méthode simplifié des stratégies
+
+(explication d'importance de cet étude. On peut prend les valeurs de l'expérience et de variance des 2 cas extraimes écris dans le livre de prof ) B étant plus faible, s'il inscrit toujours la pénalité, il a de forte chance de perdu. Tenter l'essai leur donne une variance plus grand, donc si B a plus de chance d'obtenir un score élevé. Mais, en même temps, son score moyenne(expérience) diminue. On cherche donc un équilibre le plus profitable pour l'équipe B.
+
+-3.1.1 modélisation la version que je t'ai envoyé contient celui du rugby, le mail nommé ficher matlab)
+
+-Avantage: pendant un séquence de B, si B a pris avantege
+
+-Essai: (Si B a pris avantage et qu'il a décidé de faire un essai) calcul la probabilité que B réussi cet éssai
+
+-Strategie: Pour un probabilité de p, B tent à l'essai. sinon B pénalise.
+
+-ScoreB: Calculer après 12 séquence de B, quelle est le score de B final
+
+-ScoreA: Avoir 60% de chance de réussi,A ne prend que pénalise. Et calcul le score de A final
+
+-Tirage: un pile ou face
+
+-Match:Si B a plus de score que A, B réussi. Si égale, tirer au sort. si inférieur, A réussi.
+
+-NMatch:Modéliser N Match et donner la probabilité et l'intervalle de confiance finale.
+
+-3.1.3 Analyse(ou 3.2.1 intro du 3ème méthode, un peu comme ce que tu as écris. c'est seulement pour te donner des idée..)
+
+on remarque que, dans ce cas de rugby, les résultats des différents stratégies sont assez proche. Avec un nombre limité d'essai, on n'arrive pas à bien distinquer la meilleur stratégie.
+
+Or, on ne s'intéresse pas vraiment au taux de réussi de l'équipe B, on cherche seulement une stratégie, relativement mieux que l'autre. Comme la comparaison entre 2 stratégie a une probabilite(?) élevé, la variance est donc moins génant ....
+
+On suppose donc il y a 2 équipe B et B'. Ils se ressemblent tellement, comme dans 2 monde parallèlle, sauf qu'ls n'ont pas la même stratégie, ils n'ont peut-être pas fait le même choix. De ce principe, on a ce déroulement des matchs pour un p < p':
+
+-Le score de l'équipe A reste identique.
+
+-(ici ,pour expliquer l'histoire de p et p', fait un axe des réelles.., ou le faire dans scriptes)
+
+-Le résultat, revient à choisir l'équipe B avec probabilité p qui a gagné plus de fois que "les autres équipes B"
+
+-3.2.2 On a ajouter ces scriptes:
+
+StratDouble: selon les paramètre p et p' ( p<p'), donner la stratégie des équipes B et B' choisis.
+
+ScoreBDouble: selon les différents cas, calcul le score de B et de B'
+
+MatchDouble: Score de B et B' comparer avec le même score A. Si B a gagné mais B' non, B est meilleur(--ici explique un peu le -1,0,1 truc)
+
+NMatchDouble
+
+-3.2.3 Analyse
+
+Le résultat obtenu donne une indication plus précis entre les 2 stratégie. On observe que, la probabilité 0.25 ( mais on peut essayer d'autres p)
+
+----------------quelques détails----------------
+
+-1.b fin " on n’a aucune idée de la précision de celle-ci chose qui est aussi importante que sa valeur. " 
+
+-2.2.b cond "Par exemple si après 2 lancers on a 4 dès identiques" 
+
+---------------------------------------------------
+
+Pour les formules, on peut le faire sur Word (de windows), mais compliqué. Je t'enverrai après........ 
+
+
+----------------J'ai lu le rapport et j'ai fait quelques remarques-----------
+
+-J'aimerais ajouter des images d'explication: des formules, image de carré de Pi (πΠ), voire un image de yames(mais je n'ai acune idée à quoi ça ressemble) 
+
+-1.a dans la partie inserer code, nous pouvons ajouter des différents résultats obtenu par N différent
+
+-1.a fin ( tu l'as déjà préciser à la fin du 1.b donc c'est juste une commande) "Ce jeu nous permettra par ailleurs d’introduire plus tard la notion d’intervalle de confiance." Pour l'intervalle, on peut déjà poser la question, car même si on utilise le même N, les résultats sont différents et a certain écart. Donc face à ce genre d'écart, comment savoir à peu près la valeur voulu?Ex: si on ne sais pas la valeur réelle de Pi et qu'on n'a fait que peu de fois la simulation, à partir d'un 2.5 comment savoir si pi>3 ou pi<2?
+
+-------------------Des détails-------------------
+
+-1.b "Ce jeu est assez compliqué et de nombreuses stratégies existent.." ------l y a 2 "."
+
+-1.b "Dans notre cas, on se limite au fait de réussir ou non à avoir 5 dès identiques au terme des 3 lancers." "Ce script prend en paramètre le nombre de dès que" --------  dés
+
+-1.b "“Hand” Ce script effectue 3 lancers de 5 dés en gardant à chaque fois les dés dont la valeur à été le plus présent" ------ a été
+
+-1.b "Si un yams a été réussi, ce script retourne ) l’utilisateur la valeur 1, et 0 sinon" -------à
+
+-S'il faut préciser les valeur rand créer par l'ordi ne sont pas des vrai valeurs aléatoire?
+
+--------------------Partie2.1----------------
+
+[thm central limite]
+
+Pour une suite de variable aléatoire indépendantes et de même loi, d'expérience E[Xi]et de variance Var(Xi) finies, on a (--ici formule de P45 du livre proba--). σ écart-type. Donc on arrive à le rapprocher par un loi normale. Par les propriétés du convergence en loi et le tableau des différents valeurs de loi normale centrée réduite, (--ici des formules données par prof--), on obtient un intervalle où la probabilité que la différence entre la moyenne empirique et l'expérience dépasse cette intervalle est 5%.
+
+Cette intervalle est donc l'intervalle de confiance à 95%. 
+
+Mais on ne sais pas encore la valeur de σ.
+
+[estimateur Sn]
+
+--je ne sais pas s'il faut changer à un estimateur sans biais...le prof a donné celui avec biais
+
+On estime σ par la variance empirique S²n , consistant et sans biais(--ici donner formule de S²n P53 du poly--)
+
+Par la lemme de slutsky(? un truc que le prof a écris ), on peut remplacer σ par S²n.
+
+----------------------Partie 2.1.1-----------------
+
+Pour calculer Sn , il nous faut avoir la moyenne empirique avant de faire la somme des différences au carré. Nous décidons donc de modifier seulement le scripts Yams, qui réunit les résultats des différents essais.
+
+=Yams
+
+En plus de compter directement le nombre de 1 pour calculer la moyenne empirique, on a stocké tous les résultats dans un tableau de taille N. Et après N essai, on va calculer Sn, en détuire les deux bornes de l'intervalle.
+
+CODE
+
+Une fois réaliser cette étape, on s'aperçoit que ce calcul de l'intervalle peut être reutiliser dans des différents cas.
