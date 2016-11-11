@@ -1,0 +1,49 @@
+#!/bin/sh
+i=0
+for i in $1[*]
+do
+ long=`${#i}`
+ echo $long
+
+done
+#!/bin/sh
+if test $# -ne 1
+then
+  echo "Il faut un seul paramètre." 
+  exit 2
+else
+  n=0
+  i=0
+  for fichier in $1/*
+  do
+    s=`wc -c $fichier | awk '{print $1}'` 
+    if test -x $fichier
+    then
+      n=`expr $n + 1` 
+      echo $fichier
+      echo $s
+    else
+      if test $s = 0
+      then
+        tab[$i]=$fichier
+        i=`expr $i + 1`
+        rm $fichier
+      fi 
+    fi
+  done
+  echo "nombre de fichier est:$n"
+  echo "tableau des fichiers effacés:"
+  echo ${tab[*]}
+  echo "nombre des fichiers effacés:"
+  echo ${#tab[*]}
+fi	  
+
+
+
+
+
+#!/bin/sh
+if test $# -ne 1
+then
+  echo "Il faut un seul paramètre." 
+  exit 2

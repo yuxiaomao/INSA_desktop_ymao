@@ -1,0 +1,7 @@
+#!/bin/sh
+echo -n "Un nombre stp :"
+read nb
+echo -n "Encore un stp :"
+read nb2
+mul=`expr $nb \* $nb2`
+echo "$nb * $nb2 ca fait : $mul"
