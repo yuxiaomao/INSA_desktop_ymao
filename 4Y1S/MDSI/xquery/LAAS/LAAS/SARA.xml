@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : sara.xml
+    Created on : 3 décembre 2014, 15:11
+    Author     : nguermou
+    Description:
+        Purpose of the document follows.
+-->
+
+<team id="SARA" isCNRS="true">
+    <name>Services et Architectures pour Réseaux Avancés</name>
+    <shortName>SARA</shortName>
+    <teamMembers>
+        <member category="chef d'équipe">
+            <lastName>DRIRA</lastName>
+            <firstName>Khalil</firstName>
+            <affiliation>CNRS</affiliation>
+            <category>directeur de recherche</category>
+        </member>
+        <member category="membre permanent">
+            <lastName>ABDELLATIF</lastName>
+            <firstName>Slim</firstName>
+            <affiliation>INSA  de Toulouse, LAAS-CNRS</affiliation>
+            <category>maître de conférences</category>
+        </member>
+         <member category="membre permanent">
+            <lastName>ALBEA SANCHEZ</lastName>
+            <firstName>Carolina</firstName>
+            <affiliations>
+                <affiliation> Université de Toulouse III </affiliation>
+                <affiliation>LAAS-CNRS</affiliation>
+            </affiliations>
+            <category>maître de conférences</category>
+        </member>
+        <member category="membre permanent">
+            <lastName>AYESTA MORATE</lastName>
+            <firstName>Urtzi</firstName>
+            <affiliations>
+                <affiliation> CNRS </affiliation>
+            </affiliations>
+            <category>Chargé de recherche de 1ère classe </category>
+        </member>
+        <member category="membre permanent">
+            <lastName> BERTHOU</lastName>
+            <firstName>Pascal</firstName>
+            <affiliations>
+                <affiliation> Toulouse III Paul Sabatier </affiliation>
+            </affiliations>
+            <category>Maître de conférences </category>
+        </member>
+        <member category="membre permanent">
+            <lastName> BRUN</lastName>
+            <firstName>Olivier</firstName>
+            <affiliations>
+                <affiliation> CNRS </affiliation>
+            </affiliations>
+            <category>Chargé de recherche de 1ère classe </category>
+        </member>
+        <member category="membre contractuel">
+            <lastName> THRAVES CARO</lastName>
+            <firstName>Christopher</firstName>
+            <affiliations>
+                <affiliation> CNRS </affiliation>
+            </affiliations>
+            <category>Ingénieur de recherche 2ème classe</category>
+        </member>
+         <member category="membre contractuel">
+            <lastName>  Guérout</lastName>
+            <firstName>Tom</firstName>
+            <affiliations>
+                <affiliation> CNRS </affiliation>
+            </affiliations>
+            <category>Post Doctorant </category>
+        </member>
+    </teamMembers>
+    <description>
+        <objectives> 
+            The team SARA is one of the teams of the research theme Networks and Communications.
+            SARA research team’s work addresses new generation networks and communicating systems
+            and their applications. Our research studies address the design, the planning, the
+            deployment management, and the monitoring.
+
+            Our contributions include the development of methods, models and tools as well as the
+            design and implementation of architectures, protocols and services. In particular, our
+            research work focuses on analysis, performance evaluation, control and prototyping of
+            software and communication platforms.
+        </objectives>
+        <researchTopics>
+           <topic>
+               <title>
+                   Monitoring, Modeling and traffic analysis.
+               </title>
+               <abstract>
+                   The objective is the design and the analysis of mathematical models to
+                   predict, optimize and monitor the performance of next generation networks.
+                   Our contributions are both theoretical in nature, with the design of new
+                   approaches of stochastic modeling and distributed control, and applied with
+                   the development of metrology tools and software for networks analysis.
+               </abstract>
+            </topic>
+              <topic>
+               <title>
+                  Autonomic communication architectures.
+               </title>
+               <abstract>
+                   We consider both highly constrained environments and heterogeneous
+                   dynamic large-scale contexts. This is addressed consistently considering
+                   both the requirements of applications that these networks support and
+                   the constraints of the environments in which they must operate.
+               </abstract>
+            </topic>
+            <topic>
+                <title>Planning and optimization of networks. </title>
+                <abstract>
+                    Our studies focus on the one hand on routing optimization
+                    to ensure provisioning of devices respecting a predefined
+                    quality at minimal cost, and on searching optimal topologies.
+                    On the other hand, we work on optimizing the deployment of new
+                    networks, either without infrastructure or spontaneous, without
+                    prior organization and configuration.
+                </abstract>
+            </topic>
+            <topic>
+                <title>Development of experimental platforms.  </title>
+                <abstract>
+                    The objective is to provide technical support for testing and 
+                    validating protocol architectures and ¬networks mechanisms resulting
+                    from our research, mainly on issues related to QoS, security and
+                    supervision in sensor networks, the Internet of Things, large scale
+                    networks and dynamic networks.
+                </abstract>
+            </topic>
+            <topic>
+                <title>Development of experimental platfor</title>
+                <abstract>The objective is to provide technical support for testing
+                and validating protocol architectures and ¬networks mechanisms resulting
+                from our research, mainly on issues related to QoS, security and
+                supervision in sensor networks, the Internet of Things, large scale
+                networks and dynamic networks.
+                </abstract>
+            </topic>
+        </researchTopics>
+        <publications>
+            <conferences>
+                <conference>
+                    <title>Buffer dynamic management for energy-aware network </title>
+                    <authors>
+                        <author>W.ZOUAOUI</author>
+                        <author>Y.LABIT</author>
+                        <author>C.ALBEA SANCHEZ</author>
+                    </authors>
+                    <conferenceName>CNSM</conferenceName>
+                    <year>2014</year>
+                </conference>
+                 <conference>
+                    <title>Temporal verification of mobile publish/subscribe machine-to-machine communications </title>
+                    <authors>
+                        <author>G.GHARBI</author>
+                        <author>N.GUERMOUCHE</author>
+                        <author>T.MONTEIL</author>
+                    </authors>
+                    <conferenceName>WOWMOM</conferenceName>
+                    <year>2014</year>
+                </conference>
+
+            </conferences>
+            <journals>
+                <journal>
+                    <title>
+                        Towards horizontal architecture for autonomic M2M service networks
+                    </title>
+                    <authors>
+                        <author>J.LATVAKOSKI</author>
+                        <author> M.BEN ALAYA</author>
+                        <author>H.GANEM</author>
+                        <author>B.JUBEH</author>
+                        <author>A.IIVARI</author>
+                        <author>J.LEGUAY</author>
+                        <author>J.MARTIN BOSH</author>
+                        <author>N.GRANQVIST</author>    
+                    </authors>
+                    <journalName>Future Internet</journalName>
+                </journal> 
+                <journal>
+                    <title>
+                        Composition of web services based on timed mediation
+                    </title>
+                    <authors>
+                        <author>N.GUERMOUCHE</author>
+                        <author>C.GODART</author>
+                    </authors>
+                    <journalName>IJNGC</journalName>
+                </journal>
+            </journals>
+            <thesises>
+              <thesis>
+                  <title>Applications of game theory to distributed routing and delay tolerant networking</title>
+                  <author>T.SEREGINA</author>
+                  <year>2014</year>
+              </thesis>
+              <thesis>
+                  <title>Métrologie des réseaux sans-fil: A la frontière du signal et du numérique</title>
+                  <author>G.KREMER</author>
+                  <year>2014</year>
+              </thesis>
+            </thesises>
+        </publications>
+        <partenariat>
+            <partner>
+                EADS
+            </partner>
+             <partner>
+                VTT
+            </partner>
+             <partner>
+                IRIT
+            </partner>
+             <partner>
+                INRIA
+            </partner>      
+        </partenariat>       
+    </description>
+</team>

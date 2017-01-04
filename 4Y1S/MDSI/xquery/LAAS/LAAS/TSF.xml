@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : TSF.xml
+    Created on : 14 décembre 2014, 21:13
+    Author     : nguermou
+    Description:
+        Purpose of the document follows.
+-->
+<team id="TSF" isCNRS="true">
+    <name>Tolérance aux fautes et Sûreté de Fonctionnement Informatique</name>
+    <shortName>TSF</shortName>
+    <teamMembers>
+        <member category="chef d'équipe">
+            <lastName>KAANICHE</lastName>
+            <firstName>Mohamed</firstName>
+            <affiliation>CNRS</affiliation>
+            <category>directeur de recherche</category>
+        </member>
+        <member category="membre permanent">
+            <lastName>ALATA</lastName>
+            <firstName>Eric</firstName>
+            <affiliation>INSA  de Toulouse, LAAS-CNRS</affiliation>
+            <category>maître de conférences</category>
+        </member>
+         <member category="membre permanent">
+            <lastName>ARLAT</lastName>
+            <firstName>Jean</firstName>
+               <affiliation>CNRS </affiliation>     
+            <category>Directeur de recherche</category>
+        </member>
+        <member category="membre permanent">
+            <lastName>COLLET</lastName>
+            <firstName>Jacques</firstName>
+            <affiliations>
+                <affiliation> CNRS </affiliation>
+            </affiliations>
+            <category>Directeur de recherche émérite </category>
+        </member>   
+    </teamMembers>
+    <description>
+        <objectives> 
+        </objectives>
+        <researchTopics>
+           <topic>
+               <title>
+                  Fault prevention
+               </title>
+               <abstract>
+                  The advent of ubiquitous devices and the growing
+                  development of location-based services have led to a large scale
+                  collection of individuals’ mobility data on a daily basis. Among
+                  all the Personally Identifiable Information, learning the location
+                  of an individual is one of the major threats against privacy. In
+                  order to help location-based services developers to provide privacy-preserving
+                  applications, we propose the PROPS protocol, a PRivacy-preserving lOcation Proof
+                  System that allows a user to generate a proof of his location in a private way using
+                  neighboring nodes as witnesses. The gathered proof can be used to anonymously prove
+                  his current or past location.
+
+                  A secure location-based service requires that a mobile user certifies his
+                  position before gaining access to a particular resource. Currently, most
+                  of existing solutions assume a trusted third party that can vouch for the
+                  position claimed by a user. However, as computation and communication
+                  capacities become ubiquitous with the large-scale adoption of smartphones
+                  by individuals, we propose to leverage on these resources to solve this
+                  issue in a collaborative and private manner. We have demonstrated that our
+                  protocol provides security properties such as the unforgeability and the
+                  non-transferability of the proofs, as well as resistance to classical attacks
+                  on such systems like mafia and terrorist frauds.
+               </abstract>
+            </topic>
+              <topic>
+               <title>
+                  Fault tolerance
+               </title>
+               <abstract>
+                  Recent advances in digital networks and smart sensors and actuators offer new
+                  opportunities for the development of innovative fault tolerant architectures
+                  for critical control systems that have to satisfy hard dependability,
+                  performance and cost reduction requirements. The main issue is to take
+                  advantage of the increasing computing capabilities at the sensors and
+                  actuators levels to achieve an optimal distribution of systems functionalities
+                  and fault tolerance mechanisms among computers and actuators.
+
+                  We have investigated this problem in the context of Flight Control Systems (FCS).
+                  We proposed distributed and reconfigurable architectures that break with the
+                  traditional COM/MON centralized-federated architectures where specific fault-tolerant
+                  computers perform all processing. The new alternative FCS architectures
+                  are based on: simplex computers, distribution of system functionalities between computers
+                  and actuators, less hardware and software resources while meeting the same (or even better)
+                  level of safety and availability requirements as in the prior art. Two architectures have
+                  been investigated [3][4]  - the “Massive Voting” (see Figure 1) and the “Priority voting”
+                  architectures - validated through respectively OCAS/AltaRica (for safety requirements)
+                  and Matlab/Simulink simulations (for robustness requirements). This work was carried out
+                  with Airbus-France.
+               </abstract>
+            </topic>
+        </researchTopics>
+        <publications>
+            <conferences>
+                <conference>
+                    <title> An approach for the automated analysis of network access controls in cloud computing infrastructures</title>
+                    <authors>
+                        <author>T.PROBST</author>
+                         <author>E.ALATA</author>
+                        <author>M.KAANICHE</author>
+                        <author>V.NICOMETTE</author>
+                    </authors>
+                    <conferenceName>NSS</conferenceName>
+                    <year>2014</year>
+                </conference>
+                 <conference>
+                    <title>Automatically adjusting concurrency to the level of synchrony</title>
+                    <authors>
+                        <author>P.FRAIGNIAUD</author>
+                        <author>E.GAFNI</author>
+                        <author>S.RAJSBAUM</author>
+                        <author>M.ROY</author>
+                    </authors>
+                    <conferenceName>DISC</conferenceName>
+                    <year>2014</year>
+                </conference>
+            </conferences>
+            <journals>
+                <journal>
+                    <title>
+                        Heuristical top-k: fast estimation of centralities in complex networks
+                    </title>
+                    <authors>
+                        <author>E.LE MERRER </author>
+                        <author> N.LE SCOUARNEC</author>
+                        <author>G.TREDAN</author>
+                    </authors>
+                    <journalName>IPL</journalName>
+                </journal>
+            </journals>
+            <thesises>
+              <thesis>
+                  <title>Analyse de vulnérabilités de systèmes avioniques embarqués : classification et expérimentation</title>
+                  <author>A.DESSIATNIKOFF</author>
+                  <year>2014</year>
+              </thesis>
+            </thesises>
+        </publications>
+        <partenariat>
+            <partner>
+                Airbus
+            </partner>
+             <partner>
+                EADS
+            </partner>
+        </partenariat>
+    </description>
+</team>
