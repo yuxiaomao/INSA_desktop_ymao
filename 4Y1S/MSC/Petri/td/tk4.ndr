@@ -1,0 +1,61 @@
+t 410.0 200.0 1_rel 0 w n
+t 120.0 310.0 2_exit 0 w n
+t 60.0 110.0 3_exit 0 w n
+t 260.0 60.0 4_exit 0 w n
+t 50.0 220.0 3_entry 0 w n
+t 150.0 50.0 4_entry 0 w n
+p 350.0 210.0 token_1 1 n
+p 170.0 350.0 token_2 0 n
+p 80.0 270.0 after_2 0 n
+p 30.0 160.0 token_3 0 n
+p 100.0 70.0 after_3 0 n
+p 210.0 30.0 token_4 0 n
+p 300.0 100.0 after_4 0 n
+t 350.0 240.0 t3 0 w n
+t 350.0 150.0 1_entry 0 w n
+p 350.0 290.0 frozen_1 0 n
+t 560.0 190.0 1_ask 0 w n
+p 480.0 160.0 idle_1 1 n
+p 510.0 230.0 wait_1 0 n
+p 470.0 200.0 cs_1 0 n
+t 410.0 230.0 1_work 0 w n
+t 390.0 290.0 t4 0 w n
+p 430.0 280.0 nbMax 4 n
+t 230.0 340.0 2_entry s 0 w n {} ne
+p 280.0 340.0 after_1 0 n
+t 340.0 330.0 1_exit n 0 w n {} ne
+e idle_1 1_ask 1 n
+e 1_ask wait_1 1 n
+e token_1 1_work 1 n
+e wait_1 1_work 1 n
+e 1_work cs_1 1 n
+e cs_1 1_rel 1 n
+e 1_rel token_1 1 n
+e 1_rel idle_1 1 n
+e 1_exit after_1 1 n
+e token_2 2_exit 1 n
+e 2_exit after_2 1 n
+e token_3 3_exit 1 n
+e 3_exit after_3 1 n
+e token_4 4_exit 1 n
+e 4_exit after_4 1 n
+e after_1 2_entry 1 n
+e 2_entry token_2 1 n
+e after_2 3_entry 1 n
+e 3_entry token_3 1 n
+e after_3 4_entry 1 n
+e 4_entry token_4 1 n
+e after_4 1_entry 1 n
+e 1_entry token_1 1 n
+e nbMax 1_work 1 n
+e 1_entry 0.05902918196 193.1320792 nbMax 0.01761164373 226.3846285 4 n
+e frozen_1 1_exit 1 n
+e token_1 t3 1 n
+e t3 frozen_1 1 n
+e nbMax 0.7355710308 55.22680509 1_exit 0.9855710314 55.22680507 ?-1 n
+e nbMax t4 1 n
+e frozen_1 t4 ?1 n
+e 1_work t3 1 n
+h tk4 small
+
+

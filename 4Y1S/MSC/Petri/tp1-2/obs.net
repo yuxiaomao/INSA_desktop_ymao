@@ -1,0 +1,6 @@
+net obs
+
+tr obs_G1 G1_taken_Cl1 G1_taken_Cl2 ->  G1_taken_Cl1 G1_taken_Cl2 
+tr obs_G2 G2_taken_Cl1 G2_taken_Cl2 ->  G2_taken_Cl1 G2_taken_Cl2 
+
+

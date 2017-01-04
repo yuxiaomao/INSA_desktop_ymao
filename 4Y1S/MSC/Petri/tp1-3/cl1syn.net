@@ -1,0 +1,7 @@
+net cl1syn
+pl Cl1_idle (1) 
+
+tr Cl1_req1 Cl1_idle -> Cl1_wait1 
+tr Cl1_req2 Cl1_wait1 -> Cl1_wait2 
+tr Cl1_enter Cl1_wait2 -> Cl1_work
+tr Cl1_exit Cl1_work ->  Cl1_idle

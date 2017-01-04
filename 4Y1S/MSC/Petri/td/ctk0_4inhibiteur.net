@@ -1,0 +1,57 @@
+net {tokenring 4}
+pl token_1(1)
+pl idle_1(1)
+pl idle_2(1)
+pl idle_3(1)
+pl idle_4(1)
+pl counter_1(1)
+pl counter_2(1)
+pl counter_3(1)
+pl counter_4(1)
+
+tr 1_ask idle_1 -> wait_1
+tr 1_work wait_1 -> cs_1
+tr 1_rel cs_1 -> idle_1
+
+tr 1_work  token_1 counter_1 -> 
+tr 1_rel  -> token_1
+tr 1_end_work token_1 -> end_work_1
+tr 1_zero_counter counter_1 end_work_1 -> end_work_1
+tr 1_exit  end_work_1 counter_1?-1 ->  after_1 counter_1
+pr 1_work > 1_end_work
+
+tr 2_ask idle_2 -> wait_2
+tr 2_work wait_2 -> cs_2
+tr 2_rel cs_2 -> idle_2
+tr 2_work  token_2 counter_2 -> 
+tr 2_rel  -> token_2
+tr 2_end_work token_2 -> end_work_2
+tr 2_zero_counter counter_2 end_work_2 -> end_work_2
+tr 2_exit  end_work_2 counter_2?-1->  after_2 counter_2
+pr 2_work > 2_end_work
+
+tr 3_ask idle_3 -> wait_3
+tr 3_work wait_3 -> cs_3
+tr 3_rel cs_3 -> idle_3
+tr 3_work  token_3 counter_3 -> 
+tr 3_rel  -> token_3
+tr 3_end_work token_3 -> end_work_3
+tr 3_zero_counter counter_3 end_work_3 -> end_work_3
+tr 3_exit  end_work_3 counter_3?-1->  after_3 counter_3
+pr 3_work > 3_end_work
+
+tr 4_ask idle_4 -> wait_4
+tr 4_work wait_4 -> cs_4
+tr 4_rel cs_4 -> idle_4
+tr 4_work  token_4 counter_4 -> 
+tr 4_rel  -> token_4
+tr 4_end_work token_4 -> end_work_4
+tr 4_zero_counter counter_4 end_work_4 -> end_work_4
+tr 4_exit  end_work_4 counter_4?-1 ->  after_4 counter_4
+pr 4_work > 4_end_work
+
+
+tr 2_entry after_1 -> token_2
+tr 3_entry after_2 -> token_3
+tr 4_entry after_3 -> token_4
+tr 1_entry after_4 -> token_1

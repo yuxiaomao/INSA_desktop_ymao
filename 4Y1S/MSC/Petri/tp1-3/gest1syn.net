@@ -1,0 +1,12 @@
+net gest1syn
+
+tr Cl1_req1 -> Cl1_G1_req
+tr G1_req_ack_Cl1 Cl1_G1_req G1_idle -> G1_Cl1_ack G1_taken_Cl1
+tr Cl1_req2 G1_Cl1_ack -> 
+tr Cl1_exit -> Cl1_G1_release
+tr G1_release_Cl1 Cl1_G1_release G1_taken_Cl1 -> G1_idle
+
+
+
+pl G1_idle (1)
+

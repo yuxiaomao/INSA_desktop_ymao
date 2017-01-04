@@ -1,0 +1,10 @@
+net gest1
+tr G1_req_ack_Cl1 Cl1_G1_req G1_idle -> G1_Cl1_ack G1_taken_Cl1
+tr G1_release_Cl1 Cl1_G1_release G1_taken_Cl1 -> G1_idle
+
+tr G1_req_ack_Cl2 Cl2_G1_req G1_idle -> G1_Cl2_ack G1_taken_Cl2
+tr G1_release_Cl2 Cl2_G1_release G1_taken_Cl2 -> G1_idle
+
+
+pl G1_idle (1)
+
