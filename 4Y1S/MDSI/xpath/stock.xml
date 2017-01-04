@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- PARTIE1
+le noeud courant /stock/produit
+descendant::node() 
+  -CD
+following-sibling::node()
+  -produit[2]/prix
+  -produit[2]/comment  
+preceding::*/@*
+  -produit[1]/prix/@monnaie  :monnaie="Francs"
+following::comment()
+  -<comment> Un commentaire </comment>
+child::*
+  -NULL -->
+<!-- PARTIE2
+tous les produits pour lesquels il existe un prix ayant un attribut monnaie
+  -//produit[prix/@monnaie]
+le prix des produits livre
+  -//produit[nom='Livre']/prix
+les noeuds produit qui sont en 2e position et qui possèdent un élément fils comment
+  -/stock/produit[position()=2 and child::comment]
+le produit le moins cher
+  -//produit[prix[.<../../produit/prix]]
+
+-->
+
+<stock>
+	<produit>
+		<nom>Livre</nom>
+		<prix monnaie="Francs">100</prix>
+		<comment> Un commentaire </comment>
+	</produit>
+	<produit>
+		<nom>CD</nom><!-- le noeud courant -->
+		<prix monnaie="Euros">50</prix>
+		<comment> Un commentaire </comment>
+	</produit>
+	<produit>
+		<nom>Journal</nom>
+		<prix>23</prix>
+	</produit>
+</stock>

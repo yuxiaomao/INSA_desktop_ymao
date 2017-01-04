@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Championnat -->
+<!-- Valided -->
+<Championnat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	     xsi:noNamespaceSchemaLocation="xmlschema.xml">
+  <Clubs><!-- 20 -->
+    <Club NomCourt="1">
+      <NomLong/>
+      <Entraineurs>
+	<Entraineur date_arriv="2015-01-01" date_depart="2015-12-31">
+	  <nom>E1</nom>
+	</Entraineur>
+      </Entraineurs>
+      <Joueurs>
+	<Joueur date_arriv="2015-01-01" date_depart="2015-12-31">
+	  <nom>J1</nom>
+	</Joueur>
+      </Joueurs>
+    </Club>
+
+ <Club NomCourt="2">
+      <NomLong/>
+      <Entraineurs>
+	<Entraineur date_arriv="2015-01-01" date_depart="2015-12-31">
+	  <nom>E1</nom>
+	</Entraineur>
+      </Entraineurs>
+      <Joueurs>
+	<Joueur date_arriv="2015-01-01" date_depart="2015-12-31">
+	  <nom>J1</nom>
+	</Joueur>
+      </Joueurs>
+    </Club>
+
+ <Club NomCourt="3">
+      <NomLong/>
+      <Entraineurs>
+	<Entraineur date_arriv="2015-01-01" date_depart="2015-12-31">
+	  <nom>E1</nom>
+	</Entraineur>
+      </Entraineurs>
+      <Joueurs>
+	<Joueur date_arriv="2015-01-01" date_depart="2015-12-31">
+	  <nom>J1</nom>
+	</Joueur>
+      </Joueurs>
+    </Club>
+
+ <Club NomCourt="4">
+      <NomLong/>
+      <Entraineurs>
+	<Entraineur date_arriv="2015-01-01" date_depart="2015-12-31">
+	  <nom>E1</nom>
+	</Entraineur>
+      </Entraineurs>
+      <Joueurs>
+	<Joueur date_arriv="2015-01-01" date_depart="2015-12-31">
+	  <nom>J1</nom>
+	</Joueur>
+      </Joueurs>
+    </Club>
+
+
+
+  </Clubs>
+
+  <Calendrier>
+    <Journees><!-- 38 -->
+      <Journee date_journee="2016-01-01">
+	<Rencontres><!-- 10 -->
+	  <Rencontre club_dom="1" club_ext="2"/>
+	  <Rencontre club_dom="3" club_ext="4"/>
+	</Rencontres>
+      </Journee>
+      <Journee date_journee="2016-01-02">
+	<Rencontres><!-- 10 -->
+	  <Rencontre club_dom="4" club_ext="1"/>
+	  <Rencontre club_dom="2" club_ext="3"/>
+	</Rencontres>
+      </Journee>
+    </Journees>
+  </Calendrier>
+
+
+</Championnat>

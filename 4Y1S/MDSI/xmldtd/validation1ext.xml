@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE cdtheque SYSTEM "validation1ext.dtd">
+<cdtheque date="12/2015" auteur="a1">
+  <cd>
+    <titre>t1</titre>
+    <artiste>ar1</artiste>
+    <style>s1</style>
+  </cd>
+  <cd>
+    <titre>t2</titre>
+    <artiste>ar1</artiste>
+  </cd>
+  <cd>
+    <titre>t2</titre> 
+    <artiste>ar1</artiste>
+    <style/>
+  </cd>
+  
+</cdtheque>

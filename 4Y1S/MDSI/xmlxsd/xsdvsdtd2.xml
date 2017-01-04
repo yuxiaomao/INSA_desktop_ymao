@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<examen code="123">
+  <titre>un exam</titre>
+  <date mois="jan" annee="2016"/>
+  <questions>
+    <question>
+      <partie><partie>1</partie>contenu contenu</partie>
+    </question>
+ <question>
+      <partie><partie>1</partie>contenu contenu</partie>
+    </question>
+<question>
+      <partie><partie>1</partie>contenu contenu</partie>
+    </question>
+<question>
+      <partie><partie>1</partie>contenu contenu</partie>
+    </question>
+<question>
+      <partie><partie>1</partie>contenu contenu</partie>
+    </question>
+
+  </questions>
+
+
+</examen>

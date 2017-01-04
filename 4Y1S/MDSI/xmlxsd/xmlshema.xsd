@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Problem reste a resoudre
+xpath ="//Rencontre"
+xpath ="/Rencontre"
+xpath ="descendant::Rencontre"
+The XPath expression '/Rencontre' could not be compiled.
+but child:: ok.
+-->
+
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Championnat">
+    <xs:complexType>
+      <xs:sequence>
+	<xs:element name="Clubs" type="typeClubs"/>
+	<xs:element name="Calendrier" type="typeCalendrier"/>
+      </xs:sequence>
+    </xs:complexType>
+    <xs:key name="keyNomCourt">
+      <xs:selector xpath="Clubs/Club"/>
+      <xs:field xpath="@NomCourt"/>
+    </xs:key>
+    <xs:keyref name="refClubDom" refer="keyNomCourt">
+      <xs:selector xpath="Calendrier/Journees/Journee/Rencontres/Rencontre"/>
+      <xs:field xpath="@club_dom"/>
+    </xs:keyref>
+    <xs:keyref name="refClubExt" refer="keyNomCourt">
+      <xs:selector xpath="Rencontre"/>
+      <xs:field xpath="@club_ext"/>
+    </xs:keyref>
+</xs:element>
+<!-- Clubs -->
+<xs:complexType name="typeClubs">
+  <xs:sequence>
+    <xs:element name="Club" type="typeClub" minOccurs="4" maxOccurs="4"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="typeClub">
+  <xs:sequence>
+    <xs:element name="NomLong" type="xs:string"/>
+    <xs:element name="Entraineurs" type="typeEntraineurs"/>
+    <xs:element name="Joueurs" type="typeJoueurs"/>
+  </xs:sequence>
+  <xs:attribute name="NomCourt" type="xs:token" use="required"/>
+</xs:complexType>
+<xs:complexType name="typeEntraineurs">
+  <xs:sequence>
+    <xs:element name="Entraineur" type="typePerson" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="typeJoueurs">
+  <xs:sequence>
+    <xs:element name="Joueur" type="typePerson" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="typePerson">
+  <xs:sequence>
+    <xs:element name="nom" type="xs:string"/>
+  </xs:sequence>
+  <xs:attribute name="date_arriv" type="xs:date" use="required"/>
+  <xs:attribute name="date_depart" type="xs:date" use="optional"/>
+</xs:complexType>
+<!-- Calendrier -->
+<xs:complexType name="typeCalendrier">
+   <xs:sequence>
+    <xs:element name="Journees" type="typeJournees"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="typeJournees">
+   <xs:sequence>
+    <xs:element name="Journee" type="typeJournee" minOccurs="2" maxOccurs="2"/>
+  </xs:sequence>
+</xs:complexType>
+<xs:complexType name="typeJournee">
+   <xs:sequence>
+    <xs:element name="Rencontres" type="typeRencontres"/>
+  </xs:sequence>
+  <xs:attribute name="date_journee" type="xs:date" use="required"/>
+</xs:complexType>
+<xs:complexType name="typeRencontres">
+  <xs:sequence>
+    <xs:element name="Rencontre"  minOccurs="2" maxOccurs="2">
+      <xs:complexType>
+	<xs:attribute name="club_dom" type="xs:token" use="required"/>
+	<xs:attribute name="club_ext" type="xs:token" use="required"/>
+	<xs:attribute name="score_dom" type="xs:int" use="optional"/>
+	<xs:attribute name="score_ext" type="xs:int" use="optional"/>
+      </xs:complexType>
+      
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+
+
+<!-- Fin schema -->
+</xs:schema>
+

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE universite SYSTEM "validation2.dtd">
+<universite>
+  <allcours>
+    <cours idc="c1" enseignant="p1">
+      <titre>Maths</titre>
+      <evaluation score="15">blablabla</evaluation>
+    </cours>
+     <cours idc="c2">
+      <titre>Physique</titre>
+      <evaluation score="12">blablabla2</evaluation>
+    </cours>
+  </allcours>
+  <professeurs>
+    <professeur idp="p1" cours="c1 c2"/>
+    <professeur idp="p2" cours="c2"/>
+  </professeurs>
+</universite>

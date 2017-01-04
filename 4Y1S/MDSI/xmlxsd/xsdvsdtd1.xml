@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<entreprise >
+     <Address type="US-Address">
+          <Name>ICOS</Name>
+          <Street>Frédéric</Street>
+          <City>Toulouse</City>
+          <Cedex>12</Cedex>
+     </Address>
+     <Division>
+          <Division-Name>Marketing</Division-Name>
+          <Location>Paris</Location>
+          <Person manager="true" degree="chef">
+               <FirstName>Allison</FirstName>
+               <LastName>Andersen</LastName>
+               <PhoneExt>111</PhoneExt>
+               <EMail>Andersen@icsoc.com</EMail>
+          </Person>
+          <Person manager="false" degree="adjChef">
+               <FirstName >Bruce</FirstName>
+               <LastName>Burrwinkle</LastName>
+               <PhoneExt>222</PhoneExt>
+               <EMail>Burrwinkle@icsoc.com</EMail>
+          </Person>
+
+     </Division>
+
+</entreprise >

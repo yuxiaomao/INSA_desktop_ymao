@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="entreprise">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="Address" />
+      <xs:element ref="Division"/>
+      <!--xs:element ref="AddressFR" minOccurs="0" /-->
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+<xs:element name="Address" type="addressType"/>
+<xs:complexType name="addressType">
+  <xs:sequence>
+    <xs:element name="Name" type="xs:string"/>
+    <xs:element name="Street" type="xs:string"/>
+    <xs:element name="City" type="xs:string"/>
+    <xs:element name="Cedex">
+      <xs:simpleType>
+	<xs:restriction base="xs:integer">
+	  <xs:minInclusive value="10"/>
+	  <xs:maxInclusive value="40"/>
+	</xs:restriction>
+      </xs:simpleType>
+    </xs:element>
+  </xs:sequence>
+  <xs:attribute name="type" type="xs:string" use="required"/>
+</xs:complexType>
+<xs:element name="AdressFR">
+  <xs:complexType>
+    <xs:complexContent>
+      <xs:extension base="addressType">
+	<xs:sequence>
+	  <xs:element name="Departement" type="xs:string" maxOccurs="unbounded"/>
+	</xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  
+</xs:element>
+<xs:element name="Division">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element name="Division-Name" type="xs:string"/>
+      <xs:element name="Location" type="xs:string"/>
+      <xs:element ref="Person" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+<xs:element name="Person">
+  <xs:complexType>
+    <xs:sequence>
+       <xs:element name="FirstName" type="xs:string"/>
+       <xs:element name="LastName" type="xs:string"/>
+       <xs:element name="PhoneExt" type="xs:string"/>
+       <xs:element name="EMail" type="emailType"/>
+    </xs:sequence>
+    <xs:attribute name="manager" type="xs:boolean" use="required"/>
+    <xs:attribute name="degree" use="required">
+      <xs:simpleType>
+	<xs:restriction base="xs:string">
+	  <xs:enumeration value="chef"/>
+	  <xs:enumeration value="adjChef"/>
+	</xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+</xs:element>
+
+<xs:simpleType name="emailType">
+  <xs:restriction base="xs:string">
+    <xs:pattern value="(.)+@(.)+(\.)com"/>
+  </xs:restriction>
+</xs:simpleType>
+</xs:schema>

@@ -1,0 +1,12 @@
+<!ELEMENT universite (allcours, professeurs)>
+<!ELEMENT allcours (cours+)>
+<!ELEMENT cours (titre, evaluation)>
+<!ATTLIST cours idc ID #REQUIRED>
+<!ATTLIST cours enseignant IDREF #IMPLIED>
+<!ELEMENT titre (#PCDATA)>
+<!ELEMENT evaluation (#PCDATA)>
+<!ATTLIST evaluation score CDATA #REQUIRED>
+<!ELEMENT professeurs (professeur+)>
+<!ELEMENT professeur EMPTY>
+<!ATTLIST professeur idp ID #REQUIRED>
+<!ATTLIST professeur cours IDREFS #REQUIRED>
