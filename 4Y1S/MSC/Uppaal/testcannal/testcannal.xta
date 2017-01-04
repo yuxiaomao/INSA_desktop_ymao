@@ -1,0 +1,31 @@
+chan EtoR;
+int vp;
+
+process e(chan &out, int &vp)
+{
+int loc = 0;
+state idle,apres_envoi;
+urgent idle,apres_envoi;
+init idle;
+trans
+    idle -> apres_envoi{ sync out!; assign vp:=1, loc:=vp; },
+    apres_envoi -> idle{ };
+}
+
+process r(chan &in, int &vp)
+{
+int loc = 0;
+state idle,apres_recoit;
+urgent idle,apres_recoit;
+init idle;
+trans
+    idle -> apres_recoit{sync in?; assign loc:=vp; },
+    apres_recoit -> idle{ };
+}
+
+
+emetteur := e(EtoR,vp);
+recepteur1 := r(EtoR,vp);
+recepteur2 := r(EtoR,vp);
+
+system emetteur,recepteur1,recepteur2;

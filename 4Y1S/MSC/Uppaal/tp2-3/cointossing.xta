@@ -1,0 +1,100 @@
+
+chan LRGET, LRPUT;
+int  LRVG,  LRVP;
+
+chan RLGET, RLPUT;
+int  RLVG,  RLVP;
+
+chan cvg, cvd;
+int resvg, resvd;
+
+process fifo(const int flux, const int cap,  chan & get, chan &put, int &vget, int &vput) {
+int cpt := 0;
+        int buf[cap];
+        int ixP := 0;
+        int ixG := 0;
+        int cdf := flux;
+state
+    service,
+    erreur;
+urgent
+    service,
+    erreur;
+init service;
+trans
+    service -> service { guard cpt > 0; sync get!; assign vget:= buf[ixG], 
+                cpt:= cpt - 1, ixG:= (ixG == (cap - 1))?0:(ixG + 1);  },
+    service -> service { guard cpt < cap; sync put?; assign buf[ixP]:= vput, cpt:= cpt + 1, 
+                ixP:= (ixP == (cap - 1))?0:(ixP + 1);  },
+    service -> erreur { guard cpt == cap and cdf == 0; sync put?;  };
+}
+
+process player(chan &choice, int &res, const int gain1, const int gain2,   chan &in, chan &out,  int &vin, int &vout) {
+int my_choice, other_choice;
+state
+    apres_recoit,
+    apres_envoi,
+    apres_choice,
+    repos,
+    idle;
+urgent
+    repos,
+    idle;
+init repos;
+trans
+    apres_recoit -> repos { guard (my_choice + other_choice == gain1)
+    		    	  or (my_choice + other_choice ==gain2); 
+			     sync choice!;
+			      assign res := 1;},
+    apres_recoit -> repos { guard (my_choice + other_choice != gain1)
+    		    	  and (my_choice + other_choice !=gain2); 
+			     sync choice!;
+			      assign res := 0;  },
+    apres_envoi -> apres_recoit { sync in?; assign other_choice := vin;  },
+    apres_choice -> apres_envoi { sync out!; assign vout := my_choice;  },
+    idle -> apres_choice { assign my_choice := 1;  },
+    idle -> apres_choice { assign my_choice :=0;  },
+    repos -> idle { sync choice?;  };
+}
+
+process site(chan &choice, int &res, chan &in, chan &out,  int &vin, int &vout) {
+int mesg;
+int myres;
+state
+    idle,
+    wait,
+    apres_choice,
+    envoi,
+    apres_envoi,
+    recoit,
+    apres_recoit;
+urgent
+    idle,
+    wait,
+    apres_choice,
+    envoi,
+    apres_envoi,
+    recoit,
+    apres_recoit;
+init idle;
+trans
+    idle -> wait { sync choice!;  },
+    wait -> apres_choice { sync choice?; assign myres := res; },
+    apres_choice -> envoi { guard myres >= 1;  },
+    apres_choice -> recoit { guard myres <= 0;  },
+    envoi -> apres_envoi { sync out!; assign vout := 5;  },
+    recoit -> apres_recoit { sync in?; assign mesg := vin;  },
+    apres_envoi -> idle {  },
+    apres_recoit -> idle {  };
+}
+FifoLR  := fifo(0,4,LRGET,LRPUT,LRVG,LRVP);
+FifoRL  := fifo(0,4,RLGET,RLPUT,RLVG,RLVP);
+
+gauche := site(cvg,resvg,RLGET,LRPUT,RLVG,LRVP);
+droit :=  site(cvd,resvd,LRGET,RLPUT,LRVG,RLVP);
+
+
+Voteurgauche := player(cvg, resvg, 1,1,RLGET,LRPUT,RLVG,LRVP);
+Voteurdroit :=  player(cvd, resvd, 0,2,LRGET,RLPUT,LRVG,RLVP);
+
+system Voteurgauche, gauche, FifoLR, FifoRL, droit, Voteurdroit;

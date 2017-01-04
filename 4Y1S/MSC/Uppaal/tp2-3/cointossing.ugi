@@ -1,0 +1,68 @@
+process fifo graphinfo {
+location service (40,80);
+locationName service(-10,-30);
+location erreur (190,80);
+locationName erreur(-10,-30);
+trans service service 1 (-30,-30);
+trans service service 1 (30,-30);
+guard service service 1 (-60,-30);
+sync service service 1 (-60,-15);
+assign service service 1 (-60,0);
+trans service service 2 (-30,-30);
+trans service service 2 (30,-30);
+guard service service 2 (-60,-30);
+sync service service 2 (-60,-15);
+assign service service 2 (-60,0);
+guard service erreur 1 (-60,-30);
+sync service erreur 1 (-60,-15);
+}
+process player graphinfo {
+location apres_recoit (40,80);
+locationName apres_recoit(-10,-30);
+location apres_envoi (190,80);
+locationName apres_envoi(-10,-30);
+location apres_choice (190,230);
+locationName apres_choice(-10,-30);
+location repos (40,230);
+locationName repos(-10,-30);
+location idle (340,80);
+locationName idle(-10,-30);
+guard apres_recoit repos 1 (-60,-30);
+sync apres_recoit repos 1 (-60,-15);
+assign apres_recoit repos 1 (-60,0);
+guard apres_recoit repos 2 (-60,-30);
+sync apres_recoit repos 2 (-60,-15);
+assign apres_recoit repos 2 (-60,0);
+sync apres_envoi apres_recoit 1 (-60,-15);
+assign apres_envoi apres_recoit 1 (-60,0);
+sync apres_choice apres_envoi 1 (-60,-15);
+assign apres_choice apres_envoi 1 (-60,0);
+assign idle apres_choice 1 (-60,0);
+assign idle apres_choice 2 (-60,0);
+sync repos idle 1 (-60,-15);
+}
+process site graphinfo {
+location idle (40,80);
+locationName idle(-10,-30);
+location wait (190,80);
+locationName wait(-10,-30);
+location apres_choice (190,230);
+locationName apres_choice(-10,-30);
+location envoi (40,230);
+locationName envoi(-10,-30);
+location apres_envoi (340,80);
+locationName apres_envoi(-10,-30);
+location recoit (340,230);
+locationName recoit(-10,-30);
+location apres_recoit (340,380);
+locationName apres_recoit(-10,-30);
+sync idle wait 1 (-60,-15);
+sync wait apres_choice 1 (-60,-15);
+assign wait apres_choice 1 (-60,0);
+guard apres_choice envoi 1 (-60,-30);
+guard apres_choice recoit 1 (-60,-30);
+sync envoi apres_envoi 1 (-60,-15);
+assign envoi apres_envoi 1 (-60,0);
+sync recoit apres_recoit 1 (-60,-15);
+assign recoit apres_recoit 1 (-60,0);
+}

@@ -1,0 +1,72 @@
+chan LRGET, LRPUT;
+int  LRVG,  LRVP;
+int  LRAG,  LRAP;
+
+chan RLGET, RLPUT;
+int  RLVG,  RLVP;
+int  RLAG,  RLAP;
+
+process site(chan &in, chan &out, int &vin, int &vout, int &acqin, int &acqout) {
+int acq;
+int mesg;
+state
+    idle,
+    recoit_idle,
+    apres_envoi,
+    recoit_apres_envoi,
+    recoit_mesg_apres_envoi,
+    recoit_sans_envoi;
+urgent
+    idle,
+    recoit_idle,
+    apres_envoi,
+    recoit_apres_envoi,
+    recoit_mesg_apres_envoi,
+    recoit_sans_envoi;
+init idle;
+trans
+    idle -> apres_envoi { sync out!; assign vout := 5, acqout := 0;  },
+    apres_envoi -> recoit_apres_envoi { sync in?; assign mesg :=vin, acq := acqin;  },
+    recoit_apres_envoi -> recoit_mesg_apres_envoi { guard acq <= 0;},
+    recoit_mesg_apres_envoi -> apres_envoi { sync out!; assign acqout:=1,vout:=0;  },
+    recoit_apres_envoi  -> idle { guard acq > 0; },
+    idle -> recoit_idle {sync in?; assign mesg :=vin, acq := acqin;},
+    recoit_idle -> recoit_sans_envoi { guard acq <= 0; },
+    recoit_sans_envoi -> idle { sync out!; assign acqout:=1, vout:=0;  };
+}
+
+process fifo(const int cap, chan &get, chan &put,  int &vget,  int &vput, int &acqget, int &acqput, const int controle) {
+int cpt := 0;
+    int buf[cap];
+    int acq[cap];
+    int ixP := 0;
+    int ixG := 0;
+state
+    service,
+    erreur;
+urgent
+    service,
+    erreur;
+init service;
+trans
+    service -> service { guard cpt > 0; sync get!; 
+    	       	       	 assign vget:= buf[ixG], 
+    	       	              acqget:= acq[ixG],
+                              cpt:= cpt - 1,
+                              ixG:= (ixG == (cap - 1))?0:(ixG + 1);  },
+    service -> service { guard cpt < cap; sync put?; 
+    	       	       	 assign buf[ixP]:= vput, 
+		                acq[ixP]:= acqput,
+		                cpt:= cpt + 1, 
+                              ixP:= (ixP == (cap - 1))?0:(ixP + 1);  },
+    service -> erreur { guard (cpt >= cap)and(controle<=0); sync put?;  };
+}
+FifoLR  := fifo(4,LRGET,LRPUT,LRVG,LRVP,LRAG,LRAP,0);
+FifoRL  := fifo(4,RLGET,RLPUT,RLVG,RLVP,RLAG,RLAP,0);
+
+gauche := site(RLGET,LRPUT,RLVG,LRVP,RLAG,LRAP);
+droit :=  site(LRGET,RLPUT,LRVG,RLVP,LRAG,RLAP);
+
+
+
+system gauche, FifoLR, FifoRL, droit;
