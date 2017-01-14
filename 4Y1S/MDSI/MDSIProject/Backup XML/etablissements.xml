@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<etablissements
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="./etablissements.xsd">
+	
+	<entreprise numSIRET="12345678901234">
+		<nom>Entreprise1</nom>
+		<adresse>Adresse de l'entreprise 1</adresse>
+	</entreprise>
+	<entreprise numSIRET="12345678901235">
+		<nom>Entreprise2</nom>
+		<adresse>Adresse de l'entreprise 2</adresse>
+	</entreprise>
+	<laboratoire unite="CNRS">
+		<nom>Labo1</nom>
+		<adresse>Adresse du labo 1</adresse>
+	</laboratoire>
+	<laboratoire unite="Laas">
+		<nom>Labo2</nom>
+		<adresse>Adresse du labo 2</adresse>
+	</laboratoire>
+</etablissements>

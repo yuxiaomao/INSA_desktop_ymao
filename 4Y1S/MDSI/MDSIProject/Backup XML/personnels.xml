@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<personnels
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="./personnels.xsd">
+	
+	<personnel codePersonnel="1erCodePersonnel">
+		<nom>NomPerso1</nom>
+		<prenom>PrenomPerso1</prenom>
+		<fonction>FonctionPerso1</fonction>
+		<mail>MailPerso1@insa-toulouse.fr</mail>
+		<mail>MailPerso1@laas.fr</mail>
+		<tel>+331234567</tel>
+		<tel>01234567</tel>
+	</personnel>
+	<personnel codePersonnel="2emeCodePersonnel">
+		<nom>NomPerso2</nom>
+		<prenom>PrenomPerso2</prenom>
+		<fonction>FonctionPerso2 FonctionPerso2-2</fonction>
+		<mail>MailPerso2@insa-toulouse.fr</mail>
+		<mail>MailPerso2@laas.fr</mail>
+	</personnel>
+	<personnel codePersonnel="3emeCodePersonnel">
+		<nom>NomPerso3</nom>
+		<prenom>PrenomPerso3</prenom>
+		<fonction>FonctionPerso3</fonction>
+	</personnel>
+	<personnel codePersonnel="4emeCodePersonnel">
+		<nom>NomPerso4</nom>
+		<prenom>PrenomPerso4</prenom>
+		<fonction>FonctionPerso4</fonction>
+	</personnel>
+	<personnel codePersonnel="5emeCodePersonnel">
+		<nom>NomPerso5</nom>
+		<prenom>PrenomPerso5</prenom>
+		<fonction>FonctionPerso5</fonction>
+	</personnel>
+</personnels>

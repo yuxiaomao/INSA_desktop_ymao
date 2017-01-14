@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<encadrants
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="./encadrants.xsd">
+	
+	<encadrant codePersonnel="4emeCodePersonnel">
+		<chercheur unite="Laas"/>
+	</encadrant>
+	<encadrant codePersonnel="5emeCodePersonnel">
+		<industriel numSIRET="12345678901234"/>
+	</encadrant>
+	<encadrant codePersonnel="3emeCodePersonnel">
+		<chercheur unite="CNRS"/>
+	</encadrant>
+</encadrants>

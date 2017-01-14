@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<evaluations
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="./evaluations.xsd">
+	
+	<evaluation codeEvaluation="EvaluationStageLaas">
+		<note>15.75</note>
+		<commentaire>Tres bon element je recommande</commentaire>
+	</evaluation>
+	<evaluation codeEvaluation="EvaluationStage2">
+		<note>17</note>
+		<commentaire>Je suis satisfait de mon stagiaire</commentaire>
+	</evaluation>
+</evaluations>

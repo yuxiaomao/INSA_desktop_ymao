@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<POs
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="./POs.xsd">
+	
+	<PO intitule="4IR">
+		<departement>GEI</departement>
+	</PO>
+	<PO intitule="3ICBE">
+		<departement>GPE</departement>
+	</PO>
+</POs>

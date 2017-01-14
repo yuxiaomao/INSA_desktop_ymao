@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soutenances
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="./soutenances.xsd">
+	
+	<soutenance codeSoutenance="StageLaas">
+		<date>2016-09-24</date>
+		<lieu>Laas</lieu>
+		<notePresentation>19.5</notePresentation>
+		<noteRapport>12</noteRapport>
+		<jury>
+			<enseignant>1erCodePersonnel</enseignant>
+			<enseignant>2emeCodePersonnel"</enseignant>
+			<encadrant>3emeCodePersonnel"</encadrant>
+			<encadrant>4emeCodePersonnel"</encadrant>
+			<tuteur>2emeCodePersonnel"</tuteur>
+		</jury>
+	</soutenance>
+</soutenances>

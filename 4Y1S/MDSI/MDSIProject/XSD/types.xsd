@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified"
+	targetNamespace="http://insa/mdsi/types">
+	
+	<xs:simpleType name="NumEtudiant">
+		<xs:restriction base="xs:positiveInteger">
+			<xs:minInclusive value="1000000"/>
+			<xs:maxInclusive value="9999999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CodePersonnel">
+		<xs:restriction base="xs:token">
+			<xs:minLength value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Mail">
+		<xs:restriction base="xs:token">
+			<xs:pattern value="[^@]+@[^\.]+\..+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Tel">
+		<xs:restriction base="xs:token">
+			<xs:pattern value="(\+)?[0-9]+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NumSIRET">
+		<xs:restriction base="xs:positiveInteger">
+			<xs:minInclusive value="10000000000000"/>
+			<xs:maxInclusive value="99999999999999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Note">
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="2"/>
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

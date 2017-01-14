@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified"
+	xmlns:type="http://insa/mdsi/types">
+
+	<xs:import schemaLocation="./types.xsd" namespace="http://insa/mdsi/types"/>
+
+	<xs:element name="stages">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="stage" type="typeStage" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="typeStage">
+		<xs:sequence>
+			<xs:element name="intitule" type="xs:token"/>
+			<xs:element name="annee" type="xs:gYear"/>
+			<xs:element name="duree" type="xs:duration"/>
+			<xs:element name="enseignant" type="type:CodePersonnel" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="encadrant" type="type:CodePersonnel" maxOccurs="unbounded"/>
+			<xs:element name="motCle" type="xs:token" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="codeStage" type="xs:token" use="required"/>
+		<xs:attribute name="etudiant" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="PO" type="xs:token" use="required"/>
+		<xs:attribute name="rapport" type="xs:token" use="required"/>
+		<xs:attribute name="evaluation" type="xs:token" use="required"/>
+	</xs:complexType>
+</xs:schema>

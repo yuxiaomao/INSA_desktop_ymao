@@ -1,0 +1,83 @@
+body {
+	background-color: #ddeeff;
+}
+
+ul.tabs {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #aaccff;
+}
+
+ul.tabs li {
+	float: left;
+}
+
+ul.tabs li a {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+    text-transform: capitalize;
+}
+
+ul.tabs li a:hover {
+	background-color: #99aadd;
+}
+
+ul.tabs li a:focus, .active {
+	background-color: #8899cc;
+}
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+}
+
+h3 {
+	text-transform: capitalize;
+}
+
+table {
+	width: 100%;
+	table-layout: fixed;
+	border: none;
+	border-collapse: collapse;
+}
+
+thead { /* Titres */
+	background-color: rgba(255, 255, 0, .35);
+	text-align: left;
+}
+thead tr th:nth-child(odd) { /* Colonnes impaires */
+    background-color: rgba(255, 160, 70, .5);
+}
+thead tr th:nth-child(even) { /* Colonnes paires */
+    background-color: rgba(255, 200, 70, .5);
+}
+
+tbody { /* Données */
+	background-color: rgba(190, 240, 255, .55);
+	text-align: left;
+}
+tbody tr:nth-child(odd) { /* Lignes impaires */
+    background-color: rgba(120, 230, 255, .3);
+}
+tbody tr:nth-child(even) { /* Lignes paires */
+    background-color: rgba(120, 200, 255, .3);
+}
+tbody tr td:nth-child(odd) { /* Colonnes impaires */
+    background-color: rgba(120, 230, 255, .3);
+}
+tbody tr td:nth-child(even) { /* Colonnes paires */
+    background-color: rgba(120, 200, 255, .3);
+}
+
+colgroup.key { /* Colonne de la clé */
+	background-color: rgba(255, 40, 40, .7);
+}

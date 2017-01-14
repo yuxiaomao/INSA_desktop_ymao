@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rapports
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="./rapports.xsd">
+	
+	<rapport codeRapport="rapport1">
+		<intitule>Modelisation Systemes Concurrents</intitule>
+		<note>12</note>
+		<soutenance>StageLaas</soutenance>
+	</rapport>
+	<rapport codeRapport="rapport2">
+		<intitule>Modelisation Systeme Information</intitule>
+		<note>15</note>
+	</rapport>
+</rapports>

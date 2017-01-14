@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified"
+	xmlns:type="http://insa/mdsi/types">
+	
+	<xs:import schemaLocation="./types.xsd" namespace="http://insa/mdsi/types"/>
+
+	<xs:element name="etablissements">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="entreprise" type="typeEntreprise" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="laboratoire" type="typeLaboratoire" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="typeEtablissement">
+		<xs:sequence>
+			<xs:element name="nom" type="xs:token"/>
+			<xs:element name="adresse" type="xs:token"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="typeEntreprise">
+		<xs:complexContent>
+			<xs:extension base="typeEtablissement">
+				<xs:attribute name="numSIRET" type="type:NumSIRET" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="typeLaboratoire">
+		<xs:complexContent>
+			<xs:extension base="typeEtablissement">
+				<xs:attribute name="unite" type="xs:token" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

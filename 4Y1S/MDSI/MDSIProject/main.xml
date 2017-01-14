@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./main.xsl"?>
+<main
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="./main.xsd">
+
+	<etudiants>
+		<etudiant numEtudiant="3300111">
+			<nom>NomEtudiant1</nom>
+			<prenom>PrenomEtudiant1</prenom>
+			<dateDeNaissance>1990-10-10</dateDeNaissance>
+		</etudiant>
+		<etudiant numEtudiant="3300112">
+			<nom>NomEtudiant2</nom>
+			<prenom>PrenomEtudiant2</prenom>
+			<dateDeNaissance>1990-10-10</dateDeNaissance>
+		</etudiant>
+		<etudiant numEtudiant="3300113">
+			<nom>NomEtudiant3</nom>
+			<prenom>PrenomEtudiant3</prenom>
+			<dateDeNaissance>1990-10-10</dateDeNaissance>
+		</etudiant>
+		<etudiant numEtudiant="3300114">
+			<nom>NomEtudiant4</nom>
+			<prenom>PrenomEtudiant4</prenom>
+			<dateDeNaissance>1990-10-10</dateDeNaissance>
+		</etudiant>
+	</etudiants>
+	<personnels>
+		<personnel codePersonnel="1erCodePersonnel">
+			<nom>NomPerso1</nom>
+			<prenom>PrenomPerso1</prenom>
+			<fonction>FonctionPerso1</fonction>
+			<mail>MailPerso1@insa-toulouse.fr</mail>
+			<mail>MailPerso1@laas.fr</mail>
+			<tel>+331234567</tel>
+			<tel>01234567</tel>
+		</personnel>
+		<personnel codePersonnel="2emeCodePersonnel">
+			<nom>NomPerso2</nom>
+			<prenom>PrenomPerso2</prenom>
+			<fonction>FonctionPerso2 FonctionPerso2-2</fonction>
+			<mail>MailPerso2@insa-toulouse.fr</mail>
+			<mail>MailPerso2@laas.fr</mail>
+		</personnel>
+		<personnel codePersonnel="3emeCodePersonnel">
+			<nom>NomPerso3</nom>
+			<prenom>PrenomPerso3</prenom>
+			<fonction>FonctionPerso3</fonction>
+		</personnel>
+		<personnel codePersonnel="4emeCodePersonnel">
+			<nom>NomPerso4</nom>
+			<prenom>PrenomPerso4</prenom>
+			<fonction>FonctionPerso4</fonction>
+		</personnel>
+		<personnel codePersonnel="5emeCodePersonnel">
+			<nom>NomPerso5</nom>
+			<prenom>PrenomPerso5</prenom>
+			<fonction>FonctionPerso5</fonction>
+		</personnel>
+		<personnel codePersonnel="6emeCodePersonnel">
+			<nom>NomPerso6</nom>
+			<prenom>PrenomPerso6</prenom>
+			<fonction>FonctionPerso6</fonction>
+		</personnel>
+	</personnels>
+	<enseignants>
+		<enseignant codePersonnel="1erCodePersonnel"/>
+		<enseignant codePersonnel="2emeCodePersonnel"/>
+	</enseignants>
+	<encadrants>
+		<encadrant codePersonnel="3emeCodePersonnel">
+			<chercheur unite="CNRS"/>
+		</encadrant>
+		<encadrant codePersonnel="4emeCodePersonnel">
+			<chercheur unite="Laas"/>
+		</encadrant>
+		<encadrant codePersonnel="5emeCodePersonnel">
+			<industriel numSIRET="12345678901234"/>
+		</encadrant>
+		<encadrant codePersonnel="6emeCodePersonnel">
+			<industriel numSIRET="12345678901234"/>
+		</encadrant>
+	</encadrants>
+	<etablissements>
+		<entreprise numSIRET="12345678901234">
+			<nom>Entreprise1</nom>
+			<adresse>Adresse de l'entreprise 1</adresse>
+		</entreprise>
+		<entreprise numSIRET="12345678901235">
+			<nom>Entreprise2</nom>
+			<adresse>Adresse de l'entreprise 2</adresse>
+		</entreprise>
+		<laboratoire unite="CNRS">
+			<nom>Labo1</nom>
+			<adresse>Adresse du labo 1</adresse>
+		</laboratoire>
+		<laboratoire unite="Laas">
+			<nom>Labo2</nom>
+			<adresse>Adresse du labo 2</adresse>
+		</laboratoire>
+	</etablissements>
+	<POs>
+		<PO intitule="3ICBE">
+			<departement>GPE</departement>
+		</PO>
+		<PO intitule="3IR">
+			<departement>GEI</departement>
+		</PO>
+		<PO intitule="4IR">
+			<departement>GEI</departement>
+		</PO>
+	</POs>
+	<stages>
+		<stage codeStage="laas-3300111-2016" etudiant="3300111"
+			PO="4IR" rapport="rapport1" evaluation="EvaluationStageLaas">
+			<intitule>Modelisation Systeme Information</intitule>
+			<annee>2016</annee>
+			<duree>P3M5D</duree>
+			<enseignant>2emeCodePersonnel</enseignant>
+			<encadrant>4emeCodePersonnel</encadrant>
+			<motCle>Modelisation</motCle>
+			<motCle>Systeme</motCle>
+		</stage>
+		<stage codeStage="CNRS-3300111-2015" etudiant="3300111"
+			PO="3IR" rapport="rapport2" evaluation="EvaluationStage2">
+			<intitule>Modelisation Systemes Concurrents</intitule>
+			<annee>2015</annee>
+			<duree>P3M5D</duree>
+			<enseignant>1erCodePersonnel</enseignant>
+			<encadrant>3emeCodePersonnel</encadrant>
+			<motCle>Modelisation</motCle>
+			<motCle>Systeme</motCle>
+			<motCle>Concurrent</motCle>
+		</stage>
+		<stage codeStage="CNRS-3300112-2015" etudiant="3300112"
+			PO="3IR" rapport="rapport3" evaluation="EvaluationStage3">
+			<intitule>Modelisation Systemes Concurrents</intitule>
+			<annee>2015</annee>
+			<duree>P3M5D</duree>
+			<enseignant>1erCodePersonnel</enseignant>
+			<encadrant>3emeCodePersonnel</encadrant>
+			<motCle>Modelisation</motCle>
+			<motCle>Systeme</motCle>
+			<motCle>Concurrent</motCle>
+		</stage>
+		<stage codeStage="E1-3300112-2016" etudiant="3300112"
+			PO="4IR" rapport="rapport4" evaluation="EvaluationStage4">
+			<intitule>Stage big data</intitule>
+			<annee>2016</annee>
+			<duree>P3M5D</duree>
+			<enseignant>1erCodePersonnel</enseignant>
+			<encadrant>5emeCodePersonnel</encadrant>
+			<motCle>Big data</motCle>
+		</stage>
+		<stage codeStage="E1-3300113-2016" etudiant="3300113"
+			PO="4IR" rapport="rapport5" evaluation="EvaluationStage5">
+			<intitule>Stage big data</intitule>
+			<annee>2016</annee>
+			<duree>P3M5D</duree>
+			<enseignant>1erCodePersonnel</enseignant>
+			<encadrant>6emeCodePersonnel</encadrant>
+			<motCle>Big data</motCle>
+		</stage>
+		<stage codeStage="E2-3300114-2015" etudiant="3300114"
+			PO="3ICBE" rapport="rapport6" evaluation="EvaluationStage6">
+			<intitule>Stage biotech</intitule>
+			<annee>2015</annee>
+			<duree>P1M0D</duree>
+			<enseignant>2emeCodePersonnel</enseignant>
+			<encadrant>6emeCodePersonnel</encadrant>
+			<motCle>Bio</motCle>
+		</stage>
+	</stages>
+	<evaluations>
+		<evaluation codeEvaluation="EvaluationStageLaas">
+			<note>15.75</note>
+			<commentaire>Tres bon element je recommande</commentaire>
+		</evaluation>
+		<evaluation codeEvaluation="EvaluationStage2">
+			<note>16</note>
+			<commentaire>Je suis satisfait de mon stagiaire</commentaire>
+		</evaluation>
+		<evaluation codeEvaluation="EvaluationStage3">
+			<note>17</note>
+			<commentaire>Excellent travail</commentaire>
+		</evaluation>
+		<evaluation codeEvaluation="EvaluationStage4">
+			<note>15.5</note>
+			<commentaire>Bonne niveau de codage</commentaire>
+		</evaluation>
+		<evaluation codeEvaluation="EvaluationStage5">
+			<note>18</note>
+			<commentaire>Je recommande</commentaire>
+		</evaluation>
+		<evaluation codeEvaluation="EvaluationStage6">
+			<note>8</note>
+			<commentaire>Bon courage</commentaire>
+		</evaluation>
+	</evaluations>
+	<rapports>
+		<rapport codeRapport="rapport1">
+			<intitule>Modelisation Systeme Information</intitule>
+			<note>12</note>
+			<soutenance>StageLaas</soutenance>
+		</rapport>
+		<rapport codeRapport="rapport2">
+			<intitule>Modelisation Systemes Concurrents</intitule>
+			<note>15</note>
+		</rapport>
+		<rapport codeRapport="rapport3">
+			<intitule>Modelisation Systemes Concurrents</intitule>
+			<note>9</note>
+		</rapport>
+		<rapport codeRapport="rapport4">
+			<intitule>Stage big data chez E1</intitule>
+			<note>13</note>
+		</rapport>
+		<rapport codeRapport="rapport5">
+			<intitule>Stage big data chez E1</intitule>
+			<note>11</note>
+		</rapport>
+		<rapport codeRapport="rapport6">
+			<intitule>Stage bio chez E2</intitule>
+			<note>9</note>
+			<soutenance>Stage6</soutenance>
+		</rapport>
+	</rapports>
+	<soutenances>
+		<soutenance codeSoutenance="StageLaas">
+			<date>2016-09-24</date>
+			<lieu>Laas</lieu>
+			<notePresentation>19.5</notePresentation>
+			<noteRapport>12</noteRapport>
+			<jury>
+				<enseignant>1erCodePersonnel</enseignant>
+			</jury>
+		</soutenance>
+		<soutenance codeSoutenance="Stage6">
+			<date>2015-11-20</date>
+			<lieu>E2</lieu>
+			<notePresentation>10</notePresentation>
+			<noteRapport>10.5</noteRapport>
+			<jury>
+			</jury>
+		</soutenance>
+	</soutenances>
+</main>

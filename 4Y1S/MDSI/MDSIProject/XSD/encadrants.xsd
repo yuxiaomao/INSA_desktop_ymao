@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified"
+	xmlns:type="http://insa/mdsi/types">
+
+	<xs:import schemaLocation="./types.xsd" namespace="http://insa/mdsi/types"/>
+
+	<xs:element name="encadrants">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="encadrant" type="typeEncadrant" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="typeEncadrant">
+		<xs:choice>
+			<xs:element name="industriel" type="typeIndustriel"/>
+			<xs:element name="chercheur" type="typeChercheur"/>
+		</xs:choice>
+		<xs:attribute name="codePersonnel" type="type:CodePersonnel" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="typeIndustriel">
+		<xs:attribute name="numSIRET" type="type:NumSIRET" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="typeChercheur">
+		<xs:attribute name="unite" type="xs:token" use="required"/>
+	</xs:complexType>
+</xs:schema>

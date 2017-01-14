@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified"
+	xmlns:type="http://insa/mdsi/types">
+
+	<xs:import schemaLocation="./types.xsd" namespace="http://insa/mdsi/types"/>
+
+	<xs:element name="soutenances">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="soutenance" type="typeSoutenance" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="typeSoutenance">
+		<xs:sequence>
+			<xs:element name="date" type="xs:date"/>
+			<xs:element name="lieu" type="xs:token"/>
+			<xs:element name="notePresentation" type="type:Note"/>
+			<xs:element name="noteRapport" type="type:Note"/>
+			<xs:element name="jury" type="typeJury"/>
+		</xs:sequence>
+		<xs:attribute name="codeSoutenance" type="xs:token" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="typeJury">
+		<xs:sequence>
+			<xs:element name="enseignant" type="type:CodePersonnel" minOccurs="0" maxOccurs="unbounded"/>
+			<!--
+			<xs:element name="encadrant" type="type:CodePersonnel" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="tuteur" type="type:CodePersonnel" minOccurs="0"/>
+			-->
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

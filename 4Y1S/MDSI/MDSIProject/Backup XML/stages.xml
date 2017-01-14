@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stages
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="./stages.xsd">
+	
+	<stage stage="laas-3300111-2016" etudiant="3300111"
+		PO="4IR" rapport="rapport1" evaluation="EvaluationStageLaas">
+
+		<intitule>Modelisation Systeme Information</intitule>
+		<duree>P3M5D</duree>
+		<annee>2016</annee>
+		<enseignant>2emeCodePersonnel</enseignant>
+		<encadrant>4emeCodePersonnel</encadrant>
+		<motCle>Modelisation</motCle>
+		<motCle>Systeme</motCle>
+	</stage>
+	<stage stage="CNRS-3300111-2015" etudiant="3300111"
+		PO="4IR" rapport="rapport2" evaluation="EvaluationStage2">
+		
+		<intitule>Modelisation Systemes Concurrents</intitule>
+		<duree>P3M5D</duree>
+		<annee>2015</annee>
+		<enseignant>1erCodePersonnel</enseignant>
+		<encadrant>3emeCodePersonnel</encadrant>
+		<motCle>Modelisation</motCle>
+		<motCle>Systeme</motCle>
+		<motCle>Concurrent</motCle>
+	</stage>
+</stages>

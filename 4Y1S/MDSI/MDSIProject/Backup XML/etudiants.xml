@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<etudiants
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="./etudiants.xsd">
+	
+	<etudiant numEtudiant="3300111">
+		<nom>NomEtudiant1</nom>
+		<prenom>PrenomEtudiant1</prenom>
+		<dateDeNaissance>1990-10-10</dateDeNaissance>
+	</etudiant>
+	<etudiant numEtudiant="3300112">
+		<nom>NomEtudiant2</nom>
+		<prenom>PrenomEtudiant2</prenom>
+		<dateDeNaissance>1990-10-10</dateDeNaissance>
+	</etudiant>
+</etudiants>

@@ -41,6 +41,7 @@ Most of comments are in French.
 - **3Y2S\TPReseau**
 - **4Y1S\MDSI** Modèles de Données et Système d'Information
   - xml, dtd, xsd, xpath, xslt, xquery
+  - MDSI Project: with _Nathan Balblanc_ _Yacine Smini_ _Loïs Lano_
 - **4Y1S\MSC** Modélisation des Systèmes Concurrents
   - Petri: [TINA](http://homepages.laas.fr/francois/POLYS/ENSEIGNEMENT/PN/index.php)
   - Finite-state machine: [UPPAAL](http://homepages.laas.fr/francois/UPPAAL/)
@@ -53,4 +54,3 @@ Most of comments are in French.
   - [github: Drum_project](https://github.com/voilacti/Drum_project)
 - **4Y1S Temps-reel**
   - [github: projet_destijl](https://github.com/quentinleclerc/projet_destijl)
-- Pas encore mis **4Y1S\MDSI\Project**

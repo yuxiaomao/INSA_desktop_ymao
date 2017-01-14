@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified">
+
+	<xs:include schemaLocation="./XSD/etudiants.xsd"/>
+	<xs:include schemaLocation="./XSD/personnels.xsd"/>
+	<xs:include schemaLocation="./XSD/enseignants.xsd"/>
+	<xs:include schemaLocation="./XSD/encadrants.xsd"/>
+	<xs:include schemaLocation="./XSD/etablissements.xsd"/>
+	<xs:include schemaLocation="./XSD/POs.xsd"/>
+	<xs:include schemaLocation="./XSD/stages.xsd"/>
+	<xs:include schemaLocation="./XSD/evaluations.xsd"/>
+	<xs:include schemaLocation="./XSD/rapports.xsd"/>
+	<xs:include schemaLocation="./XSD/soutenances.xsd"/>
+
+	<xs:element name="main">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="etudiants"/>
+				<xs:element ref="personnels"/>
+				<xs:element ref="enseignants"/>
+				<xs:element ref="encadrants"/>
+				<xs:element ref="etablissements"/>
+				<xs:element ref="POs"/>
+				<xs:element ref="stages"/>
+				<xs:element ref="evaluations"/>
+				<xs:element ref="rapports"/>
+				<xs:element ref="soutenances"/>
+			</xs:sequence>
+		</xs:complexType>
+		<xs:key name="keyEtudiant">
+			<xs:selector xpath="etudiants/etudiant"/>
+			<xs:field xpath="@numEtudiant"/>
+		</xs:key>
+		<xs:key name="keyPersonnel">
+			<xs:selector xpath="personnels/personnel"/>
+			<xs:field xpath="@codePersonnel"/>
+		</xs:key>
+		<xs:keyref name="refCodePersonnelEnseignant" refer="keyPersonnel">
+			<xs:selector xpath="enseignants/enseignant"/>
+			<xs:field xpath="@codePersonnel"/>
+		</xs:keyref>
+		<xs:keyref name="refCodePersonnelEncadrant" refer="keyPersonnel">
+			<xs:selector xpath="encadrants/encadrant"/>
+			<xs:field xpath="@codePersonnel"/>
+		</xs:keyref>
+		<xs:keyref name="refNumSIRETIndustriel" refer="keyEntreprise">
+			<xs:selector xpath="encadrants/encadrant/industriel"/>
+			<xs:field xpath="@numSIRET"/>
+		</xs:keyref>
+		<xs:keyref name="refUniteChercheur" refer="keyLaboratoire">
+			<xs:selector xpath="encadrants/encadrant/chercheur"/>
+			<xs:field xpath="@unite"/>
+		</xs:keyref>
+		<xs:key name="keyEntreprise">
+			<xs:selector xpath="etablissements/entreprise"/>
+			<xs:field xpath="@numSIRET"/>
+		</xs:key>
+		<xs:key name="keyLaboratoire">
+			<xs:selector xpath="etablissements/laboratoire"/>
+			<xs:field xpath="@unite"/>
+		</xs:key>
+		<xs:key name="keyPO">
+			<xs:selector xpath="POs/PO"/>
+			<xs:field xpath="@intitule"/>
+		</xs:key>
+		<xs:keyref name="refEtudiantStage" refer="keyEtudiant">
+			<xs:selector xpath="stages/stage"/>
+			<xs:field xpath="@etudiant"/>
+		</xs:keyref>
+		<xs:keyref name="refPOStage" refer="keyPO">
+			<xs:selector xpath="stages/stage"/>
+			<xs:field xpath="@PO"/>
+		</xs:keyref>
+		<xs:keyref name="refRapportStage" refer="keyRapport">
+			<xs:selector xpath="stages/stage"/>
+			<xs:field xpath="@rapport"/>
+		</xs:keyref>
+		<xs:keyref name="refEvaluationStage" refer="keyEvaluation">
+			<xs:selector xpath="stages/stage"/>
+			<xs:field xpath="@evaluation"/>
+		</xs:keyref>
+		<xs:keyref name="refEnseignantStage" refer="keyPersonnel">
+			<xs:selector xpath="stages/stage"/>
+			<xs:field xpath="enseignant"/>
+		</xs:keyref>
+		<xs:keyref name="refEncadrantStage" refer="keyPersonnel">
+			<xs:selector xpath="stages/stage"/>
+			<xs:field xpath="encadrant"/>
+		</xs:keyref>
+		<xs:key name="keyEvaluation">
+			<xs:selector xpath="evaluations/evaluation"/>
+			<xs:field xpath="@codeEvaluation"/>
+		</xs:key>
+		<xs:key name="keyRapport">
+			<xs:selector xpath="rapports/rapport"/>
+			<xs:field xpath="@codeRapport"/>
+		</xs:key>
+		<xs:keyref name="refSoutenanceRapport" refer="keySoutenance">
+			<xs:selector xpath="rapports/rapport"/>
+			<xs:field xpath="@soutenance"/>
+		</xs:keyref>
+		<xs:key name="keySoutenance">
+			<xs:selector xpath="soutenances/soutenance"/>
+			<xs:field xpath="@codeSoutenance"/>
+		</xs:key>
+		<!--
+		<xs:keyref name="refEnseignantSoutenance" refer="keyPersonnel">
+			<xs:selector xpath="soutenances/soutenance/jury"/>
+			<xs:field xpath="@enseignant"/>
+		</xs:keyref>
+		<xs:keyref name="refEncadrantSoutenance" refer="keyPersonnel">
+			<xs:selector xpath="soutenances/soutenance/jury"/>
+			<xs:field xpath="@encadrant"/>
+		</xs:keyref>
+		-->
+		<xs:keyref name="refTuteurSoutenance" refer="keyPersonnel">
+			<xs:selector xpath="soutenances/soutenance/jury"/>
+			<xs:field xpath="@tuteur"/>
+		</xs:keyref>
+	</xs:element>
+</xs:schema>

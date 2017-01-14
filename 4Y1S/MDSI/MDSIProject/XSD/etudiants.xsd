@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified"
+	xmlns:type="http://insa/mdsi/types">
+	
+	<xs:import schemaLocation="./types.xsd" namespace="http://insa/mdsi/types"/>
+	
+	<xs:element name="etudiants">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="etudiant" type="typeEtudiant" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="typeEtudiant">
+		<xs:sequence>
+			<xs:element name="nom" type="xs:token"/>
+			<xs:element name="prenom" type="xs:token"/>
+			<xs:element name="dateDeNaissance" type="xs:date"/>
+		</xs:sequence>
+		<xs:attribute name="numEtudiant" type="type:NumEtudiant" use="required"/>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enseignants
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="./enseignants.xsd">
+	
+	<enseignant codePersonnel="1erCodePersonnel"/>
+	<enseignant codePersonnel="2emeCodePersonnel"/>
+</enseignants>
