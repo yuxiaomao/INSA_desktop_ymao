@@ -43,6 +43,13 @@
 			<mail>MailPerso2@insa-toulouse.fr</mail>
 			<mail>MailPerso2@laas.fr</mail>
 		</personnel>
+		<personnel codePersonnel="7emeCodePersonnel">
+			<nom>NomPerso7</nom>
+			<prenom>PrenomPerso7</prenom>
+			<fonction>FonctionPerso7</fonction>
+			<mail>MailPerso7@insa-toulouse.fr</mail>
+			<tel>+331234577</tel>
+		</personnel>
 		<personnel codePersonnel="3emeCodePersonnel">
 			<nom>NomPerso3</nom>
 			<prenom>PrenomPerso3</prenom>
@@ -67,6 +74,7 @@
 	<enseignants>
 		<enseignant codePersonnel="1erCodePersonnel"/>
 		<enseignant codePersonnel="2emeCodePersonnel"/>
+		<enseignant codePersonnel="7emeCodePersonnel"/>
 	</enseignants>
 	<encadrants>
 		<encadrant codePersonnel="3emeCodePersonnel">
@@ -108,6 +116,9 @@
 			<departement>GEI</departement>
 		</PO>
 		<PO intitule="4IR">
+			<departement>GEI</departement>
+		</PO>
+		<PO intitule="5IR">
 			<departement>GEI</departement>
 		</PO>
 	</POs>
@@ -171,6 +182,16 @@
 			<encadrant>6emeCodePersonnel</encadrant>
 			<motCle>Bio</motCle>
 		</stage>
+		<stage codeStage="E2-3300113-2017" etudiant="3300113"
+			PO="5IR" rapport="rapport7" evaluation="EvaluationStage7">
+			<intitule>Securite reseau</intitule>
+			<annee>2017</annee>
+			<duree>P1M0D</duree>
+			<enseignant>7emeCodePersonnel</enseignant>
+			<encadrant>5emeCodePersonnel</encadrant>
+			<encadrant>4emeCodePersonnel</encadrant>
+			<motCle>Securite Reseau</motCle>
+		</stage>
 	</stages>
 	<evaluations>
 		<evaluation codeEvaluation="EvaluationStageLaas">
@@ -196,6 +217,10 @@
 		<evaluation codeEvaluation="EvaluationStage6">
 			<note>8</note>
 			<commentaire>Bon courage</commentaire>
+		</evaluation>
+		<evaluation codeEvaluation="EvaluationStage7">
+			<note>17</note>
+			<commentaire>Un excellent element que je souhaiterais embaucher</commentaire>
 		</evaluation>
 	</evaluations>
 	<rapports>
@@ -225,6 +250,11 @@
 			<note>9</note>
 			<soutenance>Stage6</soutenance>
 		</rapport>
+		<rapport codeRapport="rapport7">
+			<intitule>Stage securite chez E2</intitule>
+			<note>19</note>
+			<soutenance>Stage7</soutenance>
+		</rapport>
 	</rapports>
 	<soutenances>
 		<soutenance codeSoutenance="StageLaas">
@@ -242,6 +272,16 @@
 			<notePresentation>10</notePresentation>
 			<noteRapport>10.5</noteRapport>
 			<jury>
+			</jury>
+		</soutenance>
+		<soutenance codeSoutenance="Stage7">
+			<date>2017-06-20</date>
+			<lieu>E2</lieu>
+			<notePresentation>16</notePresentation>
+			<noteRapport>19</noteRapport>
+			<jury>
+				<enseignant>1erCodePersonnel</enseignant>
+				<enseignant>2emeCodePersonnel</enseignant>
 			</jury>
 		</soutenance>
 	</soutenances>

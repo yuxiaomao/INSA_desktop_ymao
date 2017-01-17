@@ -341,11 +341,11 @@
 							<xsl:variable name="varSoutenance" select="@codeSoutenance"/>
 							<xsl:for-each select="/main/rapports/rapport[soutenance=$varSoutenance]">
 								<xsl:variable name="varRapport" select="@codeRapport"/>
-								<td><xsl:for-each select="/main/stages/stage[@rapport=$varRapport]/enseignant">
+								<td><xsl:for-each select="/main/stages/stage[@rapport=$varRapport]/encadrant">
 									<xsl:value-of select="."/><br/>
 									</xsl:for-each>
 								</td>
-								<td><xsl:for-each select="/main/stages/stage[@rapport=$varRapport]/encadrant">
+								<td><xsl:for-each select="/main/stages/stage[@rapport=$varRapport]/enseignant">
 									<xsl:value-of select="."/><br/>
 									</xsl:for-each>
 								</td>
