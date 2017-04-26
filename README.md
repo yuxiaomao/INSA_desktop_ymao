@@ -30,23 +30,24 @@ Most of comments are in French.
 - **3Y1S\C**
 - **3Y1S\Prog linaire-ampl**
 - **3Y2S\ASM**
-  - [ASM](http://sourcecode.fr/insa/ASM/) , [ASM/TD1](http://sourcecode.fr/insa/ASM/TD_M1/)
+  - [Lessons Link: ASM](http://sourcecode.fr/insa/ASM/)
+  - [Lessons Link: ASM/TD1](http://sourcecode.fr/insa/ASM/TD_M1/)
   - compile with STM32F10x.s, gassp72.h
 - **3Y2S\BETirlaser**
   - Projet ASM with _Thibaut SARION_
 - **3Y2S\BEGraphe**
-  - [BEGraphe](http://wwwdgeinew.insa-toulouse.fr/~lebotlan/NEW/graphes.html)
+  - [Lessons Link: BEGraphe](http://wwwdgeinew.insa-toulouse.fr/~lebotlan/NEW/graphes.html)
 - **3Y2S\BEReseau**
   - BE Network with _Margaux DEBAILLEUX_
 - **3Y2S\TPReseau**
 - **4Y1S\MDSI** Modèles de Données et Système d'Information
   - xml, dtd, xsd, xpath, xslt, xquery
-  - MDSI Project: with _Nathan Balblanc_, _Yacine Smini_, _Loïs Lano_
+  - MDSI Project with _Nathan Balblanc_, _Yacine Smini_, _Loïs Lano_
 - **4Y1S\MSC** Modélisation des Systèmes Concurrents
   - Petri: [TINA](http://homepages.laas.fr/francois/POLYS/ENSEIGNEMENT/PN/index.php)
   - Finite-state machine: [UPPAAL](http://homepages.laas.fr/francois/UPPAAL/)
 - **4Y1S\Ocaml**
-  - [Lessons Ocaml](http://wwwdgeinew.insa-toulouse.fr/~lebotlan/NEW/ocaml.html)
+  - [Lessons Link: Lessons Ocaml](http://wwwdgeinew.insa-toulouse.fr/~lebotlan/NEW/ocaml.html)
   - MiniProject: game + IA + mapreduce
 - **4Y1S\Prolog** Programmation Logique
 - **4Y1S\Secu\BOF** Buffer overflow
@@ -55,3 +56,17 @@ Most of comments are in French.
   - [github: Drum_project](https://github.com/voilacti/Drum_project)
 - **4Y1S Temps-reel**
   - [github: projet_destijl](https://github.com/quentinleclerc/projet_destijl)
+- **4Y2S\AI** Artificial intelligence
+  - TP prolog, A\*, Negamax, AI with _Rama DESPLATS_
+- **4Y2S\ArchitectureMaterielle**
+  - TD Xilinx ISE, VHDL, FPGA with _Rama DESPLATS_
+- **4Y2S\COOPOO\POO** Object-oriented conception and programming
+  - Java, GUI, Network
+- **4Y2S\COOPOO\TPChatSystem** Object-oriented Conception and Programming
+  - UML, Tau, Java, MVC, JUnit
+  - TP ChatSystem P2P with _Rama DESPLATS_
+- **4Y2S\SystemeInformatique**
+  - Lex, Yacc, C, Xilinx ISE, VHDL
+  - BE Compiler C with _Rama DESPLATS_
+- **4Y2S\WebSem**
+  - TD Ontology(Protégé), Semantic Web, SPARQL with _Rama DESPLATS_
