@@ -46,7 +46,7 @@ Most of comments are in French.
 - **4Y1S\MSC** Modélisation des Systèmes Concurrents
   - Petri: [TINA](http://homepages.laas.fr/francois/POLYS/ENSEIGNEMENT/PN/index.php)
   - Finite-state machine: [UPPAAL](http://homepages.laas.fr/francois/UPPAAL/)
-- **4Y1S\Ocaml**
+- [**4Y1S\Ocaml**](./4Y1S/Ocaml/MiniProject)
   - [Lessons Link: Lessons Ocaml](http://wwwdgeinew.insa-toulouse.fr/~lebotlan/NEW/ocaml.html)
   - MiniProject: game + IA + mapreduce
 - **4Y1S\Prolog** Programmation Logique
@@ -56,17 +56,18 @@ Most of comments are in French.
   - [github: Drum_project](https://github.com/voilacti/Drum_project)
 - **4Y1S Temps-reel**
   - [github: projet_destijl](https://github.com/quentinleclerc/projet_destijl)
-- **4Y2S\AI** Artificial intelligence
+- [**4Y2S\AI**](./4Y2S/AI) Artificial intelligence
   - TP prolog, A\*, Negamax, AI with _Rama DESPLATS_
-- **4Y2S\ArchitectureMaterielle**
+- [**4Y2S\ArchitectureMaterielle**](./4Y2S/ArchitectureMaterielle)
   - TD Xilinx ISE, VHDL, FPGA with _Rama DESPLATS_
-- **4Y2S\COOPOO\POO** Object-oriented conception and programming
+- [**4Y2S\COOPOO\POO**](./4Y2S/COOPOO/POO) Object-oriented conception and programming
   - Java, GUI, Network
-- **4Y2S\COOPOO\TPChatSystem** Object-oriented Conception and Programming
+- [**4Y2S\COOPOO\TPChatSystem**](./4Y2S/COOPOO/TPChatSystem) Object-oriented Conception and Programming
   - UML, Tau, Java, MVC, JUnit
   - TP ChatSystem P2P with _Rama DESPLATS_
-- **4Y2S\SystemeInformatique**
+- [**4Y2S\SystemeInformatique**](./4Y2S/SystemeInformatique)
   - Lex, Yacc, C, Xilinx ISE, VHDL
   - BE Compiler C with _Rama DESPLATS_
-- **4Y2S\WebSem**
-  - TD Ontology(Protégé), Semantic Web, SPARQL with _Rama DESPLATS_
+- [**4Y2S\WebSemantique**](./4Y2S/WebSemantique)
+  - Ontology(Protégé), Semantic Web, SPARQL, MushUP
+  - TD with _Rama DESPLATS_

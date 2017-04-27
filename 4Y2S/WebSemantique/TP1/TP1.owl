@@ -1,0 +1,622 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#"
+     xml:base="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:untitled-ontology-2="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#gYear -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#gYear"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_07d178e1_03eb_4e6b_86d9_c650b29a5ccb -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_07d178e1_03eb_4e6b_86d9_c650b29a5ccb">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#film"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_28289315_864d_4f76_919c_b4dbfff5a2c1"/>
+        <rdfs:label xml:lang="fr">dont l&apos;url image est</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_091db3a8_89f7_4dd2_a065_2ba8e6f72816 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_091db3a8_89f7_4dd2_a065_2ba8e6f72816">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_638d29cc_3601_4e05_bc06_7c6f2c821d46"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#film"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_f3b7093d_e988_4b80_b7a7_2d1b76cdb6c3"/>
+        <rdfs:label xml:lang="fr">est joué par</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_1e6e903c_3bf3_4005_bc72_1b5e5660ca24 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_1e6e903c_3bf3_4005_bc72_1b5e5660ca24">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#film"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_ce85a39a_5495_48c3_a0ec_e20d584be1e2"/>
+        <rdfs:label xml:lang="fr">réalisé par</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_25bea4e1_653b_4009_9e5a_c1e34292a113 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_25bea4e1_653b_4009_9e5a_c1e34292a113">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#film"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_48ff8d55_447f_4603_a456_dfb0c026062b"/>
+        <rdfs:label xml:lang="fr">est tourné dans</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_45d7e209_1f82_4bb7_a45f_2aa6c9df8f13 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_45d7e209_1f82_4bb7_a45f_2aa6c9df8f13">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_f3b7093d_e988_4b80_b7a7_2d1b76cdb6c3"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_f3b7093d_e988_4b80_b7a7_2d1b76cdb6c3"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_638d29cc_3601_4e05_bc06_7c6f2c821d46"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_091db3a8_89f7_4dd2_a065_2ba8e6f72816"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label xml:lang="fr">joue ensemble avec</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_5d8f5319_b6fb_469b_84b7_55bd330c7be7 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_5d8f5319_b6fb_469b_84b7_55bd330c7be7">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_48ff8d55_447f_4603_a456_dfb0c026062b"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_48ff8d55_447f_4603_a456_dfb0c026062b"/>
+        <rdfs:label xml:lang="fr">situe dans</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_638d29cc_3601_4e05_bc06_7c6f2c821d46 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_638d29cc_3601_4e05_bc06_7c6f2c821d46">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_766e3ffc_c0c3_420f_b9d9_795e312f8666"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_f3b7093d_e988_4b80_b7a7_2d1b76cdb6c3"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#film"/>
+        <rdfs:label xml:lang="fr">joue dans</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_697d7f49_0c84_498d_94bb_c8d877a18c3e -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_697d7f49_0c84_498d_94bb_c8d877a18c3e">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_70318168_7ae1_45b0_a0b9_b42c3e3dc42d"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_a90baee2_0523_4366_af47_78b5043b37fd"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_79f3725c_5f86_43b2_b308_39b417a55f80"/>
+        <rdfs:label xml:lang="fr">a pour capitale</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_70318168_7ae1_45b0_a0b9_b42c3e3dc42d -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_70318168_7ae1_45b0_a0b9_b42c3e3dc42d">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_5d8f5319_b6fb_469b_84b7_55bd330c7be7"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_79f3725c_5f86_43b2_b308_39b417a55f80"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_a90baee2_0523_4366_af47_78b5043b37fd"/>
+        <rdfs:label xml:lang="fr">est la capitale de</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_766e3ffc_c0c3_420f_b9d9_795e312f8666 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_766e3ffc_c0c3_420f_b9d9_795e312f8666">
+        <rdfs:label xml:lang="fr">a comme artiste</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_778ada7c_369d_4c0e_ad8d_2d2c3bf558ab -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_778ada7c_369d_4c0e_ad8d_2d2c3bf558ab">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_df4512b3_d381_4c75_84e6_ae36136ba690"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="fr">correspond à l&apos;adresse</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_9e5c45c9_2c80_4d3f_851a_9c593fa3ddb0 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_9e5c45c9_2c80_4d3f_851a_9c593fa3ddb0">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#film"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_48ff8d55_447f_4603_a456_dfb0c026062b"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_9e5c45c9_2c80_4d3f_851a_9c593fa3ddb0"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_5d8f5319_b6fb_469b_84b7_55bd330c7be7"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label xml:lang="fr">se déroule dans</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_b9aa78f7_0223_4170_8e74_9035bdb967d6 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_b9aa78f7_0223_4170_8e74_9035bdb967d6">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#film"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_d46ac3cb_5124_477c_b93d_166fd5feda8b"/>
+        <rdfs:label xml:lang="fr">dont l&apos;url est</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_df4512b3_d381_4c75_84e6_ae36136ba690 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_df4512b3_d381_4c75_84e6_ae36136ba690">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_74670b08_a6ca_4300_a29a_2a92022bd3ba"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_ed8b843e_739c_4c5b_88fe_aae06759e087"/>
+        <rdfs:label xml:lang="fr">a comme coordonnées</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_e5bb9567_9468_4ff3_9093_c1f2b4f32162 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLObjectProperty_e5bb9567_9468_4ff3_9093_c1f2b4f32162">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#film"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_a90baee2_0523_4366_af47_78b5043b37fd"/>
+        <rdfs:label xml:lang="fr">a une nationalité</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLDataProperty_09d0c074_c3f0_4205_bb81_70132b85af2e -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLDataProperty_09d0c074_c3f0_4205_bb81_70132b85af2e">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#film"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
+        <rdfs:label xml:lang="fr">a une durée en minutes</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLDataProperty_1972cf9c_5ccc_4801_87e8_eb520e3a59ed -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLDataProperty_1972cf9c_5ccc_4801_87e8_eb520e3a59ed">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#film"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedInt"/>
+        <rdfs:label xml:lang="fr">a un nombre d&apos;entrées</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLDataProperty_4ed01f08_09ea_4bf6_bb7b_348798fdd6ff -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLDataProperty_4ed01f08_09ea_4bf6_bb7b_348798fdd6ff">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#film"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:label xml:lang="fr">est sorti en</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLDataProperty_55b8f702_17c2_482a_8dda_4a782058684e -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLDataProperty_55b8f702_17c2_482a_8dda_4a782058684e">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#film"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYear"/>
+        <rdfs:label xml:lang="fr">a été tourné en</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLDataProperty_a2831d3b_5246_4a46_9bbd_e2c59f0b3af9 -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLDataProperty_a2831d3b_5246_4a46_9bbd_e2c59f0b3af9">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_74670b08_a6ca_4300_a29a_2a92022bd3ba"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
+        <rdfs:label xml:lang="fr">code postal</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_28289315_864d_4f76_919c_b4dbfff5a2c1 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_28289315_864d_4f76_919c_b4dbfff5a2c1">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_e97c704b_3f7e_4a43_86d0_eaad2e9e2fae"/>
+        <rdfs:label xml:lang="fr">url image</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_29a7fdd3_36d2_458c_b413_391dcf916596 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_29a7fdd3_36d2_458c_b413_391dcf916596">
+        <rdfs:label xml:lang="fr">personne</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_3c5b81bc_1af1_45e4_a321_9f633d53c024 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_3c5b81bc_1af1_45e4_a321_9f633d53c024">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_f3b7093d_e988_4b80_b7a7_2d1b76cdb6c3"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_a1e469a2_47ed_4c18_8e70_e135d2208669"/>
+        <rdfs:label xml:lang="en">actress</rdfs:label>
+        <rdfs:label xml:lang="fr">actrice</rdfs:label>
+        <rdfs:label xml:lang="fr">comédienne</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_48ff8d55_447f_4603_a456_dfb0c026062b -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_48ff8d55_447f_4603_a456_dfb0c026062b">
+        <rdfs:label xml:lang="fr">lieu</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_4b35cb5a_3613_4254_9d2f_697863b4ec9f -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_4b35cb5a_3613_4254_9d2f_697863b4ec9f">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#film"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLDataProperty_09d0c074_c3f0_4205_bb81_70132b85af2e"/>
+                        <owl:someValuesFrom>
+                            <rdfs:Datatype>
+                                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
+                                <owl:withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#positiveInteger">59</xsd:maxInclusive>
+                                    </rdf:Description>
+                                </owl:withRestrictions>
+                            </rdfs:Datatype>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#film"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_ac621e26_ed26_43e2_ba90_9e17d2df9d1c"/>
+        <rdfs:label xml:lang="fr">court-métrage</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_65d13d6f_2924_410a_b490_e4bc2db38193 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_65d13d6f_2924_410a_b490_e4bc2db38193">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_48ff8d55_447f_4603_a456_dfb0c026062b"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_74670b08_a6ca_4300_a29a_2a92022bd3ba"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_a90baee2_0523_4366_af47_78b5043b37fd"/>
+        <rdfs:label xml:lang="fr">continent</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_74670b08_a6ca_4300_a29a_2a92022bd3ba -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_74670b08_a6ca_4300_a29a_2a92022bd3ba">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_48ff8d55_447f_4603_a456_dfb0c026062b"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_79f3725c_5f86_43b2_b308_39b417a55f80"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_a90baee2_0523_4366_af47_78b5043b37fd"/>
+        <rdfs:label xml:lang="fr">adresse</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_79f3725c_5f86_43b2_b308_39b417a55f80 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_79f3725c_5f86_43b2_b308_39b417a55f80">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_48ff8d55_447f_4603_a456_dfb0c026062b"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_a90baee2_0523_4366_af47_78b5043b37fd"/>
+        <rdfs:label xml:lang="fr">ville</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_a1e469a2_47ed_4c18_8e70_e135d2208669 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_a1e469a2_47ed_4c18_8e70_e135d2208669">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_f3b7093d_e988_4b80_b7a7_2d1b76cdb6c3"/>
+        <rdfs:label xml:lang="fr">acteur</rdfs:label>
+        <rdfs:label xml:lang="en">actor</rdfs:label>
+        <rdfs:label xml:lang="fr">comédien</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_a4ddee14_648f_4c3f_9148_c8efacb08214 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_a4ddee14_648f_4c3f_9148_c8efacb08214">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#film"/>
+        <rdfs:label xml:lang="fr">film bien noté</rdfs:label>
+        <rdfs:label xml:lang="fr">film populaire</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_a90baee2_0523_4366_af47_78b5043b37fd -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_a90baee2_0523_4366_af47_78b5043b37fd">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_48ff8d55_447f_4603_a456_dfb0c026062b"/>
+        <rdfs:label xml:lang="fr">pays</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_ac621e26_ed26_43e2_ba90_9e17d2df9d1c -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_ac621e26_ed26_43e2_ba90_9e17d2df9d1c">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#film"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLDataProperty_09d0c074_c3f0_4205_bb81_70132b85af2e"/>
+                        <owl:someValuesFrom>
+                            <rdfs:Datatype>
+                                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
+                                <owl:withRestrictions rdf:parseType="Collection">
+                                    <rdf:Description>
+                                        <xsd:minExclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#positiveInteger">59</xsd:minExclusive>
+                                    </rdf:Description>
+                                </owl:withRestrictions>
+                            </rdfs:Datatype>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#film"/>
+        <rdfs:label xml:lang="fr">long-métrage</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_ce85a39a_5495_48c3_a0ec_e20d584be1e2 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_ce85a39a_5495_48c3_a0ec_e20d584be1e2">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_29a7fdd3_36d2_458c_b413_391dcf916596"/>
+        <rdfs:label xml:lang="fr">réalisateur</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_d46ac3cb_5124_477c_b93d_166fd5feda8b -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_d46ac3cb_5124_477c_b93d_166fd5feda8b">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_e97c704b_3f7e_4a43_86d0_eaad2e9e2fae"/>
+        <rdfs:label xml:lang="fr">url film</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_e97c704b_3f7e_4a43_86d0_eaad2e9e2fae -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_e97c704b_3f7e_4a43_86d0_eaad2e9e2fae">
+        <rdfs:label xml:lang="fr">url</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_ed8b843e_739c_4c5b_88fe_aae06759e087 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_ed8b843e_739c_4c5b_88fe_aae06759e087">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_48ff8d55_447f_4603_a456_dfb0c026062b"/>
+        <rdfs:label xml:lang="fr">coordonées géographiques</rdfs:label>
+        <rdfs:label xml:lang="en">geo-coordinates</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_f3b7093d_e988_4b80_b7a7_2d1b76cdb6c3 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_f3b7093d_e988_4b80_b7a7_2d1b76cdb6c3">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_29a7fdd3_36d2_458c_b413_391dcf916596"/>
+        <rdfs:label xml:lang="fr">artiste</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#film -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#film">
+        <rdfs:label xml:lang="fr">film</rdfs:label>
+        <rdfs:label xml:lang="en">movie</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_009a5a2d_08d9_4e6c_b18a_bbec383bd837 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_009a5a2d_08d9_4e6c_b18a_bbec383bd837">
+        <rdfs:label xml:lang="fr">Michel Hazanavicius</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_0512a401_393d_4591_882d_892c9ef183e7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_0512a401_393d_4591_882d_892c9ef183e7">
+        <OWLObjectProperty_638d29cc_3601_4e05_bc06_7c6f2c821d46 rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_5b49f743_fb0a_452c_89e7_f2d7f89bd53b"/>
+        <rdfs:label xml:lang="fr">Bérénice Bejo</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_18bc12c1_bb5e_4d67_8aab_04196bca4314 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_18bc12c1_bb5e_4d67_8aab_04196bca4314">
+        <OWLObjectProperty_638d29cc_3601_4e05_bc06_7c6f2c821d46 rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_5b49f743_fb0a_452c_89e7_f2d7f89bd53b"/>
+        <rdfs:label xml:lang="fr">Jean Dujardin</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_2d252310_684b_4871_8685_fec9b647bd1a -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_2d252310_684b_4871_8685_fec9b647bd1a">
+        <OWLObjectProperty_5d8f5319_b6fb_469b_84b7_55bd330c7be7 rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_89e70540_37ca_4d1f_ba4c_006cab3028fc"/>
+        <rdfs:label xml:lang="fr">Paris</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_4b2fcfd0_bfeb_4aef_9a15_a3363708b68d -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_4b2fcfd0_bfeb_4aef_9a15_a3363708b68d">
+        <OWLObjectProperty_1e6e903c_3bf3_4005_bc72_1b5e5660ca24 rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_c4939a19_d6b3_482b_9c74_b171bf7d36fa"/>
+        <OWLObjectProperty_9e5c45c9_2c80_4d3f_851a_9c593fa3ddb0 rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_2d252310_684b_4871_8685_fec9b647bd1a"/>
+        <rdfs:label xml:lang="fr">Midnight in Paris</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_5b49f743_fb0a_452c_89e7_f2d7f89bd53b -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_5b49f743_fb0a_452c_89e7_f2d7f89bd53b">
+        <OWLObjectProperty_1e6e903c_3bf3_4005_bc72_1b5e5660ca24 rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_009a5a2d_08d9_4e6c_b18a_bbec383bd837"/>
+        <OWLDataProperty_09d0c074_c3f0_4205_bb81_70132b85af2e rdf:datatype="http://www.w3.org/2001/XMLSchema#positiveInteger">100</OWLDataProperty_09d0c074_c3f0_4205_bb81_70132b85af2e>
+        <rdfs:label xml:lang="fr">The Artist</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_89e70540_37ca_4d1f_ba4c_006cab3028fc -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_89e70540_37ca_4d1f_ba4c_006cab3028fc">
+        <OWLObjectProperty_5d8f5319_b6fb_469b_84b7_55bd330c7be7 rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_d26e5b48_a338_4e85_9abf_a9f067d02134"/>
+        <OWLObjectProperty_697d7f49_0c84_498d_94bb_c8d877a18c3e rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_2d252310_684b_4871_8685_fec9b647bd1a"/>
+        <OWLObjectProperty_697d7f49_0c84_498d_94bb_c8d877a18c3e rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_f489fde3_33f9_4a5f_8753_fa79cc4cecb6"/>
+        <rdfs:label xml:lang="fr">France</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_93a1d285_6368_48fe_bc8b_4a34274f8db5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_93a1d285_6368_48fe_bc8b_4a34274f8db5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_79f3725c_5f86_43b2_b308_39b417a55f80"/>
+        <rdfs:label xml:lang="fr">Monaco</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_a17fe619_cb8a_4217_851d_fac3962a5d71 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_a17fe619_cb8a_4217_851d_fac3962a5d71">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#film"/>
+        <rdfs:label xml:lang="fr">mon nv film</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_c4939a19_d6b3_482b_9c74_b171bf7d36fa -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_c4939a19_d6b3_482b_9c74_b171bf7d36fa">
+        <rdfs:label xml:lang="fr">Woody Allen</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_d26e5b48_a338_4e85_9abf_a9f067d02134 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_d26e5b48_a338_4e85_9abf_a9f067d02134">
+        <rdfs:label xml:lang="fr">Europe</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_f489fde3_33f9_4a5f_8753_fa79cc4cecb6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLNamedIndividual_f489fde3_33f9_4a5f_8753_fa79cc4cecb6">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ymao/ontologies/2017/0/untitled-ontology-2#OWLClass_79f3725c_5f86_43b2_b308_39b417a55f80"/>
+        <rdfs:label xml:lang="fr">la Ville Lumière</rdfs:label>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi -->
+

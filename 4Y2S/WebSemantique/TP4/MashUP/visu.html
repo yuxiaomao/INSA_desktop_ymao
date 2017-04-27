@@ -1,0 +1,34 @@
+<html>
+<head>
+  <title>Visualisation d'information</title>
+  <meta charset="utf-8">
+  <script src="http://amarger.murloc.fr/web2/exam/jquery-1.11.2.min.js"></script>
+  <script src="app.js"></script>
+  <link href="styles.css" rel="stylesheet">
+
+  <style>
+
+  </style>
+</head>
+<body>
+  <h1>Les lieux de tournage</h1>
+  <div id="controls">
+  <form>
+    <input type="radio" id="cbox1" name="loutre"/> <label for="cbox1">De tous les films </label>
+    <input type="radio" id="cbox2" name="loutre"/><label for="cbox2">Des films populaires</label>
+    <!--<input type="radio" id="cbox3" name="loutre"/><label for="cbox3">Des films romantiques</label>-->
+    <input type="radio" id="cbox4" name="loutre"/><label for="cbox4">Au moins 3 films</label>
+  </form>
+  <form name="Choix">
+    <select name="Liste genre" id="genre">
+    <option value="">- Selectionnez un genre -</option>
+<!--
+    <option value="Musicale">comédie musicale</option>
+    <option value="Action">film d'action</option>
+    <option value="Adventure">film d'aventure</option>
+-->
+    </select>
+  </form>
+  <div id="mapContainer"><div id="map"></div></div>
+</body>
+</html>
