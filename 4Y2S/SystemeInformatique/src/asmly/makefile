@@ -7,7 +7,6 @@ lex.yy.c: asm.l y.tab.h
 y.tab.c: asm.y asm.l
 	yacc -d asm.y
 
-
 clean:
 	rm y.tab.c y.tab.h lex.yy.c
 	rm interpreteur

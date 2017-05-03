@@ -58,7 +58,7 @@ int compteur_error;
 %start Prog
 
 %%
-Prog : 
+Prog :
 			{init();}
 		Fonctions
 ;
@@ -84,7 +84,7 @@ Fonction :
                     yyerror("try to define a function already define");
                 }
 		    }
-		Args tPF 
+		Args tPF
 		Body
 		    {end_define_function();}
 			{printf("Function definition %s.\n", $2);}
@@ -115,8 +115,6 @@ ArgsN :
 		| tVIR tINT tMUL tID
 		    {add_arg_function($4,TYPE_POINTEUR);}
 		ArgsN
-		    
-		
 ;
 
 Body :
@@ -235,12 +233,12 @@ Vide :
 
 Params :
 		/*epsilon*/
-		| E ParamsN {add_param_function();} 
+		| E ParamsN {add_param_function();}
 ;
 
 ParamsN :
 		/*epsilon*/
-		| tVIR E ParamsN {add_param_function();} 
+		| tVIR E ParamsN {add_param_function();}
 ;
 
 Printf :
@@ -298,13 +296,11 @@ For :
 			{set_while_jump($1,$2);}
 ;
 
-/* in each arithmetical expressions make sure that the variables are both initialized?
-* return index in tab_var of _tmp value
-*/
+/* return index in tab_var of _tmp value */
 E :
 		tID
 		    {$$ = tID_value($1);}
-        | tNB 
+        | tNB
             {$$ = tNB_value($1);}
         | tMUL tID
             {$$ = tMULtID_value($2);}
@@ -325,7 +321,7 @@ E :
 		    {$$ = arithmetical_expression(ADD);}
 		| E tSUB E
 		    {$$ = arithmetical_expression(SUB);}
-        | E tMUL E 
+        | E tMUL E
             {$$ = arithmetical_expression(MUL);}
 		| E tDIV E
 		    {$$ = arithmetical_expression(DIV);}
@@ -370,7 +366,7 @@ int main(int argc, char**argv){
         printUsage(argv[0], stderr) ;
         return 1 ;
     }
-    
+
     printf("  \n");
     printf(BOLDBLACK "     === Sample program of a C to ASM translator ===     \n" RESET);
     printf(BOLDBLACK "       *** Authors: Rama Desplats & Yuxiao Mao ***           \n" RESET);
@@ -379,10 +375,9 @@ int main(int argc, char**argv){
     yyparse();
     printf("  \n");
     printf(CYAN "                  +++ End of Parsing +++                      \n\n" RESET);
-    
+
     if (nb_error>0) {
      unlink("result_clair.txt");
-     unlink("result_opcode.txt");
      return -1 ;
      //If there are errors then we unlink the asm file
     }
@@ -395,4 +390,3 @@ int main(int argc, char**argv){
     }
     return 0;
 }
-

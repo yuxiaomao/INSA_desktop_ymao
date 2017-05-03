@@ -15,7 +15,7 @@ void yyerror(char *s);
 /*
 * Token defintions and return type defintions for non-terminal token
 */
-%token tADD tMUL tSUB tDIV 
+%token tADD tMUL tSUB tDIV
 %token tCOP tAFC
 %token tLOAD tSTORE
 %token tEQU tINF tINFE tSUP tSUPE
@@ -32,7 +32,7 @@ void yyerror(char *s);
 
 %%
 
-Prog : 
+Prog :
             {init_asm();}
         Lines
             {execute_asm();}
@@ -72,9 +72,9 @@ Line :
             {add_asmline_expr(SUPE,$2,$3,$4);}
         | tJMP tNB
             {add_asmline_jmp($2);}
-        | tJMPC tNB tREG 
+        | tJMPC tNB tREG
             {add_asmline_jmpc($2,$3);}
-        | tJMPR tREG 
+        | tJMPR tREG
             {add_asmline_jmpr($2);}
         | tPRT tREG
             {add_asmline_prt($2);}
@@ -94,7 +94,7 @@ int main(int argc, char**argv){
         yyin = input;
     }
     printf("  \n");
-    printf("     === Interpretor add_asmline ===     \n");
+    printf("     === Interpretor ASM ===     \n");
     printf("  \n");
     yyparse();
     return 0;

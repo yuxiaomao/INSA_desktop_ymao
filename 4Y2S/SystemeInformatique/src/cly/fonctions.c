@@ -3,7 +3,6 @@
 /**********************************************************************************
  * Constants and symbols definitions **********************************************************************************/
 
-
 /* Structure used to represent the symbol table*/
 typedef struct {
     char *id;
@@ -36,7 +35,6 @@ type_tab_instruct tab_instruct[MAXTABINSRTUCT];
 type_tab_func tab_func[MAXTABFUNC];
 
 /* Global variable declarations*/
-//top of memory(TOPMEMO)+ebp+compteur_ebp+compteur_tmp = adresse
 int compteur_ebp;
 int compteur_tmp;
 int current_depth;
@@ -72,7 +70,6 @@ void set_compteur_ebp(int val){
     compteur_ebp = val;
 }
 
-
 int get_ebp(){
     return ebp;
 }
@@ -97,6 +94,8 @@ int get_depth(){
     return current_depth;
 }
 
+/* to know if in an affectation, the value is an address or not */
+
 int get_isAdress(){
     return isAdress;
 }
@@ -105,15 +104,15 @@ void set_isAdress(int val){
     isAdress=val;
 }
 
-/* init values
+/* init values of ebp and jump to main function
 ******************************/
 void init(){
     char *charvalue=malloc(sizeof(char)*2);
-    
+
     sprintf(charvalue,"%d",TOPMEMO);
     tab_inst_addline("AFC","R31",charvalue,"");
     tab_inst_addline("JMP","X","","");
-    
+
     free(charvalue);
 }
 
@@ -228,13 +227,15 @@ int print_symbol_value(char*var1){
 
 
 /* return -1 if not define, -2 if const, -3 if type normal */
-/* this function will create an varX that contains ?? and let p point varX*/
+/* this function will create an varX (no initialized so can contain something)
+* and let p point varX. With this implementation, the malloc will be automaticly free
+* after the programme leave this stage of depth */
 int create_malloc(char*p){
     int result=-1;
     char *charvalue=malloc(sizeof(char)*2);
     int index = find_var(p);
     int index2;
-    
+
     if(index == -1){
         result = -1;
     }else if(tabvar[index].type==TYPE_CONST){
@@ -243,27 +244,28 @@ int create_malloc(char*p){
         result = -3;
     }else{//type=TYPE_POINTEUR
         result = 0;
-        tabvar[index].init=1; //i.e malloc or adress
-        // *P = _vpt
+        tabvar[index].init=1;
+        // if *p = malloc() then consider it is initialized
 
-        //compteur_ebp++;
         index2 = tab_var_add("_vpt", TYPE_NORMAL);
         // but in index2 there can be an other value, it is not really "initialised"
         tabvar[index2].init=1;
-        
+
         //asm
         sprintf(charvalue,"%d", (index2-ebp));
         tab_inst_addline("AFC","R0",charvalue,"");
         //@_vpt=index2
+        // R0 = index2 = ebp + (index2-ebp)
         tab_inst_addline("ADD","R0","R31","R0");
+        // store index2 in the @_vpt
         sprintf(charvalue,"%d",(index-ebp));
         tab_inst_addline("STORE","R31",charvalue,"R0");
-        
-        //debug info   
+
+        //debug info
         printf(CYAN "\n==> " RESET);
         printf("Malloc *pointeur %s\n", p);
     }
-    
+
     free(charvalue);
     return 0;
 }
@@ -274,22 +276,22 @@ int create_malloc(char*p){
 int affect_variable(char *var1,int adre1){
     int result=-1;
     char *charvalue=malloc(sizeof(char)*2);
-    
+
     int index = find_var(var1);
-    
+
     if(index == -1){
         result = -1;
     }else if(tabvar[index].type==TYPE_CONST){
         result = -2;
     }else{
         result = 0;
-       
+
         //asm
         sprintf(charvalue,"%d", (adre1-ebp));
         tab_inst_addline("LOAD","R0","R31",charvalue);
         sprintf(charvalue,"%d",(index-ebp));
         tab_inst_addline("STORE","R31",charvalue,"R0");
-        
+
         //init or warning
         if(tabvar[index].type==TYPE_NORMAL){
             tabvar[index].init=1;
@@ -303,9 +305,9 @@ int affect_variable(char *var1,int adre1){
                 printf(BOLDYELLOW"warning: try to affect a normal value to a pointer %s\n"RESET, var1);
             }
         }
-        
+
         print_symbol_table();
-        //debug info   
+        //debug info
         printf(CYAN "\n==> " RESET);
         printf("Affectation %s\n", var1);
         /* at adr1 we have the temporary value for var1
@@ -313,8 +315,7 @@ int affect_variable(char *var1,int adre1){
         */
         printf(YELLOW "Removing tmp variable at adress +%d.\n"RESET,compteur_tmp);
     }
-    
-        
+
     set_isAdress(0);
     compteur_tmp--;
     free(charvalue);
@@ -326,7 +327,7 @@ int affect_pointeur(char *p, int adre1){
     int result=-1;
     char *charvalue=malloc(sizeof(char)*2);
     int index = find_var(p);
-    
+
     if(index == -1){
         result = -1;
     }else if(tabvar[index].type==TYPE_CONST){
@@ -334,15 +335,14 @@ int affect_pointeur(char *p, int adre1){
     }else if(tabvar[index].type==TYPE_NORMAL) {
         result = -3;
     }else{//type=TYPE_POINTEUR
-    
+
         sprintf(charvalue,"%d", compteur_ebp);
         tab_inst_addline("LOAD","R0","R31",charvalue);
         sprintf(charvalue,"%d",(index-ebp));
         tab_inst_addline("LOAD","R1","R31",charvalue);
         tab_inst_addline("STORE","R1","0","R0");
-        
-        
-        //debug info   
+
+        //debug info
         printf(CYAN "\n==> " RESET);
         printf("Affectation pointeur %s, make sure that p contains a correct adress\n", p);
         if(get_isAdress()==1){
@@ -353,7 +353,7 @@ int affect_pointeur(char *p, int adre1){
         */
         printf(YELLOW "Removing tmp variable at adress +%d.\n" RESET,compteur_tmp);
     }
-    
+
     set_isAdress(0);
     compteur_tmp--;
     free(charvalue);
@@ -373,7 +373,7 @@ int declare_variable(char *var1, int type){
     }else{//not define at current depth
         tab_var_add(var1, type);
     }
-    
+
     return result;
 }
 
@@ -384,16 +384,16 @@ int declare_variable_affectation(char *var1, int type){
     printf("Declaration with affectation %s.\n", var1);
     int index = find_var(var1);
     int index2;
-    
+
     if(index == -1){//not define
     }else if (current_depth==tabvar[index].depth){
         return -1;
     }else{//not define at current depth
     }
-    
+
     index2 = tab_var_add(var1, type);
     tabvar[index2].init=1;
-    
+
     //debug info
     if((type==TYPE_POINTEUR)&&(get_isAdress()==0)){
             printf(BOLDYELLOW"warning: try to affect a normal value to a pointer %s\n"RESET, var1);
@@ -401,12 +401,12 @@ int declare_variable_affectation(char *var1, int type){
     if((type==TYPE_NORMAL)&&(get_isAdress()==1)){
             printf(BOLDYELLOW"warning: try to affect an adress to a normal variable %s\n"RESET,var1);
     }
-    
+
     // no need asm because the tmp value is at the right place
     // value in memo existed when calcul E _tmp
     set_isAdress(0);
     compteur_tmp--;
-    
+
     return result;
 }
 
@@ -418,7 +418,7 @@ int tID_value(char *id){
     int result = -1;
     char *charvalue=malloc(sizeof(char)*2);
     int index = find_var(id);
-    
+
     if(index == -1){//not define
         result = -1;
     }else{
@@ -430,13 +430,13 @@ int tID_value(char *id){
         tab_inst_addline("LOAD","R0","R31",charvalue);
         sprintf(charvalue,"%d",(result-ebp));
         tab_inst_addline("STORE","R31",charvalue,"R0");
-        
+
         //if id is a pointer, then its value is an adress
         if (tabvar[index].type==TYPE_POINTEUR){
             set_isAdress(1);
         }
     }
-    
+
     free(charvalue);
     return result;
 }
@@ -461,7 +461,7 @@ int tMULtID_value(char*id){
     int result = -1;
     char *charvalue=malloc(sizeof(char)*2);
     int index = find_var(id);
-    
+
     if(index == -1){//not define
         result = -1;
     }else{
@@ -475,7 +475,7 @@ int tMULtID_value(char*id){
         sprintf(charvalue,"%d",(result-ebp));
         tab_inst_addline("STORE","R31",charvalue,"R0");
     }
-    
+
     free(charvalue);
     return result;
 }
@@ -484,7 +484,7 @@ int tADRtID_value(char*id){
     int result = -1;
     char *charvalue=malloc(sizeof(char)*2);
     int index = find_var(id);
-    
+
     if(index == -1){//not define
         result = -1;
     }else{
@@ -497,10 +497,10 @@ int tADRtID_value(char*id){
         tab_inst_addline("ADD","R0","R31","R0");
         sprintf(charvalue,"%d",(result-ebp));
         tab_inst_addline("STORE","R31",charvalue,"R0");
-        
+
         set_isAdress(1);
     }
-    
+
     free(charvalue);
     return result;
 }
@@ -560,7 +560,7 @@ void create_jump_if(){
     sprintf(charvalue,"%d",(compteur_ebp+compteur_tmp-1));
     tab_inst_addline("LOAD","R0","R31",charvalue);
     tab_inst_addline("JMPC","X","R0","");//R0=cond
-    
+
 	// remove condition
 	compteur_tmp--;
 
@@ -607,74 +607,77 @@ void set_while_jump(int asmline_before_cond, int asmline_after_jmpc){
 ******************************/
 void set_entry_main(){
     char *charvalue=malloc(sizeof(char)*2);
-    
+
     sprintf(charvalue,"%d",get_asmline());
     tab_inst_set_reg1(1, charvalue);
-    
+
     free(charvalue);
 }
 
-/* partie definition
-* ici, les tab_var_add ne suivre pas un esp++
-* car c'est deja fait dans la preparation */
-
+/* define part of the funtion
+* when we jump at the first line of a function,
+* we supporse there are already oldebp, return address, all argument value in the memory
+* and the memory begin at the new "ebp", which can change at evey call of funtion,
+* with that, we're not crashing any existing data, especially in recursive call
+* in our case, ebp is store in R31 */
 int define_function(char *id){
     int index;
-    
+
     if (find_func(id) != -1){
         return -1;
     }
-    
-    // ajouter function dans tab_func
+
+    // add this function in to tab_func
     tab_func_add(id);
-    // on suppose avoir : , donc il faut allouer 2 var dans tabvar
-    // [ebp + 0] = ancien ebp
+    // prepare the C environnement and let the compiler know there are already these values
+    // [ebp + 0] = old ebp
     index = tab_var_add("_ebp", TYPE_NORMAL);
     tabvar[index].init = 1;
-    // [ebp + 1] = adr retour
+    // [ebp + 1] = return address
     index = tab_var_add("_adr", TYPE_NORMAL);
     tabvar[index].init = 1;
-    
+
     return 0;
 }
 
-// [ebp + 2] = 1er arg
+// [ebp + 2] = 1st arg
 void add_arg_function(char *var1, int type){
     int index;
-    // set le nombre de args ++ pour le dernier function
-    
+
     tab_func_nbarg_add1();
-    // creer var
+    // it is just like we have define some variable before arrive the body of our function
     index = tab_var_add(var1, type);
     if (index >= 0){
         tabvar[index].init = 1;
         tabvar[index].type = type;
     }
-    
+
     printf("Add arg function %s. index %d\n",var1, index);
     set_isAdress(0);
 }
 
+/* at the end of the function, the execution is suppose to return to the old situation,
+* so we restore the ebp and jump to the return address.
+* we'll also clean the C environnement by set compteur_ebp = 0,
+* be ready to begin the define of another function*/
 void end_define_function(){
-    // restore ebp et detruire les variables non usé
-    // add JMP vers adr retour [ebp + 1]
+    // add JMP to return address [ebp + 1]
     tab_inst_addline("LOAD","R1","R31","1");
-    // destruire les variables non use
     // restore ebp
     tab_inst_addline("LOAD","R31","R31","0");
     tab_inst_addline("JMPR","R1","","");
     set_compteur_ebp(0);
-    ebp = 0; //main, interdit de defini une fonct dans une fonc
+    ebp = 0;
 }
 
-/* partie invocation*/
+/* call part of the function
+* we must prepare ebp and return address at the top of memory before the real call */
 void before_call_function(){
-    printf(GREEN "BEFORE call, ebp:%d,compteur_ebp:%d,compt_tmp:%d\n" RESET, ebp, compteur_ebp, compteur_tmp);
     // preparation memoire + variables
     int index;
     char *charvalue=malloc(sizeof(char)*2);
-    
-    // [esp] = ancien ebp
+
+    // [esp] = old ebp
     sprintf(charvalue,"%d",compteur_ebp);
     tab_inst_addline("STORE","R31",charvalue,"R31");
     // ebp = esp (ebp+compteur_ebp)
@@ -682,53 +685,54 @@ void before_call_function(){
     tab_inst_addline("ADD","R31","R31","R0");
     ebp = ebp + compteur_ebp;
     compteur_ebp = 0;
-    // tabvar +[_ebp]
+    // tabvar + [_ebp]
     index = tab_var_add("_ebp", TYPE_NORMAL);
     tabvar[index].init = 1;
-    // [ebp + 1] = adr retour
+    // [ebp + 1] = return address
     tab_inst_addline("AFC","R0","X","");
     tab_inst_addline("STORE","R31","1","R0");
     // tabvar +[_adr]
     index = tab_var_add("_adr", TYPE_NORMAL);
     tabvar[index].init = 1;
-    
+
     free(charvalue);
-    
+
 }
 
 void add_param_function(){
     printf(GREEN "ADD param, ebp:%d,compteur_ebp:%d,compt_tmp:%d\n" RESET, ebp, compteur_ebp, compteur_tmp);
-    //ebp + 2 = 1er param (ajouter depuis _tmp donc pas besoin gestion)
+    // [ebp + 2] = 1st param
+    // the value is already at the right space by using the E expression
+    // so we just need to indicate that the _tmp variable is a real variable
     compteur_tmp--;
     compteur_ebp++;
     set_isAdress(0);
 }
 
 int call_function(char*id, int asmline_after_before_call){
-    printf(GREEN "CALL, ebp:%d,compteur_ebp:%d,compt_tmp:%d\n" RESET, ebp, compteur_ebp, compteur_tmp);
     int index_func;
     char *charvalue=malloc(sizeof(char)*2);
-    
+
     index_func = find_func(id);
     if (index_func == -1){
         printf(BOLDYELLOW "warning: calling an not define function\n"RESET);
         return -1;
     }
-    
+
     if ((compteur_ebp-2)!=tab_func[index_func].nbarg) {
         printf(BOLDYELLOW "warning: calling function without the right nb of argument\n"RESET);
     }
-    
+
     // affectation @retour
     sprintf(charvalue,"%d",get_asmline()+1);
     tab_inst_set_reg2(asmline_after_before_call - 2, charvalue);
     // jmp @func
     sprintf(charvalue,"%d",tab_func[index_func].begin_asm);
     tab_inst_addline("JMP",charvalue,"","");
-    
+
     // fin call function
-    // esp<-ebp, set_ebp(ebp<-ancienebp) dans yacc
-    
+    // esp<-ebp, set_ebp(ebp<-oldebp) is in the code yacc
+
     free(charvalue);
     return index_func;
 }
@@ -745,7 +749,7 @@ void tab_inst_addline(char* inst, char* reg1, char* reg2,char* reg3){
     tab_instruct[compteur_asm].reg1=malloc(sizeof(char)*4);
     tab_instruct[compteur_asm].reg2=malloc(sizeof(char)*4);
     tab_instruct[compteur_asm].reg3=malloc(sizeof(char)*4);
-    
+
     (tab_instruct[compteur_asm].instruct)[4]='\0';
 
     strcpy(tab_instruct[compteur_asm].instruct,inst);
@@ -773,7 +777,7 @@ int tab_var_add(char*id, int type){
     tabvar[index].depth=current_depth;
     printf(BLUE "Added %s at adress %d, depth=%d.\n", id, ebp+compteur_ebp, current_depth);
     printf(RESET);
-    
+
     compteur_ebp++;
     return index;
 }
@@ -785,7 +789,7 @@ int tab_var_addtmp(int val){
     tabvar[index].adresse=TOPMEMO+index;
     tabvar[index].type=TYPE_TMP;
     printf("Added temporary %s at index %d with value %d.\n", tabvar[index].id, index, val);
-    
+
     compteur_tmp++;
     return index;
 }
@@ -793,7 +797,6 @@ int tab_var_addtmp(int val){
 /* return index of var, or -1 not find*/
 int find_var(char*var){
     int index;
-    /* a modifier: fonctions acceder a tous les variables declaree */
     for(index=ebp+compteur_ebp-1;index>=0;index--){
         if(strcmp(tabvar[index].id,var)==0){
             break;
@@ -875,8 +878,7 @@ int arithmetical_E2E(int type){
     //sprintf(charvalue,"%d",(index-ebp));
     tab_inst_addline("STORE","R31",charvalue,"R0");
     compteur_tmp--;
-    
+
     free(charvalue);
     return index;
 }
-

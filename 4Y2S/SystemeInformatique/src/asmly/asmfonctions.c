@@ -43,7 +43,7 @@ void execute_asm(){
         printf("----------------------\n");
         ip = execute_line(ip);
     }
-    
+
     printf("\nEND execute_asm\n");
     print_regs();
     print_memo();
@@ -132,7 +132,7 @@ int reg2int(char*reg){
     int res = -1;
     char *registre=malloc(sizeof(char)*4);
     strncpy(registre,reg,4);
-    
+
     if(registre[0]!='R'){
         printf("ERROR: try to converge not Reg");
         exit(-1);
@@ -140,7 +140,7 @@ int reg2int(char*reg){
         // auto detect \0
         res = atoi(&registre[1]) ;
     }
-    
+
     free(registre);
     return res;
 }
@@ -161,7 +161,7 @@ int execute_line(int ip){
     int val1 = inst[ip].val1;
     int val2 = inst[ip].val2;
     int val3 = inst[ip].val3;
-    
+
     switch (type) {
         case ADD:
             regs[val1] = regs[val2] + regs[val3];
@@ -244,4 +244,3 @@ int execute_line(int ip){
     }
     return nextip;
 }
-

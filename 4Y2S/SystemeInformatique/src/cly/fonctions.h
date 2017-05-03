@@ -1,12 +1,3 @@
-/**********************************************************************************
- *  fonctions.c
- *
- *  Created by Rama Desplats and Yuxiao Mao on 21/02/17.
- *  Last modified on 21/02/17.
- *
- *  This file will contain all the functions use by Yacc actions
- **********************************************************************************/
-
 #ifndef fonctions_h
 #define fonctions_h
 
@@ -65,21 +56,19 @@
 
 
 /* getter setter */
-//top of memory(TOPMEMO)+ebp+compteur_ebp+compteur_tmp = adresse
+/* the true esp = ebp + compteur_ebp + compteur_tmp*/
 int get_compteur_ebp();
 void set_compteur_ebp(int val);
 int get_ebp();
 void set_ebp(int val);
-/* begin at 0 */
+/* the first instruction begin at line 0 */
 int get_asmline();
-int get_isAdress();
-void set_isAdress(int val);
-
+/* variable depth */
 void set_depth_add1();
 void set_depth_sub1();
 int get_depth();
 
-/* init values */
+/* init values of ebp and jump to main function */
 void init();
 
 /* file output */
@@ -89,7 +78,7 @@ void write_asm();
 void print_symbol_table();
 void print_asm_instructions();
 
-/* function pre-define */
+/* function pre-define printf and malloc*/
 int print_symbol_value(char*var1);
 int create_malloc(char*p);
 
@@ -110,7 +99,7 @@ int tMULtID_value(char *id);
 int tADRtID_value(char *id);
 int arithmetical_expression(int type);
 
-/* jump */
+/* jump if and while */
 void create_jump_if();
 void set_jump_fin_if(int asmline);
 void set_jump_fin_else(int asmline);
@@ -119,15 +108,15 @@ void set_while_jump(int asmline_before_cond, int asmline_after_jmpc);
 
 /* function */
 void set_entry_main();
-
-/* return -1 if already define*/
+/* definition of the function */
+/* return -1 if already define */
 int define_function(char *id);
 void add_arg_function(char *var1,int type);
 void end_define_function();
-
+/* invocation of the function */
 void before_call_function();
 void add_param_function();
-/* return -1 if not define*/
+/* return -1 if not define */
 int call_function(char*id, int asmline_after_before_call);
 
 /* error */
