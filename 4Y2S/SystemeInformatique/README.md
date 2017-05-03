@@ -6,6 +6,7 @@
 - `src/` source code v5, principalement codé par moi à partir du v2
   - `src/cly` parseur de C vers ASM
   - `src/asmly` interpréteur de ASM à l'exécution
+  - `src/asm2oply` générateur de opcode pour utiliser dans uProcesseur
 - `src_rama/` source code de Rama v4
 - `uProcesseur/` (pas encore fini, il va y avoir du code VHDL)
 
