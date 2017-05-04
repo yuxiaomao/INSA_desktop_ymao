@@ -12,9 +12,12 @@ import java.net.UnknownHostException;
 import model.Message;
 
 public class UDPSender {
-	
+
 	private DatagramSocket socket;
+	// only for jUnit test
+	private DatagramPacket lastPacketSended;
 	
+
 	public UDPSender(){
 		try {
 			this.socket = new DatagramSocket();
@@ -24,10 +27,15 @@ public class UDPSender {
 		}
 	}
 	
+	// only for jUnit test, this value might be null before an send
+	public DatagramPacket getLastPacketSended(){
+		return this.lastPacketSended;
+	}
+
 	public void sendMess(Message mes, InetAddress iptosend){
 		int port = 1234;
 		byte[] buf = new byte[2048];
-		
+
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		try {
 			ObjectOutputStream oos = new ObjectOutputStream(baos);
@@ -38,6 +46,9 @@ public class UDPSender {
 			e1.printStackTrace();
 		}
 		DatagramPacket mestosend = new DatagramPacket(buf, buf.length, iptosend, port);
+		// only for jUnit test
+		this.lastPacketSended = mestosend;
+		
 		try {
 			this.socket.send(mestosend);
 		} catch (IOException e) {
@@ -45,11 +56,11 @@ public class UDPSender {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void sendMessBroadcast(Message mes){
 		int port = 8041;
 		byte[] buf = new byte[2048];
-		
+
 		// create packet to send
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		try {
@@ -60,11 +71,14 @@ public class UDPSender {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		
+
 		// send packet broadcast
 		try {
 			InetAddress iptosend = InetAddress.getByName("255.255.255.255");
 			DatagramPacket mestosend = new DatagramPacket(buf, buf.length, iptosend, port);
+			// only for jUnit test
+			this.lastPacketSended = mestosend;
+			
 			this.socket.send(mestosend);
 		}catch (SocketException e){
 			System.err.println("java.net.SocketException: [UDPS]Socket closed");
@@ -76,13 +90,13 @@ public class UDPSender {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void closeSocket(){
 		if (!this.socket.isClosed()){
 			this.socket.close();
 		}
 	}
-	
+
 	@Override
 	protected void finalize(){
 		if (!this.socket.isClosed()){

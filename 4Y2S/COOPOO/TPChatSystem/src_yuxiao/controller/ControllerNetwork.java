@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -112,23 +113,35 @@ public class ControllerNetwork implements MyMessageListener{
 
 	private void recevedMsgHello(InetAddress ipsrc, MsgHello message){
 		String usernameLocal = this.model.getUserLocal().getUsername();
-        // default respond HELLO_NOK
-		MsgHello mesack = new MsgHello(this.model.getUserLocal().getUsername(), message.getUserSrc(), true, false);
+		String usernameRemote = message.getUserSrc();
+		// default respond HELLO_NOK
+		
 		System.out.println("[cNet] "+ message.getUserSrc() + " say hello to me");
+		
 		if (!usernameLocal.equals(message.getUserSrc())){
-			// if remote username is different of my name, reply HELLO_OK, add him into my list
-			mesack.setConnect(true);
-			final String remoteUsername = message.getUserSrc();
-			Contact userRemote = new Contact(message.getUserSrc(), ipsrc, new ActionListener()
-		    {
-			      public void actionPerformed(ActionEvent e)
-			      {
-			    	  aTimerHasExpired(remoteUsername);
-			      }
-		    });
-			this.addUserRemote(userRemote);
+			// if remote username is not mine name
+			if (this.model.getUserRemoteByName(usernameRemote) == null){
+				// if remote username is valid, i.e not already in my list
+				// reply HELLO_OK and add him in my list
+				MsgHello mesack = new MsgHello(usernameLocal, usernameRemote, true, true);
+				this.udps.sendMess(mesack, ipsrc);
+				final String remoteUsername = message.getUserSrc();
+				Contact userRemote = new Contact(message.getUserSrc(), ipsrc, new ActionListener()
+				{
+					public void actionPerformed(ActionEvent e)
+					{
+						aTimerHasExpired(remoteUsername);
+					}
+				});
+				this.addUserRemote(userRemote);
+			} else{
+				// he is in my list, do not reply
+			}
+		} else{
+			// he has the same username as local, reply HELLO_NOK
+			MsgHello mesack = new MsgHello(usernameLocal, usernameRemote, true, false);
+			this.udps.sendMess(mesack, ipsrc);
 		}
-		this.udps.sendMess(mesack, ipsrc);
 	}
 
 	private void recevedMsgHelloAck(InetAddress ipsrc, MsgHello message){
@@ -136,12 +149,12 @@ public class ControllerNetwork implements MyMessageListener{
 			//HELLO_OK, add him into my list
 			final String remoteUsername = message.getUserSrc();
 			Contact userRemote = new Contact(message.getUserSrc(), ipsrc, new ActionListener()
-		    {
-			      public void actionPerformed(ActionEvent e)
-			      {
-			    	  aTimerHasExpired(remoteUsername);
-			      }
-		    });
+			{
+				public void actionPerformed(ActionEvent e)
+				{
+					aTimerHasExpired(remoteUsername);
+				}
+			});
 			this.addUserRemote(userRemote);
 			System.out.println("[cNet] "+ message.getUserSrc() + " repond à ma connection");
 		}else{
@@ -181,15 +194,15 @@ public class ControllerNetwork implements MyMessageListener{
 		byte[] bytesArray = new byte[8192];
 		bytesArray=message.getData();
 
-		Path file = Paths.get("tmp"+this.fileCounter+message.getUserSrc()+"File.txt");
+		Path file = Paths.get("tmp"+this.fileCounter+".txt");
 		this.fileCounter ++;
 
-	    try (OutputStream out = new BufferedOutputStream(
-	      Files.newOutputStream(file, StandardOpenOption.CREATE, StandardOpenOption.APPEND))) {
-	      out.write(bytesArray, 0, bytesArray.length);
-	    } catch (IOException x) {
-	      System.err.println(x);
-	    }
+		try (OutputStream out = new BufferedOutputStream(
+				Files.newOutputStream(file, StandardOpenOption.CREATE, StandardOpenOption.APPEND))) {
+			out.write(bytesArray, 0, bytesArray.length);
+		} catch (IOException x) {
+			System.err.println(x);
+		}
 
 		this.writeAndDisplayChatHistoryMessage(0,message);
 	}
@@ -242,6 +255,11 @@ public class ControllerNetwork implements MyMessageListener{
 
 	void sendMsgExt(MsgExt message, InetAddress iptosend){
 		// TODO
+	}
+	
+	// only for jUnit test
+	public DatagramPacket getLastPacketSended(){
+		return this.udps.getLastPacketSended();
 	}
 
 	// public only for jUnit test
