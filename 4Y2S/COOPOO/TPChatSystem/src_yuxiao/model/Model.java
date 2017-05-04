@@ -34,19 +34,19 @@ public class Model{
 	}
 
 	public DefaultListModel<ModelContactRemote> getRemoteUsers()
-    {
-        return this.userList;
-    }
+	{
+		return this.userList;
+	}
 
 	public void addUserRemote(Contact userRemote){
 		Contact userTmp = null;
 		for(int i=0;i<this.userList.size();i++){
 			userTmp = this.userList.getElementAt(i).getContact();
-            if (userTmp.getIp().equals(userRemote.getIp())){
-            	// userRemote already in the list
-            	return;
-            }
-        }
+			if (userTmp.getIp().equals(userRemote.getIp())){
+				// userRemote already in the list
+				return;
+			}
+		}
 		// userRemote not in the list
 		this.userList.addElement(new ModelContactRemote(userRemote));
 		System.out.println("[Model]List of remoteUsers:"+this.userList.toString());
@@ -57,12 +57,12 @@ public class Model{
 		System.out.println("[Model]remove userRemote Ip:"+userRemote.getIp());
 		for(int i=0;i<this.userList.size();i++){
 			userTmp = this.userList.getElementAt(i).getContact();
-            if (userTmp.getIp().equals(userRemote.getIp())){
-            	// userRemote already in the list
-            	this.userList.removeElementAt(i);
+			if (userTmp.getIp().equals(userRemote.getIp())){
+				// userRemote already in the list
+				this.userList.removeElementAt(i);
 
-            }
-        }
+			}
+		}
 		System.out.println("[Model]List of remoteUsers:"+this.userList.toString());
 	}
 
@@ -71,11 +71,11 @@ public class Model{
 		Contact userTmp = null;
 		for(int i=0;i<this.userList.size();i++){
 			userTmp = this.userList.getElementAt(i).getContact();
-            if (userTmp.getUsername().equals(username)){
-            	userRemote = userTmp;
-            	break;
-            }
-        }
+			if (userTmp.getUsername().equals(username)){
+				userRemote = userTmp;
+				break;
+			}
+		}
 		return userRemote;
 	}
 
@@ -84,11 +84,11 @@ public class Model{
 		Contact userTmp = null;
 		for(int i=0;i<this.userList.size();i++){
 			userTmp = this.userList.getElementAt(i).getContact();
-            if (userTmp.getIp().equals(hostaddr)){
-            	userRemote = userTmp;
-            	break;
-            }
-        }
+			if (userTmp.getIp().equals(hostaddr)){
+				userRemote = userTmp;
+				break;
+			}
+		}
 		return userRemote;
 	}
 
@@ -97,11 +97,11 @@ public class Model{
 		ModelContactRemote userTmp = null;
 		for(int i=0;i<this.userList.size();i++){
 			userTmp = this.userList.getElementAt(i);
-            if (userTmp.getContact().getUsername().equals(username)){
-            	userRemote = userTmp;
-            	break;
-            }
-        }
+			if (userTmp.getContact().getUsername().equals(username)){
+				userRemote = userTmp;
+				break;
+			}
+		}
 		return userRemote;
 	}
 
@@ -110,11 +110,11 @@ public class Model{
 		ModelContactRemote userTmp = null;
 		for(int i=0;i<this.userList.size();i++){
 			userTmp = this.userList.getElementAt(i);
-            if (userTmp.getContact().getUsername().equals(username)){
-            	userRemote = userTmp;
-            	break;
-            }
-        }
+			if (userTmp.getContact().getUsername().equals(username)){
+				userRemote = userTmp;
+				break;
+			}
+		}
 		return userRemote.getChatHistory();
 	}
 
@@ -123,19 +123,19 @@ public class Model{
 	}
 
 	// these 3 functions below is the same as in ModelContactRemote for chatHistory
-    // but for the mesure that a local user is different to remote users
-    // I haven't use the same model
+	// but for the mesure that a local user is different to remote users
+	// I haven't use the same model
 
 	public String getLog(){
 		Charset charset = Charset.forName("UTF-8");
 		String log = "---THE LOG---";
 		try (BufferedReader reader = Files.newBufferedReader(localLog, charset)) {
-		    String line = null;
-		    while ((line = reader.readLine()) != null) {
-		        log = log+"\n"+line;
-		    }
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				log = log+"\n"+line;
+			}
 		} catch (IOException x) {
-		    System.err.format("IOException: %s%n", x);
+			System.err.format("IOException: %s%n", x);
 		}
 		return log;
 	}
@@ -144,9 +144,9 @@ public class Model{
 		// write the line at the end of the history file
 		Charset charset = Charset.forName("UTF-8");
 		try (BufferedWriter writer = Files.newBufferedWriter(this.localLog, charset, StandardOpenOption.APPEND)) {
-		    writer.write(s, 0, s.length());
+			writer.write(s, 0, s.length());
 		} catch (IOException x) {
-		    System.err.format("IOException: %s%n", x);
+			System.err.format("IOException: %s%n", x);
 		}
 	}
 
@@ -155,9 +155,9 @@ public class Model{
 		Charset charset = Charset.forName("UTF-8");
 		String s = "";
 		try (BufferedWriter writer = Files.newBufferedWriter(this.localLog, charset)) {
-		    writer.write(s, 0, s.length());
+			writer.write(s, 0, s.length());
 		} catch (IOException x) {
-		    System.err.format("IOException: %s%n", x);
+			System.err.format("IOException: %s%n", x);
 		}
 	}
 

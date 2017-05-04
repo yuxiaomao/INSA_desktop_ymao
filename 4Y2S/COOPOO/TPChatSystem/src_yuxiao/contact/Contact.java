@@ -31,24 +31,24 @@ public class Contact{
 	}
 
 	@Override
-    public String toString()
-    {
-        return this.getUsername()+" : "+this.getIp();
-    }
+	public String toString()
+	{
+		return this.getUsername()+" : "+this.getIp();
+	}
 
-    @Override
-    public boolean equals(Object o)
-    {
-        Contact u = null;
-        if (o != null && o instanceof Contact){
-            u = (Contact) o;
-        }
+	@Override
+	public boolean equals(Object o)
+	{
+		Contact u = null;
+		if (o != null && o instanceof Contact){
+			u = (Contact) o;
+		}
 
-        if(u != null)
-            return ((this.ip.equals( u.getIp() ) ) );
-        else
-            return false;
-    }
+		if(u != null)
+			return ((this.ip.equals( u.getIp() ) ) );
+		else
+			return false;
+	}
 
 	public String getUsername() {
 		return username;

@@ -16,14 +16,14 @@ import gui.Window;
 import gui.WindowInterface;
 
 public class ControllerGui {
-	
+
 	private WindowInterface vue;
 	private Controller controller;
-	
+
 	public ControllerGui(){
 		this.vue = new Window();
 		this.vue.setUIDisconnected();
-		
+
 		this.vue.addActionConnect(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
@@ -32,7 +32,7 @@ public class ControllerGui {
 				controller.sayHello();
 			}
 		});
-		
+
 		this.vue.addActionDisconnect(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
@@ -42,14 +42,14 @@ public class ControllerGui {
 				controller.sayGoodbye();
 			}
 		});
-		
+
 		this.vue.addActionSendMsg(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
 				controller.sendMessage();
 			}
 		});
-		
+
 		this.vue.addActionChooseFile(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				JFileChooser fc = vue.getFileChoose();
@@ -57,13 +57,13 @@ public class ControllerGui {
 				vue.getFileContent().setText(fc.getSelectedFile().toString());
 			}
 		});
-		
+
 		this.vue.addActionSendFile(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				controller.sendFile();
 			}
 		});
-		
+
 		// display chat history
 		this.vue.addActionListSelectionListener(new ListSelectionListener(){
 			@Override
@@ -75,9 +75,9 @@ public class ControllerGui {
 					}else if (!e.getValueIsAdjusting()){
 						DefaultListModel<String> dlm = vue.getDefaultListModel();
 						if (!dlm.isEmpty()){
-						    int selectedindex = list.getSelectedIndex();
+							int selectedindex = list.getSelectedIndex();
 							String selected = (String) dlm.getElementAt(selectedindex);
-							
+
 							if (selected.equals("All")){
 								vue.getMessageDisplay().setText(controller.getLog());
 							}else{
@@ -88,7 +88,7 @@ public class ControllerGui {
 				}
 			}
 		});
-		
+
 		// select text if user click user name field
 		this.vue.getUsernameContent().addFocusListener(new FocusListener(){
 			@Override
@@ -101,7 +101,7 @@ public class ControllerGui {
 				vue.getUsernameContent().select(0, 0);
 			}
 		});
-		
+
 		// select text if user click message field
 		this.vue.getMessageContent().addFocusListener(new FocusListener(){
 			@Override
@@ -114,14 +114,14 @@ public class ControllerGui {
 				vue.getMessageContent().select(0, 0);
 			}
 		});
-		
+
 		// allow touch return to send a message
 		this.vue.getMessageContent().addKeyListener(new KeyListener(){
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 					controller.sendMessage();
-			    }
+				}
 			}
 
 			@Override
@@ -129,9 +129,9 @@ public class ControllerGui {
 
 			@Override
 			public void keyTyped(KeyEvent arg0) {}
-			
+
 		});
-				
+
 	}
 
 }

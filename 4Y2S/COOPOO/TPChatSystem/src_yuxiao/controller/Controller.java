@@ -76,7 +76,7 @@ public class Controller {
 		this.timerCheck.stop();
 		this.model.removeAllUserListElement();
 		this.cNet.closeSocketUDP();
-        //there's always socket exception for receiving the goodbye that local user broadcasted
+		//there's always socket exception for receiving the goodbye that local user broadcasted
 	}
 
 
@@ -122,17 +122,17 @@ public class Controller {
 		}
 
 		for (String username : selectedUsers) {
-        	if(username.equals("All")){
-        		model.MsgFile message = new model.MsgFile(this.model.getUserLocal().getUsername(), "all", bytesArray);
-        		this.cNet.sendMsgFileToAll(message);
-        		break;
-        	}
-        	else{
-        		Contact userRemote = this.model.getUserRemoteByName(username);
-        		model.MsgFile message = new model.MsgFile(this.model.getUserLocal().getUsername(), userRemote.getUsername(), bytesArray);
-        		this.cNet.sendMsgFile(message, userRemote.getIp());
-        	}
-        }
+			if(username.equals("All")){
+				model.MsgFile message = new model.MsgFile(this.model.getUserLocal().getUsername(), "all", bytesArray);
+				this.cNet.sendMsgFileToAll(message);
+				break;
+			}
+			else{
+				Contact userRemote = this.model.getUserRemoteByName(username);
+				model.MsgFile message = new model.MsgFile(this.model.getUserLocal().getUsername(), userRemote.getUsername(), bytesArray);
+				this.cNet.sendMsgFile(message, userRemote.getIp());
+			}
+		}
 		this.model.writeLog("Sended.\n" );
 	}
 

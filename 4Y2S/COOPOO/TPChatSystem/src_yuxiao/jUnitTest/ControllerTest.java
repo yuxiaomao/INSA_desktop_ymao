@@ -45,6 +45,14 @@ public class ControllerTest {
 		assertTrue("Before this test, Model should not conteins any userRemote", this.cA.isEmptyUserRemoteList());
 	}
 
+	// disconnect from the system, it removes all the connected users from the listdé
+	@Test
+	public void DisconnectRemoveElements(){
+		this.cA.modelAddContact(userRemote);
+		this.cA.disconnection();
+		assertFalse("All users must be removed", this.cA.findRemoteUserFromModel(userRemote));
+	}
+
 	//If someone is in our connected List and his timer expires, he is removed from the model
 	@Test
 	public void CheckHasNoAnswerTest(){
@@ -70,7 +78,7 @@ public class ControllerTest {
 		//timerCheck.setRepeats(false);
 		timerCheck.start();
 	}
-	*/
+	 */
 
 	//If we receive Hello, we add it into the list
 	@Test
@@ -90,13 +98,13 @@ public class ControllerTest {
 		assertTrue("User must be present in the list when you receive a reply hello ok during the connecting time",this.cA.findRemoteUserFromModel(userRemote));
 	}
 
-	//During the connection if we receive Hello OK, we will deconnect
+	//During the connection if we receive Hello Not OK, we will disconnect
 	@Test
 	public void ReceivedHelloNokTest(){
 		MsgHello message = new MsgHello(userRemote.getUsername(), userLocal.getUsername(), true, false);
 		this.cA.connection();
 		this.cA.receiveMessage(message,userRemote.getIp());
-		assertTrue("User must be present in the list when you receive a reply hello ok during the connecting time",this.cA.isDisconnected());
+		assertTrue("User local must be disconnect a reply hello not ok during the connecting time",this.cA.isDisconnected());
 	}
 
 	//Receive Goodbye during the connecting, remove that user
