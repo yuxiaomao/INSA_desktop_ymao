@@ -1,4 +1,4 @@
-package contact;
+package model;
 
 import java.util.EventListener;
 
