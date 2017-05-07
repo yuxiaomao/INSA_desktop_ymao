@@ -1,4 +1,4 @@
-package contact;
+package model;
 
 import java.awt.event.ActionListener;
 import java.net.InetAddress;

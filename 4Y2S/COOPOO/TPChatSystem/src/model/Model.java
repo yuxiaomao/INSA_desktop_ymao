@@ -3,8 +3,6 @@ package model;
 
 import javax.swing.DefaultListModel;
 
-import contact.Contact;
-
 public class Model {
     
 	private DefaultListModel<Contact> userList;

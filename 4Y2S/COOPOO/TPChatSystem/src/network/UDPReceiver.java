@@ -72,6 +72,10 @@ public class UDPReceiver implements Runnable {
 		return messagewithip[index];
 	}
 	
+	public void setMessagewithip(int index, Message message) {
+		messagewithip[index]=message;
+	}
+	
 	public void interruption(){
 		Thread.currentThread().interrupt();
 	}

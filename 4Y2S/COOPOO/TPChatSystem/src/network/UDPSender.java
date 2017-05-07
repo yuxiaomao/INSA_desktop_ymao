@@ -21,6 +21,7 @@ import model.MsgTxt;
 public class UDPSender {
 	
 	private DatagramSocket socket;
+	private Message lastMessage;
 	
 	public UDPSender(){
 		try {
@@ -39,6 +40,7 @@ public class UDPSender {
 	 * Method that send a given message in UDP mode
 	 */
 	private void sendMess(Message mes, InetAddress iptosend) {
+		this.lastMessage=mes;
 		int port = 1234;
 		byte[] buf = new byte[2048];
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -198,6 +200,10 @@ public class UDPSender {
 	public void closeSocket(){
 		System.out.println("Closing socket at port "+this.socket.getLocalPort());
 		socket.close();
+	}
+	
+	public Message getLastMessage(){
+		return this.lastMessage;
 	}
 	
 	protected void finalize() throws Throwable

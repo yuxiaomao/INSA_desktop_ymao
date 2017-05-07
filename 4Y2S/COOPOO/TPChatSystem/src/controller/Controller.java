@@ -28,9 +28,8 @@ import javax.swing.event.ListSelectionListener;
 
 import model.Model;
 import gui.Window;
-import contact.*;
 import network.*;
-
+import model.Contact;
 import model.Message;
 import model.MsgCheck;
 import model.MsgExt;
@@ -41,19 +40,19 @@ import model.MsgTxt;
 
 public class Controller implements Runnable, NewMessageListener, ActionListener {
 
-	private Model modele;
-	private Window vue;
+	public Model modele;
+	public Window vue;
 	/*
 	 * TCP class if message need to be sent with TCP protocol
 	 * private TCPClient tcpc;
 	 * private TCPServer tcps;*/
-	private UDPSender udps;
-	private UDPReceiver udpr;
-	private Timer timer_controller;
-	private Timer timer_check;
-	private File file_local;
-	private int fileCounter; //integer used to save files received with a different name in ascending number
-	private Date date;
+	public UDPSender udps;
+	public UDPReceiver udpr;
+	public Timer timer_controller;
+	public Timer timer_check;
+	public File file_local;
+	public int fileCounter; //integer used to save files received with a different name in ascending number
+	public Date date;
 	
 	public Controller(){
 		InetAddress addr=null;
@@ -103,6 +102,7 @@ public class Controller implements Runnable, NewMessageListener, ActionListener 
 		    	  udps.sendBye(modele.getLocalUser().getUsername(), "All");
 		    	  cleanUI();
 		    	  vue.setUIDisconnected();
+		    	  modele.getRemoteUsers().clear();
 		    	  File dir = new File(System.getProperty("user.dir"));
 		    	  for(File file: dir.listFiles()){ 
 		    		    if (!file.isDirectory()) {
@@ -435,10 +435,10 @@ public class Controller implements Runnable, NewMessageListener, ActionListener 
 		else{
 			System.out.println("Reading the message at index : "+indexMessage);
 			messageCourant = this.udpr.getMessagewithip(indexMessage);
+			System.out.println(messageCourant.toString());
 			this.udpr.setReceptionMessage(false);
 			indexMessage = (indexMessage+1)%10;
 			final String nickname=messageCourant.getUserSrc();
-			
 			//If the message received is an instance of MsgHello
 			if (messageCourant instanceof MsgHello) {
 				MsgHello msg= (MsgHello) messageCourant;
@@ -586,12 +586,17 @@ public class Controller implements Runnable, NewMessageListener, ActionListener 
 				String directory =System.getProperty("user.dir");
 				FileOutputStream fos;
 				try {
-					fos = new FileOutputStream(directory+"/tmp"+this.fileCounter+mimeType);
+					if(mimeType==null){
+						fos = new FileOutputStream(directory+"/tmp"+this.fileCounter);
+					}else{
+						fos = new FileOutputStream(directory+"/tmp"+this.fileCounter+mimeType);
+					}
 					fos.write(bytesArray);
 					fos.close();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+				System.out.println("Saving file tmp" + this.fileCounter + " at "+directory+"/.\n");
 				vue.getMessageDisplay().append("Saving file tmp" + this.fileCounter + " at "+directory+"/.\n" );
 				this.fileCounter++;
 				
@@ -644,18 +649,6 @@ public class Controller implements Runnable, NewMessageListener, ActionListener 
 	public void run() {
 		while(!Thread.currentThread().isInterrupted()) {
 		}
-	}
-	
-	public Model getModel(){
-		return this.modele;
-	}
-	
-	public Window getWindow(){
-		return this.vue;
-	}
-	
-	public Timer getCheckTimer(){
-		return this.timer_controller;
 	}
 
 	/*
