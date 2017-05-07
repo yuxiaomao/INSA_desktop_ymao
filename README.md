@@ -53,9 +53,9 @@ Most of comments are in French.
 - **4Y1S\Secu\BOF** Buffer overflow
 - **4Y1S\Thread** Multi-threading
 - **4Y1S Micro-Controlleur**
-  - [github: Drum_project](https://github.com/voilacti/Drum_project)
+  - [github Link: Drum_project](https://github.com/voilacti/Drum_project)
 - **4Y1S Temps-reel**
-  - [github: projet_destijl](https://github.com/quentinleclerc/projet_destijl)
+  - [github Link: projet_destijl](https://github.com/quentinleclerc/projet_destijl)
 - [**4Y2S\AI**](./4Y2S/AI) Artificial intelligence
   - TP prolog, A\*, Negamax, AI with _Rama DESPLATS_
 - [**4Y2S\ArchitectureMaterielle**](./4Y2S/ArchitectureMaterielle)
@@ -65,6 +65,7 @@ Most of comments are in French.
 - [**4Y2S\COOPOO\TPChatSystem**](./4Y2S/COOPOO/TPChatSystem) Object-oriented Conception and Programming
   - UML, Tau, Java, MVC, JUnit
   - TP ChatSystem P2P with _Rama DESPLATS_
+  - [github Link:Chat-System-JAVA](https://github.com/ramadesplats/Chat-System-JAVA)
 - [**4Y2S\SystemeInformatique**](./4Y2S/SystemeInformatique)
   - Lex, Yacc, C, Xilinx ISE, VHDL
   - BE Compiler C with _Rama DESPLATS_
