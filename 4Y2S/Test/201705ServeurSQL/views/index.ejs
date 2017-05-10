@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<form action="/action_form" method="post">
+    <fieldset>
+    <legend>Entrer vos informatons:</legend>
+    Integer A:<br>
+    <input type="number" name="intA" value="entrer intA ici">
+    <br>
+    Integer B:<br>
+    <input type="number" name="intB" value="entrer intB ici" >
+    <br><br>
+    <input type="submit" value="Submit">
+    </fieldset>
+</form>
+
+<p>If you click the "Submit" button, the form-data will be sent to a page called "/action_form".</p>
+<p>The result of the calcul <%= intA%> + <%=intB%> is <%=intS%></p>
+<p>The result table:</p>
+<p><%=table%></p>
+
+</body>
+</html>

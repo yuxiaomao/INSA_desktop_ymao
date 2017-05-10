@@ -26,3 +26,23 @@ Classé par temps croissant.
 - Axe d'amélioration:
   - Layout plus joli
   - Changer les noms pour être plus explicite (myfirstapp est vraiment trivial)
+
+## Saisi formulaire html vers une base de données SQL
+- date: 20170510
+- keyword: NodeJS(express, ejs), SQL, XAMPP(MariaDB, PhpMyAdmin)
+- objective:
+  - Créer un formulaire html, qui permet utilisateur saisir 2 valeur integer
+  - Ces deux valeurs sont envoyé à la base de données, leur somme et l'heure' d'enregistrement est aussi sauvegardé
+  - Afficher une ligne qui dit l'insertion a réussi, et aussi le condenu de la base après insertion
+- code [`201705ServeurSQL/`](./201705ServeurSQL)
+  - dependencies: express, ejs, mariasql
+    - install: `npm init`, `npm install [nom-du-package] --save`
+  - Serveur express écoute sur le port 8080 du localhost
+    - au `/`, serveur affiche simplement le tableau
+    - suite à la demande post du formulaire, au `/action_form`, serveur insert une ligne dans la base, et récupère le nouveau base pour affichier
+  - MariaDB
+    - Après trourné XAMPP, dans `localhost/phpmyadmin`, j'ai créé une base `mytest`, dedans, j'ai ajouté une table `INFORMATION`
+    - Cette table contitent 5 colonne: `_id`primary key autoincrement, `int_a`, `int_b`, `int_s`, `save_time` default timestamp
+- Remarques:
+  - MySQL refuse de s'installer sur un ordi qui a déjà MariaDB
+  - XAMPP a écris "MySQL" mais en fait il est passé en MariaDB
