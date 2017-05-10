@@ -42,3 +42,37 @@ Ayant le même conception et interface graphique, j'ai un Controller divisé en 
 - Controller, créé par ControllerGui à chaque fois que l'user click sur le boutton "Login", elle va créer un objet ControllerNetwork et un Model.
 - ControllerNetwork, géré les sockets pour communication, réponds automatiquement aux messages de gestion de la liste d'utilisateur, fournis des méthodes pour envoyer des messages.
 - Model, mémoriser en plus les fichiers txt pour mémoriser l'historique de chat.
+
+Dans un commit, j'ai implémenté "envoyer HELLO_NOT_OK si username de userRemote est dans ma liste". Mais ceci n'est pas dans le protocole.
+
+# Notes Personnelles
+
+### Amélioration?
+- Design pattern Singleton:
+Si on ne veut pas plusieurs models apparaître.
+Mais certains logiciels permettent d'avoir plusieurs user connectés et ne s'influensent pas (Tencent QQ Desktop).
+De toutes façon notre logiciel ne support qu'un seul user connecté, donc un singleton est une amélioration possible.
+
+### MsgFile: détection extension?
+Pendant un moment Rama veut deviner l'extension du fichier reçu à l'aide de certains méthodes, mais ceci n'est toujours pas réussi.
+Il semble que File toByteArray n'ajoute pas le nom du fichier.
+- Solution possible: Au moment d'envoi, envoyé le nom du fichier par un MsgTxt(ou autre) séparé pour indiquer le nom du fichier.
+
+### jUnit: Visibilité?
+Les tests jUnit ne sont pas dans le même package que Controller.
+Plusieurs méthodes passe de private à public, et il apparaît des méthodes "illégales" spécialement pour tester.
+Ceci agrandir l'interface et je le trouve dangereux.
+Mais je n'ai pas trouvé d'autres solutions pour ça.
+
+### jUnit: Test partagé?
+Au début nous voudrons faire les tests ensemble, c'est à dire ceux qui ont le même protocole (dans le même groupe de TP) peuvent s'échange des jUnit tests. Mais finalement on n'a pas réussi.
+Nous avons essayé de rendre jUnitTest/ControllerAdapter générale.
+Au final moi et Rama nous avons le même fichier Test et l'implémentation de Adapter spécialisé à son propre code.
+Comme la conception est le même, la division controller/model et le lancement(création de principale controller après avoir cliqué Login) se ressemble beaucoup, nous ne savons pas si c'est adaptable aux autres groupes.
+
+### jUnit: Test network?
+Les tests sur la partie network ne sont pas réellement par network.
+Par exemple, il y a un eventlistener dans UDPReceiver, à chaque fois reçoit d'un packet message, il va appeler une méthode de Controller.
+Pour simuler les reçoits, nous n'avons pas envoyé les packets sur réseau mais nous avons appelé directement cette méthode avec un Message pré-construit.
+Idem pour send, nous n'avons pas écouté sur le réseau, mais nous avons appelé une méthode qui permet de récupère le dernier packet envoyé.
+- Amélioration: Design pattern Mock?

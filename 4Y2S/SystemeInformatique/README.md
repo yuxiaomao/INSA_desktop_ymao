@@ -27,11 +27,14 @@
 - Le src_rama est en v4, donc il n'y a pas encore la gestion de fonction.
 
 # Fonctionnalités
-- type de variable: int, const int, int*
-- Déclaration
-- Affectation
-- If & While
+- type de variable: int, const int
+- Déclaration & Affectation
+- Expression E
+- If & While boucle
 - Pointeur & Malloc
-- Fonction: récursif ok
-- For
+  - Nouveau type: \*int
+- Fonction
+  - Besoin de changer LOAD et STORE
+  - Notion de EBP(base de pile), inspiré du cours Sécu
 - Pré/Post incrémentation
+  - Nouveau boucle: for(Affectation,E,id++)
