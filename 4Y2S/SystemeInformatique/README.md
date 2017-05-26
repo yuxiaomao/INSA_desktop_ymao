@@ -9,7 +9,7 @@
   - `src/asm2oply` générateur de opcode pour utiliser dans uProcesseur
 - `src_rama/` source code de Rama v4
 - `uProcesseur/`
-  - `uProcesseur/components` et `uProcesseur/cores` package de M. Benoit Morgan, contenant mémoire ROM (32bits), RAM (16bits), vga
+  - `uProcesseur/components` et `uProcesseur/cores`  [package de M. Benoit Morgan](http://homepages.laas.fr/bmorgan/soc.tgz), contenant mémoire ROM (32bits), RAM (16bits), vga
   - `uProcesseur/` main module `fpga.vhd`, simulation `fpgatest.vhd`, implementation `fpga.ucf`
 
 **La plus grande Différence entre src et src_rama**:
@@ -64,7 +64,7 @@
 | Inferieur | 0xA | INF | Ri | Rj | Rk | [Ri] ← 1 si [Rj]<[Rk], 0 sinon |
 | Inferieur égal | 0xB | INFE | Ri | Rj | Rk | [Ri] ← 1 si [Rj]<=[Rk], 0 sinon |
 | Supérieur | 0xC | SUP | Ri | Rj | Rk | [Ri] ← 1 si [Rj]>[Rk], 0 sinon |
-| Sup égal | 0xD | SUPE | Ri | Rj | Rk | [Ri] ← 1 si [Rj]>=[Rk], 0 sinon |
+| Supérieur égal | 0xD | SUPE | Ri | Rj | Rk | [Ri] ← 1 si [Rj]>=[Rk], 0 sinon |
 | Saut | 0xE | JMP | @i_h | @i_l | | Saut à l’adresse @i (16bits) |
 | Saut conditionnel | 0xF | JMPC | @i_h | @i_l | Ri | Saut à l’adr @i (16bits) si Ri = 0 |
 | Saut Registre | 0x10 | JMPR | Ri | | | Saut à l’adresse @[Ri] |
