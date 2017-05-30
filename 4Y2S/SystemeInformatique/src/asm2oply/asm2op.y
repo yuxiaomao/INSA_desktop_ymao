@@ -73,8 +73,8 @@ Prog :
 ;
 
 Lines :
-		/*epsilon*/
-		| Line Lines
+        /*epsilon*/
+        | Line Lines
 ;
 
 Line :

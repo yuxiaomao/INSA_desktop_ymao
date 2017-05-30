@@ -91,7 +91,7 @@ void set_ebp(int val){
 }
 
 int get_asmline(){
-	return compteur_asm;
+    return compteur_asm;
 }
 
 void set_depth_add1(){
@@ -514,11 +514,11 @@ int tINCREMENTtID_value(char *id){
     int result = -1;
     char *charvalue=malloc(sizeof(char)*2);
     int index = find_var(id);
-    
+
     if(index == -1){//not define
         result = -1;
     }else{
-        
+
         result = tab_var_addtmp(0);
 
         sprintf(charvalue,"%d",(index-ebp));
@@ -530,13 +530,13 @@ int tINCREMENTtID_value(char *id){
         // store to tmp
         sprintf(charvalue,"%d",(result-ebp));
         tab_inst_addline("STORE","R31",charvalue,"R0");
-        
+
         //if id is a pointer, then its value is an adress
         if (tabvar[index].type==TYPE_POINTEUR){
             set_isAdress(1);
         }
     }
-    
+
     free(charvalue);
     return result;
 }
@@ -546,7 +546,7 @@ int tIDtINCREMENT_value(char *id){
     printf("POST INCREMENT DETECTED\n");
     tab_postadd[index].id=id;
     tab_postadd[index].depth=get_depth();
-    
+
     compteur_postadd++;
     return tID_value(id);
 }
@@ -555,7 +555,7 @@ int tINCREMENTtID_affectation(char *id){
     //similar to tINVREMENTtID_value but no var tmp
     char *charvalue=malloc(sizeof(char)*2);
     int index = find_var(id);
-    
+
     if(index == -1){//not define
     }else{
         sprintf(charvalue,"%d",(index-ebp));
@@ -565,7 +565,7 @@ int tINCREMENTtID_affectation(char *id){
         // store to var
         tab_inst_addline("STORE","R31",charvalue,"R0");
     }
-    
+
     free(charvalue);
     return index;
 }
@@ -576,7 +576,7 @@ int tIDtINCREMENT_affectation(char *id){
     tab_postadd[index].id=id;
     tab_postadd[index].depth=get_depth();
     compteur_postadd++;
-    
+
     index = tab_postadd_flush1();
     return index;
 }
@@ -644,21 +644,21 @@ int arithmetical_expression(int type){
 /* jump
 ******************************/
 void create_jump_if(){
-	char *charvalue=malloc(sizeof(char)*2);
+    char *charvalue=malloc(sizeof(char)*2);
 
     // asm get _tmp & load value
     sprintf(charvalue,"%d",(compteur_ebp+compteur_tmp-1));
     tab_inst_addline("LOAD","R0","R31",charvalue);
     tab_inst_addline("JMPC","X","R0","");//R0=cond
 
-	// remove condition
-	compteur_tmp--;
+    // remove condition
+    compteur_tmp--;
 
     free(charvalue);
 }
 
 void set_jump(int asmline){
-	char *charvalue=malloc(sizeof(char)*2);
+    char *charvalue=malloc(sizeof(char)*2);
 
     // set at next asm line
     sprintf(charvalue,"%d",get_asmline());
@@ -677,14 +677,14 @@ void set_jump_fin_else(int asmline){
 }
 
 void create_jump_while(){
-	create_jump_if();
+    create_jump_if();
 }
 
 void set_while_jump(int asmline_before_cond, int asmline_after_jmpc){
-	char *charvalue=malloc(sizeof(char)*2);
+    char *charvalue=malloc(sizeof(char)*2);
 
-	// set JMP for begin cond
-	sprintf(charvalue,"%d",asmline_before_cond);
+    // set JMP for begin cond
+    sprintf(charvalue,"%d",asmline_before_cond);
     tab_inst_addline("JMP",charvalue,"","");
 
     // set JMPC
@@ -829,11 +829,11 @@ int call_function(char*id, int asmline_after_before_call){
 
 void set_return_value_to_r0(){
     char *charvalue=malloc(sizeof(char)*2);
-    
+
     // the only tmp is value of return
     sprintf(charvalue,"%d",compteur_ebp);
     tab_inst_addline("LOAD","R0","R31",charvalue);
-    
+
     compteur_tmp--;
     free(charvalue);
 }
@@ -933,7 +933,7 @@ void tab_func_nbarg_add1(){
 /* return index of func, or -1 not find*/
 int find_func(char*id){
     int index;
-    
+
     for(index=compteur_func-1;index>=0;index--){
         if(strcmp(tab_func[index].id,id)==0){
             break;
@@ -974,7 +974,7 @@ int arithmetical_E2E(int type){
             tab_inst_addline("DIV","R0","R0","R1");
             break;
         case INF:
-        	tab_inst_addline("INF","R0","R0","R1");
+            tab_inst_addline("INF","R0","R0","R1");
             break;
         case SUP:
             tab_inst_addline("SUP","R0","R0","R1");
@@ -1002,11 +1002,11 @@ int arithmetical_E2E(int type){
 int tab_postadd_flush1(){
     char *charvalue=malloc(sizeof(char)*2);
     int index;
-    
+
     compteur_postadd--;// de-increment
     index = find_var(tab_postadd[compteur_postadd].id);
     //printf("POST INCREMENT FLUSH1 INDEX %d %s\n", index, tab_postadd[compteur_postadd].id);
-    
+
     if(index == -1){//not define
     }else{
         sprintf(charvalue,"%d",(index-ebp));

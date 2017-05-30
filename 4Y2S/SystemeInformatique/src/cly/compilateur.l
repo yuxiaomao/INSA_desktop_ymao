@@ -37,19 +37,19 @@ nb [0-9]+
 "-"                     { return tSUB; }
 "*"                     { return tMUL; }
 "/"                     { return tDIV; }
-"!="				    { return tNEQ; }
+"!="                    { return tNEQ; }
 "&&"                    { return tAND; }
 "||"                    { return tOR; }
-">"				  	    { return tSUP; }
-"<"						{ return tINF; }
-">="				  	{ return tSUPEQ; }
-"<="					{ return tINFEQ; }
+">"                     { return tSUP; }
+"<"                     { return tINF; }
+">="                    { return tSUPEQ; }
+"<="                    { return tINFEQ; }
 "&"                     { return tADR;}
 
 
 {id}                    { yylval.str = strdup(yytext); return tID; }
-{nb}   					{ yylval.nb = atoi(yytext); return tNB; }
-{nbexp}|{nbdec} 		{ yylval.nb = (int)atof(yytext); return tNB; }
+{nb}                    { yylval.nb = atoi(yytext); return tNB; }
+{nbexp}|{nbdec}         { yylval.nb = (int)atof(yytext); return tNB; }
 
 {comment}               ;
 {separateur}            ;

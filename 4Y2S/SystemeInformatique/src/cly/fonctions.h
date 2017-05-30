@@ -7,7 +7,8 @@
 #include <stdarg.h>
 
 /**********************************************************************************
- * Constants and symbols definitions **********************************************************************************/
+ * Constants and symbols definitions
+ **********************************************************************************/
 
 /* Type definition for the type column of the symbol table*/
 #define TYPE_NORMAL 0
