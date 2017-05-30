@@ -24,6 +24,7 @@ nb [0-9]+
 "return"                { return tRETURN; }
 "int"                   { return tINT; }
 "const"                 { return tCONST; }
+"++"                    { return tINCREMENT; }
 "("                     { return tPO; }
 ")"                     { return tPF; }
 "{"                     { return tAO; }

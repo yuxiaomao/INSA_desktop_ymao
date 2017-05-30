@@ -41,8 +41,10 @@ int compteur_error;
 %token tADD tSUB tMUL tDIV
 %token tPO tAO
 %token tRETURN
-%token tADR
 /* &a = tADR tID, *p = tMUL tID */
+%token tADR
+/* pre post increment */
+%token tINCREMENT
 
 %token <str> tID
 %token <nb> tNB
@@ -87,7 +89,7 @@ Fonction :
 		Args tPF
 		Body
 		    {end_define_function();}
-			{printf("Function definition %s.\n", $2);}
+			{/*printf("Function definition %s.\n", $2);*/}
 		| error tPV {yyerrok;}
 ;
 
@@ -121,19 +123,37 @@ Body :
 		tAO
 			{$1=get_compteur_ebp();set_depth_add1();}
 		Insts
-			{set_depth_sub1();set_compteur_ebp($1);}
+		Return
+		    {set_depth_sub1();set_compteur_ebp($1);}
         tAF
 ;
+
+Return:
+        /*epsilon*/
+        | tRETURN E tPV
+            {set_return_value_to_r0();}
 
 
 Insts :
 		/*epsilon*/
-		| Affectation tPV Insts
-        | Declaration tPV Insts
-		| Invocation tPV Insts
-		| If Insts
-		| While Insts
-		| For Insts
+		| Affectation tPV
+		    {tab_postadd_flush(get_depth());}
+		  Insts
+        | Declaration tPV
+            {tab_postadd_flush(get_depth());}
+          Insts
+		| Invocation tPV
+		    {tab_postadd_flush(get_depth());}
+		  Insts
+		| If
+		    {tab_postadd_flush(get_depth());}
+		  Insts
+		| While
+		    {tab_postadd_flush(get_depth());}
+		  Insts
+		| For
+		    {tab_postadd_flush(get_depth());}
+		  Insts
         | Printf tPV Insts
         | Malloc tPV Insts
         | error tPV Insts{yyerrok;}
@@ -159,8 +179,11 @@ Affectation :
               }else if (result==-3){
                   yyerror("trying to point with a non-pointer variable");
               }
-            printf("Affectation d'une pointeur\n");}
-
+            /*printf("Affectation d'une pointeur\n");*/}
+        | tID tINCREMENT
+            { tIDtINCREMENT_affectation($1); }
+        | tINCREMENT tID
+            { tINCREMENTtID_affectation($2); }
 ;
 
 Declaration :
@@ -182,12 +205,12 @@ Decl1 :
                 }
             }
         | tMUL tID
-            {int result = declare_variable($2,TYPE_POINTEUR);
-             if (result==-1){yyerror("redefinition of a variable");
+            {if (declare_variable($2,TYPE_POINTEUR)==-1){
+                yyerror("redefinition of a variable");
              }
             }
         | tMUL tID tEQ E
-            {if(declare_variable_affectation($2,TYPE_NORMAL)==-1){
+            {if(declare_variable_affectation($2,TYPE_POINTEUR)==-1){
                     yyerror("redefinition of a variable");
              }
             }
@@ -292,11 +315,16 @@ For :
 			{$1 = get_asmline();}
 		E tPV
 			{create_jump_while();$2 = get_asmline();}
-		Affectation tPF Body
+		tID tINCREMENT
+		    {tIDtINCREMENT_value($9);}
+		tPF Body
+		    {tab_postadd_flush(get_depth());}
 			{set_while_jump($1,$2);}
 ;
 
-/* return index in tab_var of _tmp value */
+/* in each arithmetical expressions make sure that the variables are both initialized
+* return index in tab_var of _tmp value
+*/
 E :
 		tID
 		    {$$ = tID_value($1);}
@@ -306,9 +334,14 @@ E :
             {$$ = tMULtID_value($2);}
         | tADR tID
             {$$ = tADRtID_value($2);}
+        | tINCREMENT tID
+            {$$ = tINCREMENTtID_value($2);}
+        | tID tINCREMENT
+            {$$ = tIDtINCREMENT_value($1);}
 		| tPO E tPF
 		    {$$ = $2;}
 		| Invocation
+		    {$$ = get_return_value_from_r0();}
 		| E tEQEQ E
 		    {$$ = arithmetical_expression(EQEQ);}
 		| E tNEQ E
@@ -383,7 +416,6 @@ int main(int argc, char**argv){
     }
     else{
         printf( BOLDBLACK "==> Creating the files\n\n" RESET );
-        print_symbol_table();
         print_asm_instructions();
         write_asm();
         printf("\n");
