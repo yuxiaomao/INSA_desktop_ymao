@@ -2,7 +2,6 @@ const express = require('express')
 var app = express()
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
-const nodeMaria = require('node-mariadb')
 var mariasql = require('mariasql');
 
 var clientSQL = new mariasql({

@@ -35,7 +35,7 @@ Classé par temps croissant.
   - Ces deux valeurs sont envoyé à la base de données, leur somme et l'heure' d'enregistrement est aussi sauvegardé
   - Afficher une ligne qui dit l'insertion a réussi, et aussi le condenu de la base après insertion
 - code [`201705ServeurSQL/`](./201705ServeurSQL)
-  - dependencies: express, ejs, mariasql
+  - dependencies: express, ejs, mariasql, body-parser
     - install: `npm init`, `npm install [nom-du-package] --save`
   - Serveur express écoute sur le port 8080 du localhost
     - au `/`, serveur affiche simplement le tableau
