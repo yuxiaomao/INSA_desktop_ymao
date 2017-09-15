@@ -75,3 +75,6 @@ Most of comments are in French.
   - TD with _Rama DESPLATS_
 - [**4Y2S\Test**](./4Y2S/Test)
   - php, android, sql, nodejs
+- **4Y2S ProjectCyclist**
+  - OpenCV, Python 
+  - Image processing for cyclist performance analysis with _Delia LOUPIAS_, _Maëlle LE HERISSE_, _Laetitia DUFAU_
